@@ -1,0 +1,542 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		61242E261E07BF6000D6358F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 61242E251E07BF6000D6358F /* main.m */; };
+		61242E291E07BF6000D6358F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 61242E281E07BF6000D6358F /* AppDelegate.m */; };
+		61242E311E07BF6000D6358F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 61242E301E07BF6000D6358F /* Assets.xcassets */; };
+		61242E341E07BF6000D6358F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 61242E321E07BF6000D6358F /* LaunchScreen.storyboard */; };
+		61242E3F1E07BF6000D6358F /* zhMusicTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 61242E3E1E07BF6000D6358F /* zhMusicTests.m */; };
+		61242E4A1E07BF6000D6358F /* zhMusicUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 61242E491E07BF6000D6358F /* zhMusicUITests.m */; };
+		61242E5C1E07C51D00D6358F /* zhTabBarVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 61242E5B1E07C51D00D6358F /* zhTabBarVC.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		61242E3B1E07BF6000D6358F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 61242E191E07BF6000D6358F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 61242E201E07BF6000D6358F;
+			remoteInfo = zhMusic;
+		};
+		61242E461E07BF6000D6358F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 61242E191E07BF6000D6358F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 61242E201E07BF6000D6358F;
+			remoteInfo = zhMusic;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		61242E211E07BF6000D6358F /* zhMusic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = zhMusic.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		61242E251E07BF6000D6358F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		61242E271E07BF6000D6358F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		61242E281E07BF6000D6358F /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		61242E301E07BF6000D6358F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		61242E331E07BF6000D6358F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		61242E351E07BF6000D6358F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		61242E3A1E07BF6000D6358F /* zhMusicTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = zhMusicTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		61242E3E1E07BF6000D6358F /* zhMusicTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = zhMusicTests.m; sourceTree = "<group>"; };
+		61242E401E07BF6000D6358F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		61242E451E07BF6000D6358F /* zhMusicUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = zhMusicUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		61242E491E07BF6000D6358F /* zhMusicUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = zhMusicUITests.m; sourceTree = "<group>"; };
+		61242E4B1E07BF6000D6358F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		61242E5A1E07C51D00D6358F /* zhTabBarVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = zhTabBarVC.h; sourceTree = "<group>"; };
+		61242E5B1E07C51D00D6358F /* zhTabBarVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = zhTabBarVC.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		61242E1E1E07BF6000D6358F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		61242E371E07BF6000D6358F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		61242E421E07BF6000D6358F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		61242E181E07BF6000D6358F = {
+			isa = PBXGroup;
+			children = (
+				61242E231E07BF6000D6358F /* zhMusic */,
+				61242E3D1E07BF6000D6358F /* zhMusicTests */,
+				61242E481E07BF6000D6358F /* zhMusicUITests */,
+				61242E221E07BF6000D6358F /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		61242E221E07BF6000D6358F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				61242E211E07BF6000D6358F /* zhMusic.app */,
+				61242E3A1E07BF6000D6358F /* zhMusicTests.xctest */,
+				61242E451E07BF6000D6358F /* zhMusicUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		61242E231E07BF6000D6358F /* zhMusic */ = {
+			isa = PBXGroup;
+			children = (
+				61242E581E07C4A500D6358F /* Main */,
+				61242E271E07BF6000D6358F /* AppDelegate.h */,
+				61242E281E07BF6000D6358F /* AppDelegate.m */,
+				61242E301E07BF6000D6358F /* Assets.xcassets */,
+				61242E321E07BF6000D6358F /* LaunchScreen.storyboard */,
+				61242E351E07BF6000D6358F /* Info.plist */,
+				61242E241E07BF6000D6358F /* Supporting Files */,
+			);
+			path = zhMusic;
+			sourceTree = "<group>";
+		};
+		61242E241E07BF6000D6358F /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				61242E251E07BF6000D6358F /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		61242E3D1E07BF6000D6358F /* zhMusicTests */ = {
+			isa = PBXGroup;
+			children = (
+				61242E3E1E07BF6000D6358F /* zhMusicTests.m */,
+				61242E401E07BF6000D6358F /* Info.plist */,
+			);
+			path = zhMusicTests;
+			sourceTree = "<group>";
+		};
+		61242E481E07BF6000D6358F /* zhMusicUITests */ = {
+			isa = PBXGroup;
+			children = (
+				61242E491E07BF6000D6358F /* zhMusicUITests.m */,
+				61242E4B1E07BF6000D6358F /* Info.plist */,
+			);
+			path = zhMusicUITests;
+			sourceTree = "<group>";
+		};
+		61242E581E07C4A500D6358F /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				61242E591E07C4E400D6358F /* Controller */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		61242E591E07C4E400D6358F /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				61242E5A1E07C51D00D6358F /* zhTabBarVC.h */,
+				61242E5B1E07C51D00D6358F /* zhTabBarVC.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		61242E201E07BF6000D6358F /* zhMusic */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 61242E4E1E07BF6000D6358F /* Build configuration list for PBXNativeTarget "zhMusic" */;
+			buildPhases = (
+				61242E1D1E07BF6000D6358F /* Sources */,
+				61242E1E1E07BF6000D6358F /* Frameworks */,
+				61242E1F1E07BF6000D6358F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = zhMusic;
+			productName = zhMusic;
+			productReference = 61242E211E07BF6000D6358F /* zhMusic.app */;
+			productType = "com.apple.product-type.application";
+		};
+		61242E391E07BF6000D6358F /* zhMusicTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 61242E511E07BF6000D6358F /* Build configuration list for PBXNativeTarget "zhMusicTests" */;
+			buildPhases = (
+				61242E361E07BF6000D6358F /* Sources */,
+				61242E371E07BF6000D6358F /* Frameworks */,
+				61242E381E07BF6000D6358F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				61242E3C1E07BF6000D6358F /* PBXTargetDependency */,
+			);
+			name = zhMusicTests;
+			productName = zhMusicTests;
+			productReference = 61242E3A1E07BF6000D6358F /* zhMusicTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		61242E441E07BF6000D6358F /* zhMusicUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 61242E541E07BF6000D6358F /* Build configuration list for PBXNativeTarget "zhMusicUITests" */;
+			buildPhases = (
+				61242E411E07BF6000D6358F /* Sources */,
+				61242E421E07BF6000D6358F /* Frameworks */,
+				61242E431E07BF6000D6358F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				61242E471E07BF6000D6358F /* PBXTargetDependency */,
+			);
+			name = zhMusicUITests;
+			productName = zhMusicUITests;
+			productReference = 61242E451E07BF6000D6358F /* zhMusicUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		61242E191E07BF6000D6358F /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = zh;
+				LastUpgradeCheck = 0820;
+				ORGANIZATIONNAME = "张淏";
+				TargetAttributes = {
+					61242E201E07BF6000D6358F = {
+						CreatedOnToolsVersion = 8.2;
+						DevelopmentTeam = TWTWA4ED9L;
+						ProvisioningStyle = Automatic;
+					};
+					61242E391E07BF6000D6358F = {
+						CreatedOnToolsVersion = 8.2;
+						DevelopmentTeam = TWTWA4ED9L;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 61242E201E07BF6000D6358F;
+					};
+					61242E441E07BF6000D6358F = {
+						CreatedOnToolsVersion = 8.2;
+						DevelopmentTeam = TWTWA4ED9L;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 61242E201E07BF6000D6358F;
+					};
+				};
+			};
+			buildConfigurationList = 61242E1C1E07BF6000D6358F /* Build configuration list for PBXProject "zhMusic" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 61242E181E07BF6000D6358F;
+			productRefGroup = 61242E221E07BF6000D6358F /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				61242E201E07BF6000D6358F /* zhMusic */,
+				61242E391E07BF6000D6358F /* zhMusicTests */,
+				61242E441E07BF6000D6358F /* zhMusicUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		61242E1F1E07BF6000D6358F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				61242E341E07BF6000D6358F /* LaunchScreen.storyboard in Resources */,
+				61242E311E07BF6000D6358F /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		61242E381E07BF6000D6358F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		61242E431E07BF6000D6358F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		61242E1D1E07BF6000D6358F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				61242E291E07BF6000D6358F /* AppDelegate.m in Sources */,
+				61242E5C1E07C51D00D6358F /* zhTabBarVC.m in Sources */,
+				61242E261E07BF6000D6358F /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		61242E361E07BF6000D6358F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				61242E3F1E07BF6000D6358F /* zhMusicTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		61242E411E07BF6000D6358F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				61242E4A1E07BF6000D6358F /* zhMusicUITests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		61242E3C1E07BF6000D6358F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 61242E201E07BF6000D6358F /* zhMusic */;
+			targetProxy = 61242E3B1E07BF6000D6358F /* PBXContainerItemProxy */;
+		};
+		61242E471E07BF6000D6358F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 61242E201E07BF6000D6358F /* zhMusic */;
+			targetProxy = 61242E461E07BF6000D6358F /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		61242E321E07BF6000D6358F /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				61242E331E07BF6000D6358F /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		61242E4C1E07BF6000D6358F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		61242E4D1E07BF6000D6358F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		61242E4F1E07BF6000D6358F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = TWTWA4ED9L;
+				INFOPLIST_FILE = zhMusic/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.zhanghao.zhMusic;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		61242E501E07BF6000D6358F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = TWTWA4ED9L;
+				INFOPLIST_FILE = zhMusic/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.zhanghao.zhMusic;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		61242E521E07BF6000D6358F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = TWTWA4ED9L;
+				INFOPLIST_FILE = zhMusicTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.zhanghao.zhMusicTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/zhMusic.app/zhMusic";
+			};
+			name = Debug;
+		};
+		61242E531E07BF6000D6358F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = TWTWA4ED9L;
+				INFOPLIST_FILE = zhMusicTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.zhanghao.zhMusicTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/zhMusic.app/zhMusic";
+			};
+			name = Release;
+		};
+		61242E551E07BF6000D6358F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEVELOPMENT_TEAM = TWTWA4ED9L;
+				INFOPLIST_FILE = zhMusicUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.zhanghao.zhMusicUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = zhMusic;
+			};
+			name = Debug;
+		};
+		61242E561E07BF6000D6358F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEVELOPMENT_TEAM = TWTWA4ED9L;
+				INFOPLIST_FILE = zhMusicUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.zhanghao.zhMusicUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = zhMusic;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		61242E1C1E07BF6000D6358F /* Build configuration list for PBXProject "zhMusic" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				61242E4C1E07BF6000D6358F /* Debug */,
+				61242E4D1E07BF6000D6358F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		61242E4E1E07BF6000D6358F /* Build configuration list for PBXNativeTarget "zhMusic" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				61242E4F1E07BF6000D6358F /* Debug */,
+				61242E501E07BF6000D6358F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		61242E511E07BF6000D6358F /* Build configuration list for PBXNativeTarget "zhMusicTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				61242E521E07BF6000D6358F /* Debug */,
+				61242E531E07BF6000D6358F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		61242E541E07BF6000D6358F /* Build configuration list for PBXNativeTarget "zhMusicUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				61242E551E07BF6000D6358F /* Debug */,
+				61242E561E07BF6000D6358F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 61242E191E07BF6000D6358F /* Project object */;
+}
