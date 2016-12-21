@@ -7,6 +7,7 @@
 //
 
 #import "ZHTabBarVC.h"
+#import "MusicPch.h"
 #import "ZHTabBarVC+ZH_AddChildVC.h"
 #import "ZHMusicVC.h"
 
@@ -20,7 +21,14 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    [self configureTabBar];
+    
     [self configureChildViewControllers];
+}
+
+- (void)configureTabBar {
+    
+    [self.tabBar setTintColor:ZHRGBColor(255, 45, 113)];
 }
 
 - (void)configureChildViewControllers {
@@ -34,10 +42,13 @@
     
     ZHMusicVC *musicVC = [[ZHMusicVC alloc] init];
     
-//    [self addChildViewController:musicVC title:@"音乐资料库" imageName:@"LibraryTabIcon_19x28_" selectedImageName:<#(NSString *)#> imageInsets:UIEdgeInsetsZero titlePosition:UIOffsetZero navigationClass:<#(__unsafe_unretained Class)#>]
+    [self addChildViewController:musicVC title:@"音乐资料库" imageName:@"LibraryTabIcon_19x28_" selectedImageName:@"LibraryTabIcon_19x28_" imageInsets:UIEdgeInsetsZero titlePosition:UIOffsetZero navigationClass:nil];
 }
 - (void)addSearchViewController {
     
+    ZHMusicVC *musicVC = [[ZHMusicVC alloc] init];
+    
+    [self addChildViewController:musicVC title:@"音乐资料库" imageName:@"LibraryTabIcon_19x28_" selectedImageName:@"LibraryTabIcon_19x28_" imageInsets:UIEdgeInsetsZero titlePosition:UIOffsetZero navigationClass:nil];
 }
 
 

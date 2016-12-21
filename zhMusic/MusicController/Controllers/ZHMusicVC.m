@@ -7,39 +7,55 @@
 //
 
 #import "ZHMusicVC.h"
-#import "ZHMusicVCUIService.h"
+
 #import "ZHMusicViewModel.h"
 
-@interface ZHMusicVC ()
-
+@interface ZHMusicVC ()<UITableViewDelegate, UITableViewDataSource>
+@property (nonatomic, strong)ZHMusicViewModel *viewModel;
+@property (nonatomic, strong)UITableView *tableView;
+@property (nonatomic, strong)NSMutableArray *list;
 @end
 
-@implementation ZHMusicVC {
-    UITableView *_tableView;
-    ZHMusicVCUIService *_serivce;
-    ZHMusicViewModel *_viewModel;
-}
+@implementation ZHMusicVC
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    _serivce = [ZHMusicVCUIService new];
+    self.navigationController.navigationBarHidden = YES;
+    
     _viewModel = [ZHMusicViewModel new];
+    _list = [NSMutableArray array];
     
     [self configurationTableView];
     [_viewModel loadDataCompletion:^(NSArray *list) {
-        NSLog(@"%@", list);
+        [_list addObjectsFromArray:list];
         [_tableView reloadData];
     }];
 }
 
 - (void)configurationTableView {
     _tableView = [[UITableView alloc] initWithFrame:self.view.frame style:UITableViewStyleGrouped];
-    _tableView.delegate = _serivce;
-    _tableView.dataSource = _serivce;
+    _tableView.delegate = self;
+    _tableView.dataSource = self;
     
     [self.view addSubview:_tableView];
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return _list.count;
+}
+static NSString *musicCellID = @"musicCellID";
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:musicCellID];
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:musicCellID];
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    }
+    cell.textLabel.text = _list[indexPath.row];
+    
+    return cell;
 }
 
 

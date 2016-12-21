@@ -8,6 +8,7 @@
 
 #import "ZHTabBarVC+ZH_AddChildVC.h"
 
+
 @implementation ZHTabBarVC (ZH_AddChildVC)
 
 - (void)addChildViewController:(UIViewController *)childController title:(NSString *)title imageName:(NSString *)imageName selectedImageName:(NSString *)selectedImageName imageInsets:(UIEdgeInsets)imageInsets titlePosition:(UIOffset)titlePosition navigationClass:(Class)cla {
@@ -28,8 +29,11 @@
     childVC.title = title;
     childVC.tabBarItem.title = title;
     childVC.tabBarItem.image = [UIImage imageNamed:imageName];
-    // 不需要渲染
-    childVC.tabBarItem.selectedImage = [[UIImage imageNamed:selectedImageName] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    // 忽略图片颜色信息
+    childVC.tabBarItem.selectedImage = [[UIImage imageNamed:selectedImageName] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+    
+//    ZHRGBColor(255, 45, 85)
+    
     childVC.tabBarItem.imageInsets = imageInsets;
     childVC.tabBarItem.titlePositionAdjustment = titlePosition;
     
