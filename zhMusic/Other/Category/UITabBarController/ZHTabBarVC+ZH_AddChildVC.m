@@ -32,8 +32,6 @@
     // 忽略图片颜色信息
     childVC.tabBarItem.selectedImage = [[UIImage imageNamed:selectedImageName] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
     
-//    ZHRGBColor(255, 45, 85)
-    
     childVC.tabBarItem.imageInsets = imageInsets;
     childVC.tabBarItem.titlePositionAdjustment = titlePosition;
     

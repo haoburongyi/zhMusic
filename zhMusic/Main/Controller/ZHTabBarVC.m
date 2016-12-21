@@ -7,7 +7,7 @@
 //
 
 #import "ZHTabBarVC.h"
-#import "MusicPch.h"
+#import "Header.h"
 #import "ZHTabBarVC+ZH_AddChildVC.h"
 #import "ZHMusicVC.h"
 
