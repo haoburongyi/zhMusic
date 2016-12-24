@@ -11,23 +11,53 @@
 #import "ZHMusicViewModel.h"
 #import "ZHMusicHeader.h"
 #import "ZHMusicCell.h"
+#import "ZYYYTextView.h"
+
+
 
 @interface ZHMusicVC ()<UITableViewDelegate, UITableViewDataSource>
 @property (nonatomic, strong)ZHMusicViewModel *viewModel;
 @property (nonatomic, strong)UITableView *tableView;
 @property (nonatomic, strong)NSMutableArray *list;
-@property (nonatomic, assign)NSInteger editCount;
 @property (nonatomic, strong)UIView *footer;
+@property (nonatomic, strong)ZYYYTextView *textView;
+    
 @end
 
-@implementation ZHMusicVC {
-    BOOL _isEdit;
+@implementation ZHMusicVC
+
+- (UIView *)footer {
+    if (!_footer) {
+        _footer = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.width, 44)];
+        UIButton *add = [UIButton buttonWithType:UIButtonTypeContactAdd];
+        add.size = _footer.size;
+        [_footer addSubview:add];
+        [add addTarget:self action:@selector(intPutNewGroupName) forControlEvents:UIControlEventTouchUpInside];
+        add.tintColor = ZHRedColor;
+    }
+    return _footer;
 }
 
-- (NSInteger)editCount {
-    return _isEdit ? 1 : 0;
+- (ZYYYTextView *)textView {
+    if (_textView == nil) {
+        __weak typeof(self) weakSelf = self;
+        _textView = [ZYYYTextView zyTextViewWithWordNum:8 frame:CGRectMake(0, self.view.height, self.view.width, ZHSCaleH(56)) doneClick:^(NSString *text) {
+            [weakSelf addRow:text];
+            [weakSelf.view endEditing:YES];
+        }];
+        [self.view addSubview:_textView];
+    }
+    return _textView;
 }
 
+- (void)addRow:(NSString *)text {
+    
+}
+
+- (void)intPutNewGroupName {
+    NSLog(@"%s", __FUNCTION__);
+    [self.textView.textView becomeFirstResponder];
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -49,6 +79,7 @@
     
     _tableView = [[UITableView alloc] initWithFrame:self.view.frame style:UITableViewStyleGrouped];
     
+    // 自定义 header
     ZHMusicHeader *header = [[ZHMusicHeader alloc] initWithFrame:CGRectMake(0, 0, self.view.width, ZHSCaleH(33))];
     __weak typeof(self) weakSelf = self;
     header.editClick = ^(UIButton *sender) {
@@ -56,9 +87,10 @@
     };
     [_tableView addSubview:header];
     
+    _tableView.tableFooterView = [UIView new];
+    
     _tableView.backgroundColor = [UIColor whiteColor];
     _tableView.contentInset = UIEdgeInsetsMake(header.height, 0, 0, 0);
-    _tableView.tableFooterView = [UIView new];
     
     _tableView.delegate = self;
     _tableView.dataSource = self;
@@ -68,29 +100,20 @@
 
 - (void)editList:(UIButton *)sender {
     
-    _isEdit = sender.selected;
-    // 分割线动画
-//    [UIView animateWithDuration:0.25 animations:^{
-//        if (sender.selected) {
-//            _tableView.separatorInset = UIEdgeInsetsMake(0, 55, 0, 0);
-//        } else {
-//            _tableView.separatorInset = UIEdgeInsetsMake(0, 15, 0, 0);
-//        }
-//    }];
-    
     [_tableView setEditing:sender.selected animated:YES];
+
     if (sender.selected) {
-        
-        [_tableView insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:_list.count inSection:0]] withRowAnimation:UITableViewRowAnimationFade];
+        // 自定义 footer
+        self.footer.y = 44 * _list.count + self.footer.height;
+        [_tableView addSubview:self.footer];
     } else {
-        [_tableView deleteRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:_list.count inSection:0]] withRowAnimation:UITableViewRowAnimationFade];
+        [self.footer removeFromSuperview];
     }
 }
 
-
-/// tableViewDataSource
+#pragma - mark tableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return _list.count + self.editCount;
+    return _list.count;
 }
 
 static NSString *musicCellID = @"musicCellID";
@@ -109,16 +132,23 @@ static NSString *musicCellID = @"musicCellID";
     return cell;
 }
 
-// tableViewDelegate
+#pragma - mark tableViewDelegate
 - (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     return indexPath.row != _list.count ? UITableViewCellEditingStyleDelete : UITableViewCellEditingStyleInsert;
 }
 
+// 进入编辑模式，确定编辑提交操作时，执行的代理方法
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        
+    }
+}
+
 - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath
 {
-    // 这里什么都没有实现
-    // 正常的话，应该在这里实现数据源的排序操作
+    // 实现数据源的排序操作
     if (sourceIndexPath.row == _list.count) {
         
     }
