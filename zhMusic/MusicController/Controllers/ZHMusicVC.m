@@ -17,6 +17,7 @@
 @property (nonatomic, strong)UITableView *tableView;
 @property (nonatomic, strong)NSMutableArray *list;
 @property (nonatomic, assign)NSInteger editCount;
+@property (nonatomic, strong)UIView *footer;
 @end
 
 @implementation ZHMusicVC {
@@ -26,6 +27,7 @@
 - (NSInteger)editCount {
     return _isEdit ? 1 : 0;
 }
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -67,25 +69,24 @@
 - (void)editList:(UIButton *)sender {
     
     _isEdit = sender.selected;
+    // 分割线动画
+//    [UIView animateWithDuration:0.25 animations:^{
+//        if (sender.selected) {
+//            _tableView.separatorInset = UIEdgeInsetsMake(0, 55, 0, 0);
+//        } else {
+//            _tableView.separatorInset = UIEdgeInsetsMake(0, 15, 0, 0);
+//        }
+//    }];
     
-    
-    
-//    [UIView transitionWithView: self.tableView
-//                      duration: 0.25f
-//                       options: UIViewAnimationOptionTransitionCrossDissolve
-//                    animations: ^(void) {
-//         [self.tableView reloadData];
-//     } completion:nil];
-//    
-//    if (sender.selected) {
-//        
-//        [_tableView setSeparatorInset:UIEdgeInsetsMake(0, 40, 0, 0)];
-//    } else {
-//        
-//        _tableView.separatorInset = UIEdgeInsetsMake(0, 15, 0, 0);
-//    }
-    
+    [_tableView setEditing:sender.selected animated:YES];
+    if (sender.selected) {
+        
+        [_tableView insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:_list.count inSection:0]] withRowAnimation:UITableViewRowAnimationFade];
+    } else {
+        [_tableView deleteRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:_list.count inSection:0]] withRowAnimation:UITableViewRowAnimationFade];
+    }
 }
+
 
 /// tableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -95,19 +96,33 @@
 static NSString *musicCellID = @"musicCellID";
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    ZHMusicCell *cell = [ZHMusicCell musicCellWithTableView:tableView indexPath:indexPath identifier:musicCellID isEdit:_isEdit];
+    ZHMusicCell *cell = [ZHMusicCell musicCellWithTableView:tableView indexPath:indexPath identifier:musicCellID];
     
     if (indexPath.row != _list.count) {
         
-        cell.text = _list[indexPath.row];
+        cell.textLabel.text = _list[indexPath.row];
     } else {
-        cell.text = @"add";
+        cell.textLabel.text = @"add";
     }
     
     
     return cell;
 }
 
+// tableViewDelegate
+- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    return indexPath.row != _list.count ? UITableViewCellEditingStyleDelete : UITableViewCellEditingStyleInsert;
+}
+
+- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath
+{
+    // 这里什么都没有实现
+    // 正常的话，应该在这里实现数据源的排序操作
+    if (sourceIndexPath.row == _list.count) {
+        
+    }
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
