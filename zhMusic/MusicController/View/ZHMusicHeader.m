@@ -20,12 +20,15 @@
 }
 
 - (void)createUI {
+    
+    CGFloat bottomMargin = 10;
+    
     UILabel *title = [UILabel new];
     [title setFont:[UIFont fontWithName:@"Helvetica-Bold" size:34]];
     title.textColor = [UIColor blackColor];
     title.text = @"音乐资料库";
     [title sizeToFit];
-    title.origin = CGPointMake(15, self.height - title.bounds.size.height);
+    title.origin = CGPointMake(15, self.height - title.bounds.size.height - bottomMargin);
     [self addSubview:title];
     
     UIButton *edit = [UIButton new];
@@ -35,9 +38,14 @@
     [edit setTitleColor:ZHRedColor forState:UIControlStateNormal];
     [edit setTitleColor:ZHRedColor forState:UIControlStateSelected];
     [edit sizeToFit];
-    edit.origin = CGPointMake(self.width - 20 - edit.width, self.height - edit.height);
+    edit.origin = CGPointMake(self.width - 20 - edit.width, self.height - edit.height - bottomMargin);
+    
     [edit addTarget:self action:@selector(editMusicList:) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:edit];
+    
+    UIView *line = [[UIView alloc] initWithFrame:CGRectMake(15, self.height - 0.5, self.width - 15, 0.5)];
+    line.backgroundColor = ZHRGBColor(200, 200, 200);
+    [self addSubview:line];
 }
 
 - (void)editMusicList:(UIButton *)sender {

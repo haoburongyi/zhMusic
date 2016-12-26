@@ -51,6 +51,13 @@
 }
 
 - (void)addRow:(NSString *)text {
+    [_list addObject:text];
+    [UIView animateWithDuration:0.25 animations:^{
+        self.footer.y += 44;
+    }];
+    self.textView.textView.text = nil;
+    [_tableView reloadData];
+    
     
 }
 
@@ -77,10 +84,10 @@
 
 - (void)configurationTableView {
     
-    _tableView = [[UITableView alloc] initWithFrame:self.view.frame style:UITableViewStyleGrouped];
+    _tableView = [[UITableView alloc] initWithFrame:self.view.frame style:UITableViewStylePlain];
     
     // 自定义 header
-    ZHMusicHeader *header = [[ZHMusicHeader alloc] initWithFrame:CGRectMake(0, 0, self.view.width, ZHSCaleH(33))];
+    ZHMusicHeader *header = [[ZHMusicHeader alloc] initWithFrame:CGRectMake(0, -86, self.view.width, 86)];
     __weak typeof(self) weakSelf = self;
     header.editClick = ^(UIButton *sender) {
         [weakSelf editList:sender];

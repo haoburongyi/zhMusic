@@ -28,6 +28,7 @@
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 //        [cell configureTextLbl];
         cell.textLabel.textColor = ZHRedColor;
+        cell.textLabel.font = [UIFont systemFontOfSize:18];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
 

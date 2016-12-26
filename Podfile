@@ -6,8 +6,9 @@ target 'zhMusic' do
   # use_frameworks!
 
   # Pods for zhMusic
-pod 'YYText'
-
+  
+  pod 'YYText'
+end
   target 'zhMusicTests' do
     inherit! :search_paths
     # Pods for testing
@@ -18,4 +19,4 @@ pod 'YYText'
     # Pods for testing
   end
 
-end
+
