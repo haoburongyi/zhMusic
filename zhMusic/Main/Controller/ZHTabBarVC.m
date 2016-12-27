@@ -10,6 +10,7 @@
 #import "Header.h"
 #import "ZHTabBarVC+ZH_AddChildVC.h"
 #import "ZHMusicVC.h"
+#import "ZHNavigationVC.h"
 
 @interface ZHTabBarVC ()
 
@@ -42,13 +43,11 @@
     
     ZHMusicVC *musicVC = [[ZHMusicVC alloc] init];
     
-    [self addChildViewController:musicVC title:@"音乐资料库" imageName:@"LibraryTabIcon_19x28_" selectedImageName:@"LibraryTabIcon_19x28_" imageInsets:UIEdgeInsetsZero titlePosition:UIOffsetZero navigationClass:nil];
+    [self addChildViewController:musicVC title:@"音乐资料库" imageName:@"LibraryTabIcon_19x28_" selectedImageName:@"LibraryTabIcon_19x28_" imageInsets:UIEdgeInsetsZero titlePosition:UIOffsetZero navigationClass:[ZHNavigationVC class]];
 }
 - (void)addSearchViewController {
     
-    ZHMusicVC *musicVC = [[ZHMusicVC alloc] init];
-    
-    [self addChildViewController:musicVC title:@"音乐资料库" imageName:@"LibraryTabIcon_19x28_" selectedImageName:@"LibraryTabIcon_19x28_" imageInsets:UIEdgeInsetsZero titlePosition:UIOffsetZero navigationClass:nil];
+    [self addChildViewController:[UIViewController new] title:@"搜索" imageName:@"LibraryTabIcon_19x28_" selectedImageName:@"LibraryTabIcon_19x28_" imageInsets:UIEdgeInsetsZero titlePosition:UIOffsetZero navigationClass:[ZHNavigationVC class]];
 }
 
 

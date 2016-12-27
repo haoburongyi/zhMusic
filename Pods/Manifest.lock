@@ -1,12 +1,20 @@
 PODS:
+  - FDFullscreenPopGesture (1.1)
+  - Realm (2.1.2):
+    - Realm/Headers (= 2.1.2)
+  - Realm/Headers (2.1.2)
   - YYText (1.0.7)
 
 DEPENDENCIES:
+  - FDFullscreenPopGesture (= 1.1)
+  - Realm
   - YYText
 
 SPEC CHECKSUMS:
+  FDFullscreenPopGesture: a8a620179e3d9c40e8e00256dcee1c1a27c6d0f0
+  Realm: efe855f4d977c8ce5a82d3116d9f1ff155a6550c
   YYText: 5c461d709e24d55a182d1441c41dc639a18a4849
 
-PODFILE CHECKSUM: e0322805b0e029841fe5e28c73671da191d5aaf2
+PODFILE CHECKSUM: 37c6966dde6c46d73f5246430413d5351aa6352d
 
 COCOAPODS: 1.2.0.beta.1

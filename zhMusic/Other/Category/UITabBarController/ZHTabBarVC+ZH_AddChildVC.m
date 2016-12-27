@@ -7,19 +7,21 @@
 //
 
 #import "ZHTabBarVC+ZH_AddChildVC.h"
+#import <UINavigationController+FDFullscreenPopGesture.h>
 
 
 @implementation ZHTabBarVC (ZH_AddChildVC)
 
-- (void)addChildViewController:(UIViewController *)childController title:(NSString *)title imageName:(NSString *)imageName selectedImageName:(NSString *)selectedImageName imageInsets:(UIEdgeInsets)imageInsets titlePosition:(UIOffset)titlePosition navigationClass:(Class)cla {
+- (void)addChildViewController:(UIViewController *)childController title:(NSString *)title imageName:(NSString *)imageName selectedImageName:(NSString *)selectedImageName imageInsets:(UIEdgeInsets)imageInsets titlePosition:(UIOffset)titlePosition navigationClass:(Class)navControllerClass {
     
     [self configureChildViewController:childController title:title imageName:imageName selectedImageName:selectedImageName imageInsets:imageInsets titlePosition:titlePosition];
     
     id nav = nil;
-    if (cla == nil) {
+    if (navControllerClass == nil) {
         nav = [[UINavigationController alloc] initWithRootViewController:childController];
     } else {
-        nav = [[cla alloc] initWithRootViewController:childController];
+        nav = [[navControllerClass alloc] initWithRootViewController:childController];
+        
     }
     
     [self addChildViewController:nav];
@@ -34,7 +36,6 @@
     
     childVC.tabBarItem.imageInsets = imageInsets;
     childVC.tabBarItem.titlePositionAdjustment = titlePosition;
-    
 }
 
 @end

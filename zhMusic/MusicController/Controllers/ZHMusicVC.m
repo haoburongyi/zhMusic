@@ -12,13 +12,14 @@
 #import "ZHMusicHeader.h"
 #import "ZHMusicCell.h"
 #import "ZYYYTextView.h"
+#import "ZHAllMusicVC.h"
 
 
 
 @interface ZHMusicVC ()<UITableViewDelegate, UITableViewDataSource>
 @property (nonatomic, strong)ZHMusicViewModel *viewModel;
 @property (nonatomic, strong)UITableView *tableView;
-@property (nonatomic, strong)NSMutableArray *list;
+@property (nonatomic, strong)NSMutableArray *library;
 @property (nonatomic, strong)UIView *footer;
 @property (nonatomic, strong)ZYYYTextView *textView;
     
@@ -51,33 +52,30 @@
 }
 
 - (void)addRow:(NSString *)text {
-    [_list addObject:text];
+    [_library addObject:text];
     [UIView animateWithDuration:0.25 animations:^{
         self.footer.y += 44;
     }];
     self.textView.textView.text = nil;
     [_tableView reloadData];
-    
-    
 }
 
 - (void)intPutNewGroupName {
-    NSLog(@"%s", __FUNCTION__);
+
     [self.textView.textView becomeFirstResponder];
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
     self.navigationController.navigationBarHidden = YES;
     
     _viewModel = [ZHMusicViewModel new];
-    _list = [NSMutableArray array];
+    _library = [NSMutableArray array];
     
     [self configurationTableView];
-    [_viewModel loadDataCompletion:^(NSArray *list) {
-        [_list addObjectsFromArray:list];
+    [_viewModel loadDataCompletion:^(NSArray *library) {
+        [_library addObjectsFromArray:library];
         [_tableView reloadData];
     }];
 }
@@ -111,16 +109,18 @@
 
     if (sender.selected) {
         // 自定义 footer
-        self.footer.y = 44 * _list.count + self.footer.height;
+        self.footer.y = 44 * _library.count + self.footer.height;
         [_tableView addSubview:self.footer];
     } else {
+        [[NSUserDefaults standardUserDefaults] setObject:_library.copy forKey:MusicListKey];
+        [[NSUserDefaults standardUserDefaults] synchronize];
         [self.footer removeFromSuperview];
     }
 }
 
 #pragma - mark tableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return _list.count;
+    return _library.count;
 }
 
 static NSString *musicCellID = @"musicCellID";
@@ -128,9 +128,9 @@ static NSString *musicCellID = @"musicCellID";
     
     ZHMusicCell *cell = [ZHMusicCell musicCellWithTableView:tableView indexPath:indexPath identifier:musicCellID];
     
-    if (indexPath.row != _list.count) {
+    if (indexPath.row != _library.count) {
         
-        cell.textLabel.text = _list[indexPath.row];
+        cell.textLabel.text = _library[indexPath.row];
     } else {
         cell.textLabel.text = @"add";
     }
@@ -140,25 +140,43 @@ static NSString *musicCellID = @"musicCellID";
 }
 
 #pragma - mark tableViewDelegate
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    NSString *title = _library[indexPath.row];
+    
+    // swift 能 switch 字符串真的方便好多 - -~!
+    if ([title isEqualToString:@"全部歌曲"]) {
+        ZHAllMusicVC *vc = [[ZHAllMusicVC alloc] init];
+        vc.title = title;
+        [self.navigationController pushViewController:vc animated:YES];
+    } else if ([title isEqualToString:@"表演者"]) {
+        
+    } else if ([title isEqualToString:@"专辑"]) {
+        
+    } else {
+        
+    }
+    
+}
+
 - (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    return indexPath.row != _list.count ? UITableViewCellEditingStyleDelete : UITableViewCellEditingStyleInsert;
+    return UITableViewCellEditingStyleDelete;
 }
 
 // 进入编辑模式，确定编辑提交操作时，执行的代理方法
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        
+        [_library removeObjectAtIndex:indexPath.row];
+        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
     }
 }
 
 - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath
 {
     // 实现数据源的排序操作
-    if (sourceIndexPath.row == _list.count) {
-        
-    }
+    [_library exchangeObjectAtIndex:sourceIndexPath.row withObjectAtIndex:destinationIndexPath.row];
 }
 
 - (void)didReceiveMemoryWarning {

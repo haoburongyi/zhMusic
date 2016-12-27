@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		07AB7BC7952EF249492E9A0A /* libPods-zhMusicTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AB9B52DFEF33E097E06536A9 /* libPods-zhMusicTests.a */; };
 		0B94371BF97E3E73E3A0D44D /* libPods-zhMusicUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 349D24E08EEED09C2162F8BD /* libPods-zhMusicUITests.a */; };
+		6114C2B81E12BDF000F49642 /* ZHAllMusicVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 6114C2B71E12BDF000F49642 /* ZHAllMusicVC.m */; };
+		6114C2BB1E12BE5A00F49642 /* ZHAritistVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 6114C2BA1E12BE5A00F49642 /* ZHAritistVC.m */; };
+		6114C2BE1E12BE7000F49642 /* ZHPodcastTitle.m in Sources */ = {isa = PBXBuildFile; fileRef = 6114C2BD1E12BE7000F49642 /* ZHPodcastTitle.m */; };
+		6114C2C41E12C56F00F49642 /* ZHNavigationVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 6114C2C31E12C56F00F49642 /* ZHNavigationVC.m */; };
 		61242E261E07BF6000D6358F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 61242E251E07BF6000D6358F /* main.m */; };
 		61242E291E07BF6000D6358F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 61242E281E07BF6000D6358F /* AppDelegate.m */; };
 		61242E311E07BF6000D6358F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 61242E301E07BF6000D6358F /* Assets.xcassets */; };
@@ -22,7 +26,6 @@
 		613914731E0A575B005350A8 /* ZHTabBarVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 613914721E0A575B005350A8 /* ZHTabBarVC.m */; };
 		6139147A1E0A57FF005350A8 /* ZHMusicVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 613914791E0A57FF005350A8 /* ZHMusicVC.m */; };
 		6139147D1E0A5B3D005350A8 /* ZHMusicViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 6139147C1E0A5B3D005350A8 /* ZHMusicViewModel.m */; };
-		613914801E0A5C61005350A8 /* musicGroupList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6139147F1E0A5C61005350A8 /* musicGroupList.plist */; };
 		6139148B1E0A6F1D005350A8 /* ZHTabBarVC+ZH_AddChildVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 6139148A1E0A6F1D005350A8 /* ZHTabBarVC+ZH_AddChildVC.m */; };
 		614283891E0E75FC00B2CAB7 /* ZYYYTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 614283881E0E75FC00B2CAB7 /* ZYYYTextView.m */; };
 		7B0F23DF30B02CCB76CF7163 /* libPods-zhMusic.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 131CBEEB16164D4B87D0B8A1 /* libPods-zhMusic.a */; };
@@ -50,6 +53,14 @@
 		349D24E08EEED09C2162F8BD /* libPods-zhMusicUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-zhMusicUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		42CCD573302750075B4805F3 /* Pods-zhMusicUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-zhMusicUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-zhMusicUITests/Pods-zhMusicUITests.release.xcconfig"; sourceTree = "<group>"; };
 		59D3DF30E96F9BC64633EAAE /* Pods-zhMusic.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-zhMusic.debug.xcconfig"; path = "Pods/Target Support Files/Pods-zhMusic/Pods-zhMusic.debug.xcconfig"; sourceTree = "<group>"; };
+		6114C2B61E12BDF000F49642 /* ZHAllMusicVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHAllMusicVC.h; sourceTree = "<group>"; };
+		6114C2B71E12BDF000F49642 /* ZHAllMusicVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHAllMusicVC.m; sourceTree = "<group>"; };
+		6114C2B91E12BE5A00F49642 /* ZHAritistVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHAritistVC.h; sourceTree = "<group>"; };
+		6114C2BA1E12BE5A00F49642 /* ZHAritistVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHAritistVC.m; sourceTree = "<group>"; };
+		6114C2BC1E12BE7000F49642 /* ZHPodcastTitle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHPodcastTitle.h; sourceTree = "<group>"; };
+		6114C2BD1E12BE7000F49642 /* ZHPodcastTitle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHPodcastTitle.m; sourceTree = "<group>"; };
+		6114C2C21E12C56F00F49642 /* ZHNavigationVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHNavigationVC.h; sourceTree = "<group>"; };
+		6114C2C31E12C56F00F49642 /* ZHNavigationVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHNavigationVC.m; sourceTree = "<group>"; };
 		61242E211E07BF6000D6358F /* zhMusic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = zhMusic.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		61242E251E07BF6000D6358F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		61242E271E07BF6000D6358F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -77,7 +88,6 @@
 		613914791E0A57FF005350A8 /* ZHMusicVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHMusicVC.m; sourceTree = "<group>"; };
 		6139147B1E0A5B3D005350A8 /* ZHMusicViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHMusicViewModel.h; sourceTree = "<group>"; };
 		6139147C1E0A5B3D005350A8 /* ZHMusicViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHMusicViewModel.m; sourceTree = "<group>"; };
-		6139147F1E0A5C61005350A8 /* musicGroupList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = musicGroupList.plist; sourceTree = "<group>"; };
 		613914891E0A6F1D005350A8 /* ZHTabBarVC+ZH_AddChildVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ZHTabBarVC+ZH_AddChildVC.h"; sourceTree = "<group>"; };
 		6139148A1E0A6F1D005350A8 /* ZHTabBarVC+ZH_AddChildVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ZHTabBarVC+ZH_AddChildVC.m"; sourceTree = "<group>"; };
 		614283871E0E75FC00B2CAB7 /* ZYYYTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZYYYTextView.h; sourceTree = "<group>"; };
@@ -205,6 +215,8 @@
 			children = (
 				613914711E0A575B005350A8 /* ZHTabBarVC.h */,
 				613914721E0A575B005350A8 /* ZHTabBarVC.m */,
+				6114C2C21E12C56F00F49642 /* ZHNavigationVC.h */,
+				6114C2C31E12C56F00F49642 /* ZHNavigationVC.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -229,7 +241,6 @@
 		6139147E1E0A5C34005350A8 /* Other */ = {
 			isa = PBXGroup;
 			children = (
-				6139147F1E0A5C61005350A8 /* musicGroupList.plist */,
 			);
 			path = Other;
 			sourceTree = "<group>";
@@ -306,6 +317,12 @@
 			children = (
 				613914781E0A57FF005350A8 /* ZHMusicVC.h */,
 				613914791E0A57FF005350A8 /* ZHMusicVC.m */,
+				6114C2B61E12BDF000F49642 /* ZHAllMusicVC.h */,
+				6114C2B71E12BDF000F49642 /* ZHAllMusicVC.m */,
+				6114C2B91E12BE5A00F49642 /* ZHAritistVC.h */,
+				6114C2BA1E12BE5A00F49642 /* ZHAritistVC.m */,
+				6114C2BC1E12BE7000F49642 /* ZHPodcastTitle.h */,
+				6114C2BD1E12BE7000F49642 /* ZHPodcastTitle.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -451,7 +468,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				613914801E0A5C61005350A8 /* musicGroupList.plist in Resources */,
 				61242E341E07BF6000D6358F /* LaunchScreen.storyboard in Resources */,
 				61242E311E07BF6000D6358F /* Assets.xcassets in Resources */,
 			);
@@ -618,13 +634,17 @@
 			files = (
 				612FC3421E0AA1310006CF5D /* UIView+Extension.m in Sources */,
 				612FC3451E0AAD070006CF5D /* ZHMusicCell.m in Sources */,
+				6114C2B81E12BDF000F49642 /* ZHAllMusicVC.m in Sources */,
 				61242E291E07BF6000D6358F /* AppDelegate.m in Sources */,
 				612FC3371E0A97AB0006CF5D /* Foundation+Log.m in Sources */,
 				6139148B1E0A6F1D005350A8 /* ZHTabBarVC+ZH_AddChildVC.m in Sources */,
 				613914731E0A575B005350A8 /* ZHTabBarVC.m in Sources */,
+				6114C2BB1E12BE5A00F49642 /* ZHAritistVC.m in Sources */,
 				6139147A1E0A57FF005350A8 /* ZHMusicVC.m in Sources */,
+				6114C2BE1E12BE7000F49642 /* ZHPodcastTitle.m in Sources */,
 				6139147D1E0A5B3D005350A8 /* ZHMusicViewModel.m in Sources */,
 				612FC33E1E0A9E340006CF5D /* ZHMusicHeader.m in Sources */,
+				6114C2C41E12C56F00F49642 /* ZHNavigationVC.m in Sources */,
 				614283891E0E75FC00B2CAB7 /* ZYYYTextView.m in Sources */,
 				61242E261E07BF6000D6358F /* main.m in Sources */,
 			);

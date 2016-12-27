@@ -7,7 +7,9 @@ target 'zhMusic' do
 
   # Pods for zhMusic
   
+  pod 'Realm'
   pod 'YYText'
+  pod 'FDFullscreenPopGesture', '1.1'
 end
   target 'zhMusicTests' do
     inherit! :search_paths

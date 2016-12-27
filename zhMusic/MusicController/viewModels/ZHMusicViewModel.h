@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface ZHMusicViewModel : NSObject
-- (void)loadDataCompletion:(void(^)(NSArray *list))completion;
+- (void)loadDataCompletion:(void(^)(NSArray *library))completion;
 @end

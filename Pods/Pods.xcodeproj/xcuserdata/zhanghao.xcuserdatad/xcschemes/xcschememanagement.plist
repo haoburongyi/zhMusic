@@ -4,6 +4,11 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>FDFullscreenPopGesture.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-zhMusic.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -19,6 +24,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Realm.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>YYText.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -27,7 +37,7 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>0F57B9BF6E58F6B5AC59A8F2C674F66D</key>
+		<key>38D225912251D48A316824616B7B0311</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -37,12 +47,22 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>6B7485C770FF586C1319807117EE99BD</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>857B64F2AF18F3DFBAD67083A7DD736E</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>C0345541C0DB68738AD41A67CBA13EF8</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>D55B29FC158EBB3D3147146258DC13E3</key>
+		<key>EE366E1E6962F82E6AEC8AE66FA66CBF</key>
 		<dict>
 			<key>primary</key>
 			<true/>

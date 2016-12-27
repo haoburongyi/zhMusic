@@ -76,6 +76,7 @@
 #define ZHRedColor ZHRGBColor(255, 45, 85)
 
 
+#define MusicListKey @"MusicListKey"
 
 #define Header_h
 #endif /* Header_h */
