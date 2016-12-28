@@ -21,7 +21,6 @@
     // Do any additional setup after loading the view.
     
     self.navigationBar.tintColor = ZHRedColor;
-    self.navigationBarHidden = YES;
 }
 
 - (void)didReceiveMemoryWarning {

@@ -65,10 +65,14 @@
     [self.textView.textView becomeFirstResponder];
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [self.navigationController setNavigationBarHidden:YES animated:YES];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.navigationController.navigationBarHidden = YES;
+    
     
     _viewModel = [ZHMusicViewModel new];
     _library = [NSMutableArray array];
