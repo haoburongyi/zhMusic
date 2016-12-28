@@ -27,6 +27,8 @@ static ZHPlayMusicManager *_manager;
     return _manager;
 }
 
-
+- (void)loadMusicInfoWithGroupName:(NSString *)groupName {
+    
+}
 
 @end

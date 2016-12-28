@@ -52,9 +52,12 @@
             ZHMusicInfo *info = [[ZHMusicInfo alloc] init];
             info.assetURL = song.assetURL.absoluteString;
             info.data = data;
-            [[RLMRealm defaultRealm] transactionWithBlock:^{
-                [[RLMRealm defaultRealm] addObject:info];
-            }];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                
+                [[RLMRealm defaultRealm] transactionWithBlock:^{
+                    [[RLMRealm defaultRealm] addObject:info];
+                }];
+            });
         }
     });
 }

@@ -44,12 +44,22 @@
     if (_textView == nil) {
         __weak typeof(self) weakSelf = self;
         _textView = [ZYYYTextView zyTextViewWithWordNum:8 frame:CGRectMake(0, self.view.height, self.view.width, ZHSCaleH(56)) doneClick:^(NSString *text) {
-            [weakSelf addRow:text];
+            if ([weakSelf.library containsObject:text]) {
+                [weakSelf showAlert];
+            } else {
+                [weakSelf addRow:text];
+            }
             [weakSelf.view endEditing:YES];
         }];
         [self.view addSubview:_textView];
     }
     return _textView;
+}
+- (void)showAlert {
+    UIAlertController *alertVC = [UIAlertController alertControllerWithTitle:@"警告" message:@"已有该名称分组, 添加失败" preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *done = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDestructive handler:nil];
+    [alertVC addAction:done];
+    [self presentViewController:alertVC animated:YES completion:nil];
 }
 
 - (void)addRow:(NSString *)text {
@@ -62,8 +72,16 @@
 }
 
 - (void)intPutNewGroupName {
-
+    UIView *cover = [[UIView alloc] initWithFrame:[UIScreen mainScreen].bounds];
+    UITapGestureRecognizer *close = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(endEdit:)];
+    [cover addGestureRecognizer:close];
+    [self.view addSubview:cover];
     [self.textView.textView becomeFirstResponder];
+    [self.view bringSubviewToFront:self.textView];
+}
+- (void)endEdit:(UITapGestureRecognizer *)tap {
+    [tap.view removeFromSuperview];
+    [self.view endEditing:YES];
 }
 
 

@@ -13,6 +13,11 @@
 
 + (instancetype)shareManage;
 
+/**
+ 加载组内信息 \ 样式
 
+ @param groupName title
+ */
+- (void)loadMusicInfoWithGroupName:(NSString *)groupName;
 
 @end
