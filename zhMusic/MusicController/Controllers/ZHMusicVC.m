@@ -7,6 +7,7 @@
 //
 
 #import "ZHMusicVC.h"
+#import <UINavigationController+FDFullscreenPopGesture.h>
 #import "Header.h"
 #import "ZHMusicViewModel.h"
 #import "ZHMusicHeader.h"
@@ -65,14 +66,13 @@
     [self.textView.textView becomeFirstResponder];
 }
 
-- (void)viewWillAppear:(BOOL)animated {
-    [self.navigationController setNavigationBarHidden:YES animated:YES];
-}
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    self.fd_prefersNavigationBarHidden = YES;
     
     _viewModel = [ZHMusicViewModel new];
     _library = [NSMutableArray array];
