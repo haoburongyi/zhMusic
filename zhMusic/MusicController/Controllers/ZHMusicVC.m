@@ -193,6 +193,9 @@ static NSString *musicCellID = @"musicCellID";
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         [_library removeObjectAtIndex:indexPath.row];
         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+        [UIView animateWithDuration:0.25 animations:^{
+            self.footer.y -= 44;
+        }];
     }
 }
 
