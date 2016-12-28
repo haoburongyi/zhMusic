@@ -12,6 +12,6 @@ typedef void(^EditMusicListBlock)(UIButton *sender);
 
 @interface ZHMusicHeader : UIView
 
-@property (nonatomic, copy)EditMusicListBlock editClick;
+@property (nonatomic, copy) EditMusicListBlock editClick;
 
 @end

@@ -14,7 +14,7 @@ typedef void(^doneClick)(NSString *text);
 @interface ZYYYTextView ()
 
 
-@property (nonatomic, copy)doneClick click;
+@property (nonatomic, copy) doneClick click;
 @end
 
 @implementation ZYYYTextView {

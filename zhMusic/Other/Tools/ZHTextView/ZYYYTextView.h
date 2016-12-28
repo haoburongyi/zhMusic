@@ -10,10 +10,10 @@
 
 @interface ZYYYTextView : UIView<YYTextViewDelegate>
 
-@property (nonatomic, strong)YYTextView *textView;
-@property (nonatomic, assign)CGFloat viewH;
-@property (nonatomic, assign)UIKeyboardType keyboardType;
-@property (nonatomic, assign)UIReturnKeyType returnKeyType;
+@property (nonatomic, strong) YYTextView *textView;
+@property (nonatomic, assign) CGFloat viewH;
+@property (nonatomic, assign) UIKeyboardType keyboardType;
+@property (nonatomic, assign) UIReturnKeyType returnKeyType;
 
 /**
  注:

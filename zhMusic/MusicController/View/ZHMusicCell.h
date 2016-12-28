@@ -10,7 +10,7 @@
 
 @interface ZHMusicCell : UITableViewCell
 
-@property (nonatomic, copy)NSString *text;
+@property (nonatomic, copy) NSString *text;
 
 + (instancetype)musicCellWithTableView:(UITableView *)tableView indexPath:(NSIndexPath *)indexPath identifier:(NSString *)identifier;
 @end

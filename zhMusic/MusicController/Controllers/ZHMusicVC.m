@@ -18,11 +18,11 @@
 
 
 @interface ZHMusicVC ()<UITableViewDelegate, UITableViewDataSource>
-@property (nonatomic, strong)ZHMusicViewModel *viewModel;
-@property (nonatomic, strong)UITableView *tableView;
-@property (nonatomic, strong)NSMutableArray *library;
-@property (nonatomic, strong)UIView *footer;
-@property (nonatomic, strong)ZYYYTextView *textView;
+@property (nonatomic, strong) ZHMusicViewModel *viewModel;
+@property (nonatomic, strong) UITableView *tableView;
+@property (nonatomic, strong) NSMutableArray *library;
+@property (nonatomic, strong) UIView *footer;
+@property (nonatomic, strong) ZYYYTextView *textView;
     
 @end
 
@@ -72,6 +72,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    [ZHPlayMusicManager shareManage];
     self.fd_prefersNavigationBarHidden = YES;
     
     _viewModel = [ZHMusicViewModel new];

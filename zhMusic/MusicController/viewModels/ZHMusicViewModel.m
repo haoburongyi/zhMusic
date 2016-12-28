@@ -8,8 +8,6 @@
 
 #import "ZHMusicViewModel.h"
 #import "Header.h"
-#import <MediaPlayer/MediaPlayer.h>
-#import <Photos/Photos.h>
 
 @implementation ZHMusicViewModel
 
@@ -32,34 +30,7 @@
         [userDefault synchronize];
     }
     completion(arr);
-    
-    [self QueryAllMusic];
 }
 
-- (void)QueryAllMusic
-{
-    MPMediaQuery *everything = [[MPMediaQuery alloc] init];
-    NSLog(@"Logging items from a generic query...");
-    NSArray *itemsFromGenericQuery = [everything items];
-    NSLog(@"count = %lu", (unsigned long)itemsFromGenericQuery.count);
-    
-    NSMutableArray *muArr = [NSMutableArray array];
-    for (MPMediaItem *song in itemsFromGenericQuery)
-    {
-//        song.playbackDuration 时间
-//        song.podcastTitle     专辑
-        
-        MPMediaItemArtwork *artwork = song.artwork;
-        UIImage *img = [artwork imageWithSize:CGSizeMake(100, 100)];
-        
-        !img ? [muArr addObject:[UIImage imageNamed:@"MissingArtworkMusicNote200_200x200_@1x"]] : [muArr addObject:img];
-        
-        NSString *songTitle = [song valueForProperty: MPMediaItemPropertyTitle];
-        NSString *songArtist = [song valueForProperty:MPMediaItemPropertyArtist];
-        NSLog (@"Title:%@, Aritist:%@", songTitle, songArtist);
-    }
-    
-
-}
 
 @end

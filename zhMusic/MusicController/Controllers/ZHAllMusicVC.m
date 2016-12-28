@@ -9,7 +9,7 @@
 #import "ZHAllMusicVC.h"
 
 @interface ZHAllMusicVC ()
-@property (nonatomic, strong)UITableView *tableView;
+@property (nonatomic, strong) UITableView *tableView;
 @end
 
 @implementation ZHAllMusicVC

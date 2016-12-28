@@ -13,6 +13,9 @@
 		6114C2BB1E12BE5A00F49642 /* ZHAritistVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 6114C2BA1E12BE5A00F49642 /* ZHAritistVC.m */; };
 		6114C2BE1E12BE7000F49642 /* ZHPodcastTitle.m in Sources */ = {isa = PBXBuildFile; fileRef = 6114C2BD1E12BE7000F49642 /* ZHPodcastTitle.m */; };
 		6114C2C41E12C56F00F49642 /* ZHNavigationVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 6114C2C31E12C56F00F49642 /* ZHNavigationVC.m */; };
+		6114C2C91E13718900F49642 /* ZHPlayMusicManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6114C2C81E13718900F49642 /* ZHPlayMusicManager.m */; };
+		6114C2CD1E137F8900F49642 /* ZHMusicInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 6114C2CC1E137F8900F49642 /* ZHMusicInfo.m */; };
+		6114C2D11E13B33700F49642 /* ZHPlayMusicManager+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 6114C2D01E13B33700F49642 /* ZHPlayMusicManager+Extension.m */; };
 		61242E261E07BF6000D6358F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 61242E251E07BF6000D6358F /* main.m */; };
 		61242E291E07BF6000D6358F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 61242E281E07BF6000D6358F /* AppDelegate.m */; };
 		61242E311E07BF6000D6358F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 61242E301E07BF6000D6358F /* Assets.xcassets */; };
@@ -61,6 +64,12 @@
 		6114C2BD1E12BE7000F49642 /* ZHPodcastTitle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHPodcastTitle.m; sourceTree = "<group>"; };
 		6114C2C21E12C56F00F49642 /* ZHNavigationVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHNavigationVC.h; sourceTree = "<group>"; };
 		6114C2C31E12C56F00F49642 /* ZHNavigationVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHNavigationVC.m; sourceTree = "<group>"; };
+		6114C2C71E13718900F49642 /* ZHPlayMusicManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHPlayMusicManager.h; sourceTree = "<group>"; };
+		6114C2C81E13718900F49642 /* ZHPlayMusicManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHPlayMusicManager.m; sourceTree = "<group>"; };
+		6114C2CB1E137F8900F49642 /* ZHMusicInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHMusicInfo.h; sourceTree = "<group>"; };
+		6114C2CC1E137F8900F49642 /* ZHMusicInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHMusicInfo.m; sourceTree = "<group>"; };
+		6114C2CF1E13B33700F49642 /* ZHPlayMusicManager+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ZHPlayMusicManager+Extension.h"; sourceTree = "<group>"; };
+		6114C2D01E13B33700F49642 /* ZHPlayMusicManager+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ZHPlayMusicManager+Extension.m"; sourceTree = "<group>"; };
 		61242E211E07BF6000D6358F /* zhMusic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = zhMusic.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		61242E251E07BF6000D6358F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		61242E271E07BF6000D6358F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -135,6 +144,34 @@
 				349D24E08EEED09C2162F8BD /* libPods-zhMusicUITests.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		6114C2C61E13715600F49642 /* ZHPlayMusicManager */ = {
+			isa = PBXGroup;
+			children = (
+				6114C2CA1E137F5C00F49642 /* Model */,
+				6114C2C71E13718900F49642 /* ZHPlayMusicManager.h */,
+				6114C2C81E13718900F49642 /* ZHPlayMusicManager.m */,
+			);
+			path = ZHPlayMusicManager;
+			sourceTree = "<group>";
+		};
+		6114C2CA1E137F5C00F49642 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				6114C2CB1E137F8900F49642 /* ZHMusicInfo.h */,
+				6114C2CC1E137F8900F49642 /* ZHMusicInfo.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		6114C2CE1E13B2D300F49642 /* PlayMusicManager */ = {
+			isa = PBXGroup;
+			children = (
+				6114C2CF1E13B33700F49642 /* ZHPlayMusicManager+Extension.h */,
+				6114C2D01E13B33700F49642 /* ZHPlayMusicManager+Extension.m */,
+			);
+			path = PlayMusicManager;
 			sourceTree = "<group>";
 		};
 		61242E181E07BF6000D6358F = {
@@ -268,6 +305,7 @@
 		613914831E0A6BCE005350A8 /* Category */ = {
 			isa = PBXGroup;
 			children = (
+				6114C2CE1E13B2D300F49642 /* PlayMusicManager */,
 				612FC33F1E0AA1190006CF5D /* UIView */,
 				612FC3341E0A968D0006CF5D /* log */,
 				613914841E0A6BDD005350A8 /* UITabBarController */,
@@ -287,6 +325,7 @@
 		614283851E0E746800B2CAB7 /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				6114C2C61E13715600F49642 /* ZHPlayMusicManager */,
 				614283861E0E75FC00B2CAB7 /* ZHTextView */,
 			);
 			path = Tools;
@@ -635,16 +674,19 @@
 				612FC3421E0AA1310006CF5D /* UIView+Extension.m in Sources */,
 				612FC3451E0AAD070006CF5D /* ZHMusicCell.m in Sources */,
 				6114C2B81E12BDF000F49642 /* ZHAllMusicVC.m in Sources */,
+				6114C2C91E13718900F49642 /* ZHPlayMusicManager.m in Sources */,
 				61242E291E07BF6000D6358F /* AppDelegate.m in Sources */,
 				612FC3371E0A97AB0006CF5D /* Foundation+Log.m in Sources */,
 				6139148B1E0A6F1D005350A8 /* ZHTabBarVC+ZH_AddChildVC.m in Sources */,
 				613914731E0A575B005350A8 /* ZHTabBarVC.m in Sources */,
 				6114C2BB1E12BE5A00F49642 /* ZHAritistVC.m in Sources */,
 				6139147A1E0A57FF005350A8 /* ZHMusicVC.m in Sources */,
+				6114C2CD1E137F8900F49642 /* ZHMusicInfo.m in Sources */,
 				6114C2BE1E12BE7000F49642 /* ZHPodcastTitle.m in Sources */,
 				6139147D1E0A5B3D005350A8 /* ZHMusicViewModel.m in Sources */,
 				612FC33E1E0A9E340006CF5D /* ZHMusicHeader.m in Sources */,
 				6114C2C41E12C56F00F49642 /* ZHNavigationVC.m in Sources */,
+				6114C2D11E13B33700F49642 /* ZHPlayMusicManager+Extension.m in Sources */,
 				614283891E0E75FC00B2CAB7 /* ZYYYTextView.m in Sources */,
 				61242E261E07BF6000D6358F /* main.m in Sources */,
 			);
