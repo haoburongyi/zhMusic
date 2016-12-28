@@ -9,6 +9,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>JPFPSStatus.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-zhMusic.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -37,22 +42,17 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>38D225912251D48A316824616B7B0311</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>4EB15E7A13DB7BA9DABB0ED59B4A3F52</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>6B7485C770FF586C1319807117EE99BD</key>
+		<key>7925DA9AF1303858FD2DC299E9E37C4C</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>857B64F2AF18F3DFBAD67083A7DD736E</key>
+		<key>B5ABC01683CDF94F5C25CAFCA60129D8</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -62,7 +62,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>E9BFF11BD534277B5B8838F69D7F791E</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>EE366E1E6962F82E6AEC8AE66FA66CBF</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>F99E91C333FDD0135DFCFCCF42CE2E16</key>
 		<dict>
 			<key>primary</key>
 			<true/>

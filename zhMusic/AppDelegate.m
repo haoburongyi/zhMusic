@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "ZHTabBarVC.h"
+#import <JPFPSStatus.h>
 
 @interface AppDelegate ()
 
@@ -22,6 +23,10 @@
     
     self.window.rootViewController = [ZHTabBarVC new];
     [self.window makeKeyAndVisible];
+    
+#if defined(DEBUG)||defined(_DEBUG)
+    [[JPFPSStatus sharedInstance] open];
+#endif
     
     return YES;
 }
