@@ -26,6 +26,7 @@
 
 + (void)getAllMusic:(NSArray *)itemsFromGenericQuery {
     
+    NSLog(@"加载了数据");
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         
         for (MPMediaItem *song in itemsFromGenericQuery) {
@@ -59,6 +60,7 @@
                 }];
             });
         }
+        NSLog(@"加载数据完成");
     });
 }
 

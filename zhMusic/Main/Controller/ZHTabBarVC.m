@@ -12,6 +12,9 @@
 #import "ZHMusicVC.h"
 #import "ZHNavigationVC.h"
 
+#warning 测试,以后删除
+#import <Realm.h>
+
 @interface ZHTabBarVC ()
 
 @end
@@ -47,7 +50,23 @@
 }
 - (void)addSearchViewController {
     
-    [self addChildViewController:[UIViewController new] title:@"搜索" imageName:@"LibraryTabIcon_19x28_" selectedImageName:@"LibraryTabIcon_19x28_" imageInsets:UIEdgeInsetsZero titlePosition:UIOffsetZero navigationClass:[ZHNavigationVC class]];
+    UIViewController *vc = [UIViewController new];
+    UIButton *btn = [[UIButton alloc] init];
+    btn.frame = CGRectMake(100, 100, 100, 100);
+    btn.backgroundColor = [UIColor redColor];
+    [btn addTarget:self action:@selector(removeRealmAllObject) forControlEvents:UIControlEventTouchUpInside];
+    [vc.view addSubview:btn];
+    vc.view.backgroundColor = [UIColor whiteColor];
+    
+    [self addChildViewController:vc title:@"搜索" imageName:@"LibraryTabIcon_19x28_" selectedImageName:@"LibraryTabIcon_19x28_" imageInsets:UIEdgeInsetsZero titlePosition:UIOffsetZero navigationClass:[ZHNavigationVC class]];
+}
+
+- (void)removeRealmAllObject {
+    RLMRealm *realm = [RLMRealm defaultRealm];
+    [realm beginWriteTransaction];
+    [realm deleteAllObjects];
+    [realm commitWriteTransaction];
+    NSLog(@"deleteSuccess");
 }
 
 

@@ -7,8 +7,11 @@
 //
 
 #import "ZHAllMusicVC.h"
+#import <Realm.h>
+#import "Header.h"
+#import "ZHMusicInfo.h"
 
-@interface ZHAllMusicVC ()
+@interface ZHAllMusicVC ()<UITableViewDelegate, UITableViewDataSource>
 @property (nonatomic, strong) UITableView *tableView;
 @end
 
@@ -21,9 +24,45 @@
     
     
     [self configureTableView];
+    [self loadAllMusic];
 }
 - (void)configureTableView {
+    _tableView = [[UITableView alloc] initWithFrame:self.view.frame style:UITableViewStylePlain];
+    _tableView.delegate = self;
+    _tableView.dataSource = self;
     
+    UIView *header = [self createHeader];
+    
+    
+    [self.view addSubview:_tableView];
+}
+- (UIView *)createHeader {
+    UIView *header = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.width, 40)];
+    
+    UILabel *shuffleAll = [UILabel new];
+    shuffleAll.text = @"随机播放";
+//    shuffleAll
+    
+    return header;
+}
+
+- (void)loadAllMusic {
+//    [NSKeyedArchiver archivedDataWithRootObject:song];
+    RLMResults *musics = [ZHMusicInfo allObjects];
+    for (ZHMusicInfo *musicInfo in musics) {
+        MPMediaItem *song = [NSKeyedUnarchiver unarchiveObjectWithData:musicInfo.data];
+        NSLog(@"%@", song.title);
+    }
+    
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return 0;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    return nil;
 }
 
 - (void)didReceiveMemoryWarning {
