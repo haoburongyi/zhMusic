@@ -12,6 +12,7 @@
 #import "ZHMusicInfo.h"
 #import "ZHAllMusicCell.h"
 
+
 @interface ZHAllMusicVC ()<UITableViewDelegate, UITableViewDataSource>
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) NSMutableArray *allMusic;// 数据源
@@ -34,7 +35,7 @@
     _tableView = [[UITableView alloc] initWithFrame:self.view.frame style:UITableViewStylePlain];
     _tableView.delegate = self;
     _tableView.dataSource = self;
-    _tableView.rowHeight = 55.5;
+    [_tableView setRowHeight:55.5];
     
     UIView *header = [self createHeader];
     
@@ -76,12 +77,12 @@
 static NSString *ZHAllMusicCellID = @"ZHAllMusicCellID";
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    ZHAllMusicCell *cell = [ZHAllMusicCell allMusicCellWithTableView:tableView identifier:ZHAllMusicCellID indexPath:indexPath];
+    ZHAllMusicCell *cell = [ZHAllMusicCell allMusicCellWithTableView:tableView identifier:ZHAllMusicCellID indexPath:indexPath rowHeight:tableView.rowHeight];
     
     MPMediaItem *song = _allMusic[indexPath.row];
     MPMediaItemArtwork *artwork = [song valueForProperty:MPMediaItemPropertyArtwork];
-    UIImage *img = [artwork imageWithSize:CGSizeZero];
-    cell.imageView.image = img ? img : [UIImage imageNamed:@"MissingArtworkMusicNote"];
+    UIImage *img = [artwork imageWithSize:CGSizeMake(48, 48)];
+    cell.image = img ? img : [UIImage imageNamed:@"MissingArtworkMusicNote"];
     cell.songNameLbl.text = [song valueForProperty: MPMediaItemPropertyTitle];
     cell.singerLbl.text = [song valueForProperty:MPMediaItemPropertyArtist];
     

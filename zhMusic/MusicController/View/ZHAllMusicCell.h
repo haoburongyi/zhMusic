@@ -10,9 +10,9 @@
 
 @interface ZHAllMusicCell : UITableViewCell
 
+@property (nonatomic, strong) UIImage *image;
 @property (nonatomic, strong) UILabel *songNameLbl;     // 歌曲名
 @property (nonatomic, strong) UILabel *singerLbl;       // 歌手
-@property (nonatomic, strong) UIImageView *artworkImg;  // 专辑图
 
-+ (instancetype)allMusicCellWithTableView:(UITableView *)tableView identifier:(NSString *)identifier indexPath:(NSIndexPath *)indexPath;
++ (instancetype)allMusicCellWithTableView:(UITableView *)tableView identifier:(NSString *)identifier indexPath:(NSIndexPath *)indexPath rowHeight:(CGFloat)rowHeight;
 @end
