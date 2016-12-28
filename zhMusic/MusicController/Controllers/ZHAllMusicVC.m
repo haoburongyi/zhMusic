@@ -13,6 +13,7 @@
 
 @interface ZHAllMusicVC ()<UITableViewDelegate, UITableViewDataSource>
 @property (nonatomic, strong) UITableView *tableView;
+@property (nonatomic, strong) NSMutableArray *allMusic;// 数据源
 @end
 
 @implementation ZHAllMusicVC
@@ -24,15 +25,19 @@
     
     
     [self configureTableView];
-    [self loadAllMusic];
+    [self loadAllMusicComplation:^{
+        [_tableView reloadData];
+    }];
 }
 - (void)configureTableView {
     _tableView = [[UITableView alloc] initWithFrame:self.view.frame style:UITableViewStylePlain];
     _tableView.delegate = self;
     _tableView.dataSource = self;
+    _tableView.rowHeight = 55.5;
     
     UIView *header = [self createHeader];
     
+    _tableView.tableFooterView = [UIView new];
     
     [self.view addSubview:_tableView];
 }
@@ -41,28 +46,43 @@
     
     UILabel *shuffleAll = [UILabel new];
     shuffleAll.text = @"随机播放";
-//    shuffleAll
     
     return header;
 }
 
-- (void)loadAllMusic {
-//    [NSKeyedArchiver archivedDataWithRootObject:song];
-    RLMResults *musics = [ZHMusicInfo allObjects];
-    for (ZHMusicInfo *musicInfo in musics) {
-        MPMediaItem *song = [NSKeyedUnarchiver unarchiveObjectWithData:musicInfo.data];
-        NSLog(@"%@", song.title);
-    }
+- (void)loadAllMusicComplation:(void(^)())complation {
     
+    _allMusic = [NSMutableArray array];
+
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        RLMResults *musics = [ZHMusicInfo allObjects];
+        NSLog(@"hehe");
+        for (ZHMusicInfo *musicInfo in musics) {
+            MPMediaItem *song = [NSKeyedUnarchiver unarchiveObjectWithData:musicInfo.data];
+            [_allMusic addObject:song];
+        }
+        NSLog(@"hehe");
+        dispatch_async(dispatch_get_main_queue(), ^{
+            complation();
+        });
+    });
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 0;
+    return _allMusic.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    return nil;
+    UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:nil];
+    
+    MPMediaItem *song = _allMusic[indexPath.row];
+    cell.textLabel.text = [song valueForProperty: MPMediaItemPropertyTitle];
+    cell.detailTextLabel.text = [song valueForProperty:MPMediaItemPropertyPodcastTitle];
+    MPMediaItemArtwork *artwork = [song valueForProperty:MPMediaItemPropertyArtwork];
+    UIImage *img = [artwork imageWithSize:CGSizeZero];
+    cell.imageView.image = img ? img : [UIImage imageNamed:@"MissingArtworkMusicNote"];
+    return cell;
 }
 
 - (void)didReceiveMemoryWarning {

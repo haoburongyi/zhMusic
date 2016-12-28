@@ -17,7 +17,7 @@
     MPMediaQuery *everything = [MPMediaQuery songsQuery];
     NSLog(@"Logging items from a generic query...");
     NSArray *itemsFromGenericQuery = [everything items];
-    NSLog(@"count = %lu", (unsigned long)itemsFromGenericQuery.count);
+    NSLog(@"ipod count = %lu", (unsigned long)itemsFromGenericQuery.count);
     
     RLMResults *infoArr = [ZHMusicInfo allObjects];
     

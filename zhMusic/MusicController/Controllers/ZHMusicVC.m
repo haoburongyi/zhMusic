@@ -128,17 +128,21 @@
 
 - (void)editList:(UIButton *)sender {
     
-    [_tableView setEditing:sender.selected animated:YES];
-
     if (sender.selected) {
         // 自定义 footer
         self.footer.y = 44 * _library.count + self.footer.height;
         [_tableView addSubview:self.footer];
+        
     } else {
         [[NSUserDefaults standardUserDefaults] setObject:_library.copy forKey:MusicListKey];
         [[NSUserDefaults standardUserDefaults] synchronize];
         [self.footer removeFromSuperview];
     }
+    
+    [_tableView setEditing:sender.selected animated:YES];
+}
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+    return [_tableView.subviews containsObject:self.footer];
 }
 
 #pragma - mark tableViewDataSource
