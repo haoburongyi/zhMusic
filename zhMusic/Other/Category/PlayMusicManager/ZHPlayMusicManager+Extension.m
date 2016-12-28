@@ -30,17 +30,15 @@
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         
         for (MPMediaItem *song in itemsFromGenericQuery) {
-            //        song.playbackDuration 时间
-            //        MPMediaItemPropertyPodcastTitle     专辑
-            
-            //        MPMediaItemPropertyArtwork          专辑图
-            //            MPMediaItemArtwork *artwork = [song valueForProperty:MPMediaItemPropertyArtwork];
-            //            UIImage *img = [artwork imageWithSize:CGSizeMake(100, 100)];
-            
-            //        MPMediaItemPropertyAssetURL         播放路径
-            //            NSString *songTitle = [song valueForProperty: MPMediaItemPropertyTitle];
-            //            NSString *songArtist = [song valueForProperty:MPMediaItemPropertyArtist];
-            //            NSString *podcastTitle = [song valueForProperty:MPMediaItemPropertyPodcastTitle];
+            // song.playbackDuration 时间
+            // MPMediaItemPropertyPodcastTitle     专辑
+            // MPMediaItemPropertyArtist           歌手
+            // MPMediaItemPropertyAssetURL         播放路径
+            // MPMediaItemPropertyTitle            歌曲名
+            // MPMediaItemPropertyPodcastTitle     专辑名
+            // MPMediaItemPropertyArtwork          专辑图
+            // MPMediaItemArtwork *artwork = [song valueForProperty:MPMediaItemPropertyArtwork];
+            // UIImage *img = [artwork imageWithSize:CGSizeMake(100, 100)];
             
             RLMResults *tempInfo = [ZHMusicInfo objectsWhere:[NSString stringWithFormat:@"assetURL = '%@'", song.assetURL]];
             

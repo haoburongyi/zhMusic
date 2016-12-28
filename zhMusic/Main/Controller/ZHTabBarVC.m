@@ -14,6 +14,7 @@
 
 #warning 测试,以后删除
 #import <Realm.h>
+#import <JPFPSStatus.h>
 
 @interface ZHTabBarVC ()
 
@@ -51,12 +52,24 @@
 - (void)addSearchViewController {
     
     UIViewController *vc = [UIViewController new];
-    UIButton *btn = [[UIButton alloc] init];
-    btn.frame = CGRectMake(100, 100, 100, 100);
+    UIButton *btn = [[UIButton alloc] initWithFrame:CGRectMake(100, 100, 100, 100)];
     btn.backgroundColor = [UIColor redColor];
+    [btn setTitle:@"清空 realm 数据" forState: UIControlStateNormal];
     [btn addTarget:self action:@selector(removeRealmAllObject) forControlEvents:UIControlEventTouchUpInside];
     [vc.view addSubview:btn];
     vc.view.backgroundColor = [UIColor whiteColor];
+    
+    UIButton *JPFPSStatusOpen = [[UIButton alloc] initWithFrame:CGRectMake(100, 200, 100, 100)];
+    JPFPSStatusOpen.backgroundColor = [UIColor blueColor];
+    [JPFPSStatusOpen setTitle:@"open" forState:UIControlStateNormal];
+    [JPFPSStatusOpen addTarget:self action:@selector(_JPFPSStatusOpen) forControlEvents:UIControlEventTouchUpInside];
+    [vc.view addSubview:JPFPSStatusOpen];
+    
+    UIButton *JPFPSStatusClose = [[UIButton alloc] initWithFrame:CGRectMake(100, 300, 100, 100)];
+    JPFPSStatusClose.backgroundColor = [UIColor blueColor];
+    [JPFPSStatusClose setTitle:@"close" forState:UIControlStateNormal];
+    [JPFPSStatusClose addTarget:self action:@selector(_JPFPSStatusClose) forControlEvents:UIControlEventTouchUpInside];
+    [vc.view addSubview:JPFPSStatusClose];
     
     [self addChildViewController:vc title:@"搜索" imageName:@"LibraryTabIcon_19x28_" selectedImageName:@"LibraryTabIcon_19x28_" imageInsets:UIEdgeInsetsZero titlePosition:UIOffsetZero navigationClass:[ZHNavigationVC class]];
 }
@@ -68,6 +81,13 @@
     [realm commitWriteTransaction];
     NSLog(@"deleteSuccess");
 }
+- (void)_JPFPSStatusOpen {
+    [[JPFPSStatus sharedInstance] open];
+}
+- (void)_JPFPSStatusClose {
+    [[JPFPSStatus sharedInstance] close];
+}
+
 
 
 - (void)didReceiveMemoryWarning {

@@ -10,6 +10,7 @@
 #import <Realm.h>
 #import "Header.h"
 #import "ZHMusicInfo.h"
+#import "ZHAllMusicCell.h"
 
 @interface ZHAllMusicVC ()<UITableViewDelegate, UITableViewDataSource>
 @property (nonatomic, strong) UITableView *tableView;
@@ -72,16 +73,18 @@
     return _allMusic.count;
 }
 
+static NSString *ZHAllMusicCellID = @"ZHAllMusicCellID";
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:nil];
+    ZHAllMusicCell *cell = [ZHAllMusicCell allMusicCellWithTableView:tableView identifier:ZHAllMusicCellID indexPath:indexPath];
     
     MPMediaItem *song = _allMusic[indexPath.row];
-    cell.textLabel.text = [song valueForProperty: MPMediaItemPropertyTitle];
-    cell.detailTextLabel.text = [song valueForProperty:MPMediaItemPropertyPodcastTitle];
     MPMediaItemArtwork *artwork = [song valueForProperty:MPMediaItemPropertyArtwork];
     UIImage *img = [artwork imageWithSize:CGSizeZero];
     cell.imageView.image = img ? img : [UIImage imageNamed:@"MissingArtworkMusicNote"];
+    cell.songNameLbl.text = [song valueForProperty: MPMediaItemPropertyTitle];
+    cell.singerLbl.text = [song valueForProperty:MPMediaItemPropertyArtist];
+    
     return cell;
 }
 
