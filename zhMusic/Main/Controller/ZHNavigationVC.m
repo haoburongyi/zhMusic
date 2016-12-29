@@ -26,13 +26,14 @@
     self.navigationBar.backgroundColor = ZHNavColor;
     
 // navigationBar 隐藏分割线的四种方法, 前三种不推荐
-//    self.navigationBar.clipsToBounds = YES;
+//    self.navigationBar.clipsToBounds = YES;1
     
-//    self.navigationBar.barStyle = UIBarStyleBlackTranslucent;
+//    self.navigationBar.barStyle = UIBarStyleBlackTranslucent;2
     
-//    [[UINavigationBar appearance] setBackgroundImage:[[UIImage alloc] init] forBarMetrics:UIBarMetricsDefault];
-//    [[UINavigationBar appearance]setShadowImage:[[UIImage alloc] init]];
+//    [[UINavigationBar appearance] setBackgroundImage:[[UIImage alloc] init] forBarMetrics:UIBarMetricsDefault];3
+//    [[UINavigationBar appearance] setShadowImage:[[UIImage alloc] init]];3
     
+//    4
     for (UIView *views in self.navigationBar.subviews) {
         for (UIView *view in views.subviews) {
             NSLog(@"%@", [view class]);
@@ -42,7 +43,6 @@
         }
     }
 }
-
 
 
 - (void)didReceiveMemoryWarning {

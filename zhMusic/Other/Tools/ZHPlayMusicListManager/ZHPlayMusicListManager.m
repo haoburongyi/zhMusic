@@ -9,6 +9,7 @@
 #import "ZHPlayMusicListManager.h"
 #import <MediaPlayer/MediaPlayer.h>
 #import <Realm.h>
+#import "ZHPlayMusicListManager+Extension.h"
 #import "ZHMusicInfo.h"
 #import "pinyin.h"
 
@@ -19,13 +20,12 @@ static ZHPlayMusicListManager *_manager;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         _manager = [[self alloc] init];
+        [self checkAllMusic];
     });
     return _manager;
 }
 
 - (void)loadAllMusicComplation:(void(^)(NSArray *header, NSDictionary *allMusic))complation {
-    
-    
     
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         // 取所有音乐
@@ -42,27 +42,27 @@ static ZHPlayMusicListManager *_manager;
         NSLog(@"allKey:%@", modelDict.allKeys);
         
         NSStringCompareOptions comparisonOptions = NSCaseInsensitiveSearch|NSNumericSearch|
-        NSWidthInsensitiveSearch|NSForcedOrderingSearch;
+        NSWidthInsensitiveSearch | NSForcedOrderingSearch;
         NSComparator sort = ^(NSString *obj1,NSString *obj2){
             NSRange range = NSMakeRange(0,obj1.length);
             return [obj1 compare:obj2 options:comparisonOptions range:range];
         };
         
         
-        NSMutableArray *tempHeaderArr = [modelDict.allKeys sortedArrayUsingComparator:sort].mutableCopy;
-        if ([tempHeaderArr containsObject:@"#"]) {
-            [tempHeaderArr removeObject:@"#"];
-            [tempHeaderArr addObject:@"#"];
+        NSMutableArray *headerArr = [modelDict.allKeys sortedArrayUsingComparator:sort].mutableCopy;
+        if ([headerArr containsObject:@"#"]) {
+            [headerArr removeObject:@"#"];
+            [headerArr addObject:@"#"];
         }
         
-        NSLog(@"字符串数组排序结果%@",tempHeaderArr);
+        NSLog(@"字符串数组排序结果%@",headerArr);
         dispatch_async(dispatch_get_main_queue(), ^{
             
-            complation(tempHeaderArr.copy, modelDict);
+            complation(headerArr.copy, modelDict);
         });
     });
-    
 }
+
 
 
 @end

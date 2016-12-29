@@ -15,6 +15,7 @@
 
 
 #define HeaderHeight 25
+#define ShuffleAllHeaderH 40
 
 @interface ZHAllMusicVC ()<UITableViewDelegate, UITableViewDataSource>
 @property (nonatomic, strong) UITableView *tableView;
@@ -22,7 +23,9 @@
 @property (nonatomic, strong) NSArray *headerArr;    // header 数据源
 @end
 
-@implementation ZHAllMusicVC
+@implementation ZHAllMusicVC {
+    UIView              *_headerView;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -36,30 +39,78 @@
         _allMusic = allMusic;
         [_tableView reloadData];
     }];
+    
 }
+
+
 - (void)configureTableView {
-    _tableView = [[UITableView alloc] initWithFrame:self.view.frame style:UITableViewStylePlain];
+    _tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain];
     _tableView.delegate = self;
     _tableView.dataSource = self;
     [_tableView setRowHeight:55.5];
     [_tableView setSectionHeaderHeight:HeaderHeight];
     [_tableView setSectionIndexColor:ZHRedColor];
-//    UIView *header = [self createHeader];
+//    [_tableView alignmentRectInsets]
+//    _tableView.alignmentRectInsets = UIEdgeInsetsMake(ShuffleAllHeaderH, 0, 0, 0);
+    
+    
+//    UIView *header = [self createHeaderWithFrame:CGRectMake(0, -ShuffleAllHeaderH, self.view.width, ShuffleAllHeaderH)];
+//    [_tableView addSubview:header];
+    
+    [_tableView setContentInset:UIEdgeInsetsMake(ShuffleAllHeaderH, 0, 0, 0)];
     
     _tableView.tableFooterView = [UIView new];
     
     [self.view addSubview:_tableView];
+    
+    [self prepareHeaderView];
 }
-- (UIView *)createHeader {
-    UIView *header = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.width, 40)];
+
+- (void)prepareHeaderView {
+    _headerView = [self createHeaderWithFrame:CGRectMake(0, 0, self.view.width, ShuffleAllHeaderH)];
+    _headerView.backgroundColor = ZHNavColor;
+    [self.view addSubview:_headerView];
+}
+
+- (UIView *)createHeaderWithFrame:(CGRect)frame {
+    UIView *header = [[UIView alloc] initWithFrame:frame];
+    header.backgroundColor = _tableView.backgroundColor;
     
     UILabel *shuffleAll = [UILabel new];
     shuffleAll.text = @"随机播放";
+    shuffleAll.font = [UIFont systemFontOfSize:12];
+    shuffleAll.textColor = ZHRedColor;
+    [shuffleAll sizeToFit];
+    shuffleAll.origin = CGPointMake(20, header.height * 0.5 - shuffleAll.height * 0.5);
+    [header addSubview:shuffleAll];
     
+    UIImageView *shuffleAllImg = [[UIImageView alloc] initWithImage:[[UIImage imageNamed:@"NowPlaying-Shuffle_31x20_"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate]];
+    shuffleAllImg.tintColor = ZHRedColor;
+    [shuffleAllImg sizeToFit];
+    shuffleAllImg.origin = CGPointMake(header.width - shuffleAllImg.width - 20, header.height * 0.5 - shuffleAllImg.height * 0.5);
+    [header addSubview:shuffleAllImg];
+    
+    UIView *line1 = [[UIView alloc] initWithFrame:CGRectMake(15, 0, header.width - 15 - 15, 0.5)];
+    line1.backgroundColor = ZHRGBColor(200, 200, 200);
+    [header addSubview:line1];
+    
+    UIView *line2 = [[UIView alloc] initWithFrame:CGRectMake(15, header.height - 0.5, header.width - 15 - 15, 0.5)];
+    line2.backgroundColor = ZHRGBColor(200, 200, 200);
+    [header addSubview:line2];
+    
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(shufflePlay:)];
+    [header addGestureRecognizer:tap];
     return header;
 }
-
-
+#pragma - mark 随机播放
+- (void)shufflePlay:(UITapGestureRecognizer *)tap {
+    NSLog(@"%s", __func__);
+    [UIView animateWithDuration:0.1 animations:^{
+        tap.view.backgroundColor = ZHRGBColor(217, 217, 217);
+    } completion:^(BOOL finished) {
+        tap.view.backgroundColor = ZHNavColor;
+    }];
+}
 
 #pragma - mark tableViewDataSource
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {

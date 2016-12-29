@@ -9,5 +9,5 @@
 #import "ZHPlayMusicManager.h"
 
 @interface ZHPlayMusicManager (Extension)
-+ (void)checkAllMusic;
+
 @end

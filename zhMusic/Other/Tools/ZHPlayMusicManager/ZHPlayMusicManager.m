@@ -22,7 +22,7 @@ static ZHPlayMusicManager *_manager;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         _manager = [[ZHPlayMusicManager alloc] init];
-        [self checkAllMusic];
+        
     });
     return _manager;
 }
