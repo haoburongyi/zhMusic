@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <MediaPlayer/MediaPlayer.h>
 #import <Realm.h>
 
 @interface ZHMusicInfo : RLMObject

@@ -9,8 +9,6 @@
 #ifndef Header_h
 
 #import "UIView+Extension.h"
-#import "ZHPlayMusicManager.h"
-
 
 /**
  *  主窗口
@@ -76,6 +74,8 @@
  *  选中颜色
  */
 #define ZHRedColor ZHRGBColor(255, 45, 85)
+
+#define ZHNavColor ZHRGBColor(254, 254, 254)
 
 // 音乐种类 key
 #define MusicListKey @"MusicListKey"

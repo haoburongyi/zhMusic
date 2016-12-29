@@ -21,7 +21,29 @@
     // Do any additional setup after loading the view.
     
     self.navigationBar.tintColor = ZHRedColor;
+    // navigationBar.backgroundColor 在属性 translucent = YES 时时没有用的
+    self.navigationBar.translucent = NO;
+    self.navigationBar.backgroundColor = ZHNavColor;
+    
+// navigationBar 隐藏分割线的四种方法, 前三种不推荐
+//    self.navigationBar.clipsToBounds = YES;
+    
+//    self.navigationBar.barStyle = UIBarStyleBlackTranslucent;
+    
+//    [[UINavigationBar appearance] setBackgroundImage:[[UIImage alloc] init] forBarMetrics:UIBarMetricsDefault];
+//    [[UINavigationBar appearance]setShadowImage:[[UIImage alloc] init]];
+    
+    for (UIView *views in self.navigationBar.subviews) {
+        for (UIView *view in views.subviews) {
+            NSLog(@"%@", [view class]);
+            if ([view isKindOfClass:[UIImageView class]]) {
+                view.hidden = YES;
+            }
+        }
+    }
 }
+
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -29,13 +51,13 @@
 }
 
 /*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 @end

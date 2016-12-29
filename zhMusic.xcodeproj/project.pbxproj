@@ -14,7 +14,6 @@
 		6114C2BE1E12BE7000F49642 /* ZHPodcastTitle.m in Sources */ = {isa = PBXBuildFile; fileRef = 6114C2BD1E12BE7000F49642 /* ZHPodcastTitle.m */; };
 		6114C2C41E12C56F00F49642 /* ZHNavigationVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 6114C2C31E12C56F00F49642 /* ZHNavigationVC.m */; };
 		6114C2C91E13718900F49642 /* ZHPlayMusicManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6114C2C81E13718900F49642 /* ZHPlayMusicManager.m */; };
-		6114C2CD1E137F8900F49642 /* ZHMusicInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 6114C2CC1E137F8900F49642 /* ZHMusicInfo.m */; };
 		6114C2D11E13B33700F49642 /* ZHPlayMusicManager+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 6114C2D01E13B33700F49642 /* ZHPlayMusicManager+Extension.m */; };
 		61242E261E07BF6000D6358F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 61242E251E07BF6000D6358F /* main.m */; };
 		61242E291E07BF6000D6358F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 61242E281E07BF6000D6358F /* AppDelegate.m */; };
@@ -34,6 +33,8 @@
 		61D939461E13E17E00B2F849 /* ZHAllMusicCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 61D939451E13E17E00B2F849 /* ZHAllMusicCell.m */; };
 		61D9394A1E13FDCD00B2F849 /* UIImage+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 61D939491E13FDCD00B2F849 /* UIImage+Extension.m */; };
 		61D939521E14F97600B2F849 /* pinyin.m in Sources */ = {isa = PBXBuildFile; fileRef = 61D939511E14F97600B2F849 /* pinyin.m */; };
+		61D939571E151A5800B2F849 /* ZHMusicInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 61D939561E151A5800B2F849 /* ZHMusicInfo.m */; };
+		61D9395A1E151A8800B2F849 /* ZHPlayMusicListManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 61D939591E151A8800B2F849 /* ZHPlayMusicListManager.m */; };
 		7B0F23DF30B02CCB76CF7163 /* libPods-zhMusic.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 131CBEEB16164D4B87D0B8A1 /* libPods-zhMusic.a */; };
 /* End PBXBuildFile section */
 
@@ -69,8 +70,6 @@
 		6114C2C31E12C56F00F49642 /* ZHNavigationVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHNavigationVC.m; sourceTree = "<group>"; };
 		6114C2C71E13718900F49642 /* ZHPlayMusicManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHPlayMusicManager.h; sourceTree = "<group>"; };
 		6114C2C81E13718900F49642 /* ZHPlayMusicManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHPlayMusicManager.m; sourceTree = "<group>"; };
-		6114C2CB1E137F8900F49642 /* ZHMusicInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHMusicInfo.h; sourceTree = "<group>"; };
-		6114C2CC1E137F8900F49642 /* ZHMusicInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHMusicInfo.m; sourceTree = "<group>"; };
 		6114C2CF1E13B33700F49642 /* ZHPlayMusicManager+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ZHPlayMusicManager+Extension.h"; sourceTree = "<group>"; };
 		6114C2D01E13B33700F49642 /* ZHPlayMusicManager+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ZHPlayMusicManager+Extension.m"; sourceTree = "<group>"; };
 		61242E211E07BF6000D6358F /* zhMusic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = zhMusic.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -110,6 +109,10 @@
 		61D939491E13FDCD00B2F849 /* UIImage+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Extension.m"; sourceTree = "<group>"; };
 		61D939501E14F97600B2F849 /* pinyin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pinyin.h; sourceTree = "<group>"; };
 		61D939511E14F97600B2F849 /* pinyin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = pinyin.m; sourceTree = "<group>"; };
+		61D939551E151A5800B2F849 /* ZHMusicInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHMusicInfo.h; sourceTree = "<group>"; };
+		61D939561E151A5800B2F849 /* ZHMusicInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHMusicInfo.m; sourceTree = "<group>"; };
+		61D939581E151A8800B2F849 /* ZHPlayMusicListManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHPlayMusicListManager.h; sourceTree = "<group>"; };
+		61D939591E151A8800B2F849 /* ZHPlayMusicListManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHPlayMusicListManager.m; sourceTree = "<group>"; };
 		666911B0DA3F7F4925E59D9B /* Pods-zhMusicTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-zhMusicTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-zhMusicTests/Pods-zhMusicTests.debug.xcconfig"; sourceTree = "<group>"; };
 		86F67C109A57702810C6DD59 /* Pods-zhMusicTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-zhMusicTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-zhMusicTests/Pods-zhMusicTests.release.xcconfig"; sourceTree = "<group>"; };
 		AB9B52DFEF33E097E06536A9 /* libPods-zhMusicTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-zhMusicTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -158,20 +161,10 @@
 		6114C2C61E13715600F49642 /* ZHPlayMusicManager */ = {
 			isa = PBXGroup;
 			children = (
-				6114C2CA1E137F5C00F49642 /* Model */,
 				6114C2C71E13718900F49642 /* ZHPlayMusicManager.h */,
 				6114C2C81E13718900F49642 /* ZHPlayMusicManager.m */,
 			);
 			path = ZHPlayMusicManager;
-			sourceTree = "<group>";
-		};
-		6114C2CA1E137F5C00F49642 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				6114C2CB1E137F8900F49642 /* ZHMusicInfo.h */,
-				6114C2CC1E137F8900F49642 /* ZHMusicInfo.m */,
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 		6114C2CE1E13B2D300F49642 /* PlayMusicManager */ = {
@@ -338,6 +331,7 @@
 			isa = PBXGroup;
 			children = (
 				61D9394F1E14F95F00B2F849 /* pinyin */,
+				61D939531E151A2500B2F849 /* ZHPlayMusicListManager */,
 				6114C2C61E13715600F49642 /* ZHPlayMusicManager */,
 				614283861E0E75FC00B2CAB7 /* ZHTextView */,
 			);
@@ -404,6 +398,25 @@
 				61D939511E14F97600B2F849 /* pinyin.m */,
 			);
 			path = pinyin;
+			sourceTree = "<group>";
+		};
+		61D939531E151A2500B2F849 /* ZHPlayMusicListManager */ = {
+			isa = PBXGroup;
+			children = (
+				61D939541E151A5800B2F849 /* Model */,
+				61D939581E151A8800B2F849 /* ZHPlayMusicListManager.h */,
+				61D939591E151A8800B2F849 /* ZHPlayMusicListManager.m */,
+			);
+			path = ZHPlayMusicListManager;
+			sourceTree = "<group>";
+		};
+		61D939541E151A5800B2F849 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				61D939551E151A5800B2F849 /* ZHMusicInfo.h */,
+				61D939561E151A5800B2F849 /* ZHMusicInfo.m */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		A7D43842A529DDB9BC23657C /* Pods */ = {
@@ -710,13 +723,14 @@
 				612FC3371E0A97AB0006CF5D /* Foundation+Log.m in Sources */,
 				6139148B1E0A6F1D005350A8 /* ZHTabBarVC+ZH_AddChildVC.m in Sources */,
 				613914731E0A575B005350A8 /* ZHTabBarVC.m in Sources */,
+				61D939571E151A5800B2F849 /* ZHMusicInfo.m in Sources */,
 				61D939521E14F97600B2F849 /* pinyin.m in Sources */,
 				61D939461E13E17E00B2F849 /* ZHAllMusicCell.m in Sources */,
 				6114C2BB1E12BE5A00F49642 /* ZHAritistVC.m in Sources */,
 				6139147A1E0A57FF005350A8 /* ZHMusicVC.m in Sources */,
-				6114C2CD1E137F8900F49642 /* ZHMusicInfo.m in Sources */,
 				6114C2BE1E12BE7000F49642 /* ZHPodcastTitle.m in Sources */,
 				6139147D1E0A5B3D005350A8 /* ZHMusicViewModel.m in Sources */,
+				61D9395A1E151A8800B2F849 /* ZHPlayMusicListManager.m in Sources */,
 				612FC33E1E0A9E340006CF5D /* ZHMusicHeader.m in Sources */,
 				61D9394A1E13FDCD00B2F849 /* UIImage+Extension.m in Sources */,
 				6114C2C41E12C56F00F49642 /* ZHNavigationVC.m in Sources */,

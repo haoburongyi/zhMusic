@@ -7,11 +7,11 @@
 //
 
 #import "ZHAllMusicVC.h"
-#import <Realm.h>
+#import <MediaPlayer/MediaPlayer.h>
 #import "Header.h"
 #import "ZHMusicInfo.h"
 #import "ZHAllMusicCell.h"
-#import "pinyin.h"
+#import "ZHPlayMusicListManager.h"
 
 
 #define HeaderHeight 25
@@ -29,9 +29,11 @@
     // Do any additional setup after loading the view.
     self.view.backgroundColor = [UIColor whiteColor];
     
-    
     [self configureTableView];
-    [self loadAllMusicComplation:^{
+    
+    [[ZHPlayMusicListManager defaultManager] loadAllMusicComplation:^(NSArray *header, NSDictionary *allMusic) {
+        _headerArr = header;
+        _allMusic = allMusic;
         [_tableView reloadData];
     }];
 }
@@ -57,64 +59,7 @@
     return header;
 }
 
-- (void)dealloc {
-    NSLog(@"%s", __func__);
-}
 
-- (void)loadAllMusicComplation:(void(^)())complation {
-    
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        RLMResults *musics = [ZHMusicInfo allObjects];
-        
-        NSMutableArray *muArr = [NSMutableArray array];
-        for (ZHMusicInfo *musicInfo in musics) {
-            MPMediaItem *song = [NSKeyedUnarchiver unarchiveObjectWithData:musicInfo.data];
-            [muArr addObject:song];
-        }
-        
-        NSDictionary *modelDict = [muArr sortedArrayUsingFirstLetterByKeypath:@"title"];
-        NSLog(@"modelDict:%@", modelDict);
-        NSLog(@"allKey:%@", modelDict.allKeys);
-
-        NSStringCompareOptions comparisonOptions = NSCaseInsensitiveSearch|NSNumericSearch|
-        NSWidthInsensitiveSearch|NSForcedOrderingSearch;
-        NSComparator sort = ^(NSString *obj1,NSString *obj2){
-            NSRange range = NSMakeRange(0,obj1.length);
-            return [obj1 compare:obj2 options:comparisonOptions range:range];
-        };
-        
-        _allMusic = modelDict;
-        
-        NSMutableArray *tempHeaderArr = [modelDict.allKeys sortedArrayUsingComparator:sort].mutableCopy;
-        if ([tempHeaderArr containsObject:@"#"]) {
-            [tempHeaderArr removeObject:@"#"];
-            [tempHeaderArr addObject:@"#"];
-        }
-        _headerArr = tempHeaderArr.copy;
-        NSLog(@"字符串数组排序结果%@",_headerArr);
-        dispatch_async(dispatch_get_main_queue(), ^{
-            
-            [_tableView reloadData];
-        });
-    });
-    
-
-    
-    
-//    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-//        RLMResults *musics = [ZHMusicInfo allObjects];
-//        
-//        for (ZHMusicInfo *musicInfo in musics) {
-//            MPMediaItem *song = [NSKeyedUnarchiver unarchiveObjectWithData:musicInfo.data];
-//            [_allMusic addObject:song];
-//        }
-//        
-//        dispatch_async(dispatch_get_main_queue(), ^{
-//            complation();
-//        });
-//    });
-    
-}
 
 #pragma - mark tableViewDataSource
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -147,7 +92,7 @@ static NSString *ZHAllMusicCellID = @"ZHAllMusicCellID";
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     UIView *header = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.width, HeaderHeight)];
-    header.backgroundColor = [UIColor whiteColor];
+    header.backgroundColor = ZHNavColor;
     
     UILabel *title = [UILabel new];
     title.text = _headerArr[section];
@@ -167,9 +112,8 @@ static NSString *ZHAllMusicCellID = @"ZHAllMusicCellID";
 }
 
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void)dealloc {
+    NSLog(@"%s", __func__);
 }
 
 /*

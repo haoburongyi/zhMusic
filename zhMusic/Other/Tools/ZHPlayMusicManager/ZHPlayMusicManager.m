@@ -18,7 +18,7 @@
 @implementation ZHPlayMusicManager
 
 static ZHPlayMusicManager *_manager;
-+ (instancetype)shareManage {
++ (instancetype)defaultManager {
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         _manager = [[ZHPlayMusicManager alloc] init];
@@ -27,8 +27,6 @@ static ZHPlayMusicManager *_manager;
     return _manager;
 }
 
-- (void)loadMusicInfoWithGroupName:(NSString *)groupName {
-    
-}
+
 
 @end

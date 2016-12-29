@@ -42,7 +42,7 @@
     _artworkImg.contentMode = UIViewContentModeScaleAspectFill;
     [self.contentView addSubview:_artworkImg];
     
-    CGFloat lblTopMargin = 12;
+    CGFloat lblTopMargin = 10;
     CGFloat lblLeftMargin = self.separatorInset.left;
     CGFloat lblWidth = self.contentView.width - CGRectGetMaxX(_artworkImg.frame) - lblLeftMargin;
 
@@ -58,13 +58,13 @@
     
     
     _singerLbl = [[UILabel alloc] init];
-    _singerLbl.font = [UIFont systemFontOfSize:10];
+    _singerLbl.font = [UIFont systemFontOfSize:11];
     _singerLbl.textColor = ZHRGBColor(200, 200, 200);
     _singerLbl.text = @"演唱者";
     CGSize singerSize = [_singerLbl.text sizeWithAttributes: @{
                                                        NSFontAttributeName : _singerLbl.font
                                                        }];
-    _singerLbl.frame = CGRectMake(_songNameLbl.x, rowHeight - singerSize.height - lblTopMargin, lblWidth, singerSize.height);
+    _singerLbl.frame = CGRectMake(_songNameLbl.x, rowHeight - singerSize.height - lblTopMargin + 2, lblWidth, singerSize.height);
     [self.contentView addSubview:_singerLbl];
 }
 

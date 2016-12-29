@@ -90,7 +90,6 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    [ZHPlayMusicManager shareManage];
     self.fd_prefersNavigationBarHidden = YES;
     
     _viewModel = [ZHMusicViewModel new];
