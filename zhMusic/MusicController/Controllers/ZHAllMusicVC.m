@@ -11,11 +11,15 @@
 #import "Header.h"
 #import "ZHMusicInfo.h"
 #import "ZHAllMusicCell.h"
+#import "pinyin.h"
 
+
+#define HeaderHeight 25
 
 @interface ZHAllMusicVC ()<UITableViewDelegate, UITableViewDataSource>
 @property (nonatomic, strong) UITableView *tableView;
-@property (nonatomic, strong) NSMutableArray *allMusic;// 数据源
+@property (nonatomic, strong) NSDictionary *allMusic;     // 数据源
+@property (nonatomic, strong) NSArray *headerArr;    // header 数据源
 @end
 
 @implementation ZHAllMusicVC
@@ -36,8 +40,9 @@
     _tableView.delegate = self;
     _tableView.dataSource = self;
     [_tableView setRowHeight:55.5];
-    
-    UIView *header = [self createHeader];
+    [_tableView setSectionHeaderHeight:HeaderHeight];
+    [_tableView setSectionIndexColor:ZHRedColor];
+//    UIView *header = [self createHeader];
     
     _tableView.tableFooterView = [UIView new];
     
@@ -52,26 +57,74 @@
     return header;
 }
 
+- (void)dealloc {
+    NSLog(@"%s", __func__);
+}
+
 - (void)loadAllMusicComplation:(void(^)())complation {
     
-    _allMusic = [NSMutableArray array];
-
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         RLMResults *musics = [ZHMusicInfo allObjects];
-        NSLog(@"hehe");
+        
+        NSMutableArray *muArr = [NSMutableArray array];
         for (ZHMusicInfo *musicInfo in musics) {
             MPMediaItem *song = [NSKeyedUnarchiver unarchiveObjectWithData:musicInfo.data];
-            [_allMusic addObject:song];
+            [muArr addObject:song];
         }
-        NSLog(@"hehe");
+        
+        NSDictionary *modelDict = [muArr sortedArrayUsingFirstLetterByKeypath:@"title"];
+        NSLog(@"modelDict:%@", modelDict);
+        NSLog(@"allKey:%@", modelDict.allKeys);
+
+        NSStringCompareOptions comparisonOptions = NSCaseInsensitiveSearch|NSNumericSearch|
+        NSWidthInsensitiveSearch|NSForcedOrderingSearch;
+        NSComparator sort = ^(NSString *obj1,NSString *obj2){
+            NSRange range = NSMakeRange(0,obj1.length);
+            return [obj1 compare:obj2 options:comparisonOptions range:range];
+        };
+        
+        _allMusic = modelDict;
+        
+        NSMutableArray *tempHeaderArr = [modelDict.allKeys sortedArrayUsingComparator:sort].mutableCopy;
+        if ([tempHeaderArr containsObject:@"#"]) {
+            [tempHeaderArr removeObject:@"#"];
+            [tempHeaderArr addObject:@"#"];
+        }
+        _headerArr = tempHeaderArr.copy;
+        NSLog(@"字符串数组排序结果%@",_headerArr);
         dispatch_async(dispatch_get_main_queue(), ^{
-            complation();
+            
+            [_tableView reloadData];
         });
     });
+    
+
+    
+    
+//    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+//        RLMResults *musics = [ZHMusicInfo allObjects];
+//        
+//        for (ZHMusicInfo *musicInfo in musics) {
+//            MPMediaItem *song = [NSKeyedUnarchiver unarchiveObjectWithData:musicInfo.data];
+//            [_allMusic addObject:song];
+//        }
+//        
+//        dispatch_async(dispatch_get_main_queue(), ^{
+//            complation();
+//        });
+//    });
+    
+}
+
+#pragma - mark tableViewDataSource
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return _headerArr.count;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return _allMusic.count;
+    NSString *key = _headerArr[section];
+    NSArray *arr = _allMusic[key];
+    return arr.count;
 }
 
 static NSString *ZHAllMusicCellID = @"ZHAllMusicCellID";
@@ -79,7 +132,10 @@ static NSString *ZHAllMusicCellID = @"ZHAllMusicCellID";
     
     ZHAllMusicCell *cell = [ZHAllMusicCell allMusicCellWithTableView:tableView identifier:ZHAllMusicCellID indexPath:indexPath rowHeight:tableView.rowHeight];
     
-    MPMediaItem *song = _allMusic[indexPath.row];
+    NSString *key = _headerArr[indexPath.section];
+    NSArray *arr = _allMusic[key];
+    
+    MPMediaItem *song = arr[indexPath.row];
     MPMediaItemArtwork *artwork = [song valueForProperty:MPMediaItemPropertyArtwork];
     UIImage *img = [artwork imageWithSize:CGSizeMake(48, 48)];
     cell.image = img ? img : [UIImage imageNamed:@"MissingArtworkMusicNote"];
@@ -88,6 +144,28 @@ static NSString *ZHAllMusicCellID = @"ZHAllMusicCellID";
     
     return cell;
 }
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+    UIView *header = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.width, HeaderHeight)];
+    header.backgroundColor = [UIColor whiteColor];
+    
+    UILabel *title = [UILabel new];
+    title.text = _headerArr[section];
+    title.font = [UIFont boldSystemFontOfSize:12];
+    [title sizeToFit];
+    title.origin = CGPointMake(20, HeaderHeight * 0.5 - title.height * 0.5);
+    [header addSubview:title];
+    
+    return header;
+}
+
+#pragma - mark tableViewDelegate
+
+#pragma - mark 实现右侧索引
+- (NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView {
+    return _headerArr;
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

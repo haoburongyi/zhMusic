@@ -12,6 +12,7 @@ target 'zhMusic' do
   pod 'FDFullscreenPopGesture', '1.1'
   pod 'JPFPSStatus'
   pod 'Masonry'
+#  pod 'HTChineseLetter`
 end
   target 'zhMusicTests' do
     inherit! :search_paths

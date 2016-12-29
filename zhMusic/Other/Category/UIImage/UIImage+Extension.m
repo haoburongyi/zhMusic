@@ -13,7 +13,7 @@
     
     dispatch_async(dispatch_get_global_queue(0, 0), ^{
         
-        NSTimeInterval start = CACurrentMediaTime();
+//        NSTimeInterval start = CACurrentMediaTime();
         
         // 1. 利用绘图，建立上下文
         UIGraphicsBeginImageContextWithOptions(size, YES, 0);
@@ -38,7 +38,7 @@
         // 6. 关闭上下文
         UIGraphicsEndImageContext();
         
-        NSLog(@"%f", CACurrentMediaTime() - start);
+//        NSLog(@"%f", CACurrentMediaTime() - start);
         
         // 7. 完成回调
         dispatch_async(dispatch_get_main_queue(), ^{
@@ -52,7 +52,7 @@
 - (void)zh_cornerImageWithSize:(CGSize)size cornerRadius:(CGFloat)cornerRadius fillColor:(UIColor *)fillColor completion:(void (^)(UIImage *))completion {
     dispatch_async(dispatch_get_global_queue(0, 0), ^{
         
-        NSTimeInterval start = CACurrentMediaTime();
+//        NSTimeInterval start = CACurrentMediaTime();
         UIGraphicsBeginImageContextWithOptions(size, YES, 0);
         CGRect rect = CGRectMake(0, 0, size.width, size.height);
         [fillColor setFill];
@@ -63,7 +63,7 @@
         UIImage *result = UIGraphicsGetImageFromCurrentImageContext();
         UIGraphicsEndImageContext();
         
-        NSLog(@"%f", CACurrentMediaTime() - start);
+//        NSLog(@"%f", CACurrentMediaTime() - start);
         
         dispatch_async(dispatch_get_main_queue(), ^{
             if (completion != nil) {
