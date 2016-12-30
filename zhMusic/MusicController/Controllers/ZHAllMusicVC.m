@@ -12,6 +12,7 @@
 #import "ZHMusicInfo.h"
 #import "ZHAllMusicCell.h"
 #import "ZHPlayMusicListManager.h"
+#import "ZHPlayMusicManager.h"
 
 
 #define HeaderHeight 25
@@ -31,6 +32,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.view.backgroundColor = [UIColor whiteColor];
+    self.title = @"歌曲";
     
     [self configureTableView];
     
@@ -159,6 +161,7 @@ static NSString *ZHAllMusicCellID = @"ZHAllMusicCellID";
     return _headerArr;
 }
 
+#pragma - mark 下拉跟随
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     
     CGFloat offset = scrollView.contentOffset.y + scrollView.contentInset.top;
@@ -190,6 +193,18 @@ static NSString *ZHAllMusicCellID = @"ZHAllMusicCellID";
         // 主动更新状态栏
 //        [self.navigationController setNeedsStatusBarAppearanceUpdate];
     }
+}
+
+#pragma - mark 播放音乐
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    NSString *key = _headerArr[indexPath.section];
+    NSArray *arr = _allMusic[key];
+    MPMediaItem *song = arr[indexPath.row];
+    
+    [[ZHPlayMusicManager defaultManager] playMusicWithSongUrl:[song valueForProperty:MPMediaItemPropertyAssetURL] didComplete:^{
+        
+    }];
+    
     
 }
 

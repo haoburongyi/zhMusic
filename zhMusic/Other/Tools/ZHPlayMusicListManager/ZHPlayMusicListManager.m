@@ -37,10 +37,11 @@ static ZHPlayMusicListManager *_manager;
             [muArr addObject:song];
         }
         
+        // 取首字母
         NSDictionary *modelDict = [muArr sortedArrayUsingFirstLetterByKeypath:@"title"];
         NSLog(@"modelDict:%@", modelDict);
-        NSLog(@"allKey:%@", modelDict.allKeys);
         
+        // 排序
         NSStringCompareOptions comparisonOptions = NSCaseInsensitiveSearch|NSNumericSearch|
         NSWidthInsensitiveSearch | NSForcedOrderingSearch;
         NSComparator sort = ^(NSString *obj1,NSString *obj2){
@@ -50,6 +51,7 @@ static ZHPlayMusicListManager *_manager;
         
         
         NSMutableArray *headerArr = [modelDict.allKeys sortedArrayUsingComparator:sort].mutableCopy;
+        // 把 '#' 放最后
         if ([headerArr containsObject:@"#"]) {
             [headerArr removeObject:@"#"];
             [headerArr addObject:@"#"];

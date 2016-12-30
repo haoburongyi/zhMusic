@@ -40,7 +40,7 @@
             // MPMediaItemArtwork *artwork = [song valueForProperty:MPMediaItemPropertyArtwork];
             // UIImage *img = [artwork imageWithSize:CGSizeMake(100, 100)];
             
-            RLMResults *tempInfo = [ZHMusicInfo objectsWhere:[NSString stringWithFormat:@"assetURL = '%@'", song.assetURL]];
+            RLMResults *tempInfo = [ZHMusicInfo objectsWhere:[NSString stringWithFormat:@"assetURL = '%@'", song.assetURL.absoluteString]];
             
             if (tempInfo.count != 0) {
                 continue;

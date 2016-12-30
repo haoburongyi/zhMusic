@@ -11,6 +11,33 @@
 
 @interface ZHPlayMusicManager : NSObject
 
+/**
+ 单例
+
+ @return instance
+ */
 + (instancetype)defaultManager;
 
+/**
+ 当前时间
+ */
+@property (nonatomic,assign) NSTimeInterval currentTime;
+
+/**
+ 总时间
+ */
+@property (nonatomic,assign) NSTimeInterval duration;
+
+/**
+ 播放歌曲
+
+ @param songUrl 歌曲路径
+ @param complete 当前歌曲播放完毕, 播放下一首
+ */
+- (void)playMusicWithSongUrl:(NSURL *)songUrl didComplete:(void (^)())complete;
+
+/**
+ 暂停
+ */
+- (void)pause;
 @end
