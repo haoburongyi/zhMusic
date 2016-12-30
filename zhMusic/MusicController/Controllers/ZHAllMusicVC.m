@@ -40,24 +40,21 @@
         [_tableView reloadData];
     }];
     
+    
 }
 
 
 - (void)configureTableView {
-    _tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain];
+    _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, ShuffleAllHeaderH, self.view.width, self.view.height) style:UITableViewStylePlain];
     _tableView.delegate = self;
     _tableView.dataSource = self;
     [_tableView setRowHeight:55.5];
     [_tableView setSectionHeaderHeight:HeaderHeight];
     [_tableView setSectionIndexColor:ZHRedColor];
-//    [_tableView alignmentRectInsets]
-//    _tableView.alignmentRectInsets = UIEdgeInsetsMake(ShuffleAllHeaderH, 0, 0, 0);
-    
     
 //    UIView *header = [self createHeaderWithFrame:CGRectMake(0, -ShuffleAllHeaderH, self.view.width, ShuffleAllHeaderH)];
 //    [_tableView addSubview:header];
-    
-    [_tableView setContentInset:UIEdgeInsetsMake(ShuffleAllHeaderH, 0, 0, 0)];
+//    [_tableView setContentInset:UIEdgeInsetsMake(ShuffleAllHeaderH, 0, 0, 0)];
     
     _tableView.tableFooterView = [UIView new];
     
@@ -160,6 +157,40 @@ static NSString *ZHAllMusicCellID = @"ZHAllMusicCellID";
 #pragma - mark 实现右侧索引
 - (NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView {
     return _headerArr;
+}
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    
+    CGFloat offset = scrollView.contentOffset.y + scrollView.contentInset.top;
+    //    NSLog(@"%f", offset);
+    
+    // 放大
+    if (offset <= 0) {
+        // 调整 headView
+        _headerView.y = offset == 0 ? offset : -offset;
+    } else {
+        // 整体移动
+        _headerView.y = 0;
+        
+        // headerView 最小 y 值
+//        CGFloat min = fabs(ShuffleAllHeaderH - 64.0) + 24;
+//        _headerView.y = -MIN(min, offset);
+//        NSLog(@"%f, %f, %f", _headerView.y, min, offset);
+        
+//        _tableView.y = _headerView.y + ShuffleAllHeaderH;
+        
+        
+        // 设置透明度
+        // NSLog(@"%f", offset / min);
+        // 根据输出可以知道 offset / min == 1 的不可见
+//        CGFloat progress = 1 - (offset / min);
+        
+        // 根据透明度，来修改状态栏的颜色
+//        _statusBarStyle = (progress < 0.5) ? UIStatusBarStyleDefault : UIStatusBarStyleLightContent;
+        // 主动更新状态栏
+//        [self.navigationController setNeedsStatusBarAppearanceUpdate];
+    }
+    
 }
 
 
