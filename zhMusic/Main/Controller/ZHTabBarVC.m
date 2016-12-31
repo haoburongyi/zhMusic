@@ -11,6 +11,7 @@
 #import "ZHTabBarVC+ZH_AddChildVC.h"
 #import "ZHMusicVC.h"
 #import "ZHNavigationVC.h"
+#import "ZHMiniPlayView.h"
 
 #warning 测试,以后删除
 #import <Realm.h>
@@ -27,13 +28,41 @@
     // Do any additional setup after loading the view.
     
     [self configureTabBar];
-    
+    [self configereMiniPlayView];
     [self configureChildViewControllers];
+}
+
+- (void)test {
+    [[NSNotificationCenter defaultCenter] postNotificationName:PlayMusicNoti object:PlayMusicNoti];
+    
+    UITabBarController *tabBarControler = (id)UIApplication.sharedApplication.delegate.window.rootViewController;
+    
+    [UIView animateWithDuration:0.25 animations:^{
+        
+        if (tabBarControler.tabBar.y == ZHMainScreenH) {
+            tabBarControler.tabBar.y = ZHMainScreenH - 49;
+        } else {
+            tabBarControler.tabBar.y = ZHMainScreenH;
+        }
+    }];
+    NSLog(@"%@", tabBarControler.tabBar);
+    
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, -44, ZHMainScreenW, 44)];
+    view.backgroundColor = [UIColor redColor];
+    [tabBarControler.tabBar addSubview:view];
+
 }
 
 - (void)configureTabBar {
     
     [self.tabBar setTintColor:ZHRGBColor(255, 45, 113)];
+}
+
+- (void)configereMiniPlayView {
+    ZHMiniPlayView *view = [ZHMiniPlayView defaultView];
+    view.hidden = YES;
+    [self.tabBar addSubview:view];
+    [self.tabBar sendSubviewToBack:view];
 }
 
 - (void)configureChildViewControllers {

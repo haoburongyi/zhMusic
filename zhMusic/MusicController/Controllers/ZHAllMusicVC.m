@@ -13,13 +13,15 @@
 #import "ZHAllMusicCell.h"
 #import "ZHPlayMusicListManager.h"
 #import "ZHPlayMusicManager.h"
+#import "ZHTableView.h"
+#import "ZHMiniPlayView.h"
 
 
 #define HeaderHeight 25
 #define ShuffleAllHeaderH 40
 
 @interface ZHAllMusicVC ()<UITableViewDelegate, UITableViewDataSource>
-@property (nonatomic, strong) UITableView *tableView;
+@property (nonatomic, strong) ZHTableView *tableView;
 @property (nonatomic, strong) NSDictionary *allMusic;     // 数据源
 @property (nonatomic, strong) NSArray *headerArr;    // header 数据源
 @end
@@ -42,21 +44,26 @@
         [_tableView reloadData];
     }];
     
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"presentVC" style:UIBarButtonItemStylePlain target:self action:@selector(presentVC)];
+}
+- (void)presentVC {
+    [ZHMiniPlayView defaultView].hidden = NO;
+    [UIView animateWithDuration:0.25 animations:^{
+        
+        [ZHMiniPlayView defaultView].y = -[ZHMiniPlayView defaultView].height;
+    }];
     
 }
 
 
 - (void)configureTableView {
-    _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, ShuffleAllHeaderH, self.view.width, self.view.height) style:UITableViewStylePlain];
+    
+    _tableView = [[ZHTableView alloc] initWithFrame:CGRectMake(0, ShuffleAllHeaderH, self.view.width, self.view.height) style:UITableViewStylePlain];
     _tableView.delegate = self;
     _tableView.dataSource = self;
     [_tableView setRowHeight:55.5];
     [_tableView setSectionHeaderHeight:HeaderHeight];
     [_tableView setSectionIndexColor:ZHRedColor];
-    
-//    UIView *header = [self createHeaderWithFrame:CGRectMake(0, -ShuffleAllHeaderH, self.view.width, ShuffleAllHeaderH)];
-//    [_tableView addSubview:header];
-//    [_tableView setContentInset:UIEdgeInsetsMake(ShuffleAllHeaderH, 0, 0, 0)];
     
     _tableView.tableFooterView = [UIView new];
     
@@ -101,7 +108,7 @@
     [header addGestureRecognizer:tap];
     return header;
 }
-#pragma - mark 随机播放
+#pragma mark - 随机播放
 - (void)shufflePlay:(UITapGestureRecognizer *)tap {
     NSLog(@"%s", __func__);
     [UIView animateWithDuration:0.1 animations:^{
@@ -111,7 +118,7 @@
     }];
 }
 
-#pragma - mark tableViewDataSource
+#pragma mark - tableViewDataSource
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return _headerArr.count;
 }
@@ -154,14 +161,14 @@ static NSString *ZHAllMusicCellID = @"ZHAllMusicCellID";
     return header;
 }
 
-#pragma - mark tableViewDelegate
+#pragma mark - tableViewDelegate
 
-#pragma - mark 实现右侧索引
+#pragma mark - 实现右侧索引
 - (NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView {
     return _headerArr;
 }
 
-#pragma - mark 下拉跟随
+#pragma mark - 下拉跟随
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     
     CGFloat offset = scrollView.contentOffset.y + scrollView.contentInset.top;
@@ -195,7 +202,7 @@ static NSString *ZHAllMusicCellID = @"ZHAllMusicCellID";
     }
 }
 
-#pragma - mark 播放音乐
+#pragma mark - 播放音乐
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     NSString *key = _headerArr[indexPath.section];
     NSArray *arr = _allMusic[key];
@@ -205,9 +212,7 @@ static NSString *ZHAllMusicCellID = @"ZHAllMusicCellID";
         
     }];
     
-    
 }
-
 
 - (void)dealloc {
     NSLog(@"%s", __func__);

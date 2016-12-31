@@ -10,4 +10,7 @@
 
 @interface ZHPlayVC : UIViewController
 
+@property (nonatomic, strong) NSArray *playList;
+
++ (instancetype)defaultVC;
 @end

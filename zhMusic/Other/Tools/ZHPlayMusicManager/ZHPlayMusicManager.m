@@ -32,6 +32,7 @@ static ZHPlayMusicManager *_manager;
     return _manager;
 }
 
+
 #pragma mark - 播放歌曲
 // 播放歌曲
 - (void)playMusicWithSongUrl:(NSURL *)songUrl didComplete:(void (^)())complete {

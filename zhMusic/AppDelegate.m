@@ -7,8 +7,8 @@
 //
 
 #import "AppDelegate.h"
-#import "ZHTabBarVC.h"
 #import <JPFPSStatus.h>
+#import "ZHTabBarVC.h"
 
 @interface AppDelegate ()
 
@@ -24,11 +24,18 @@
     self.window.rootViewController = [ZHTabBarVC new];
     [self.window makeKeyAndVisible];
     
+    [self addWallpaper];
+    
 #if defined(DEBUG)||defined(_DEBUG)
     [[JPFPSStatus sharedInstance] open];
 #endif
     
     return YES;
+}
+- (void)addWallpaper {
+    UIImageView *wallpaper = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"62BC0675B3DBFAE88F630BA0B82F25D8.jpg"]];
+    [self.window addSubview:wallpaper];
+    [self.window sendSubviewToBack:wallpaper];
 }
 
 
@@ -39,6 +46,7 @@
 
 
 - (void)applicationDidEnterBackground:(UIApplication *)application {
+    
     // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
 }

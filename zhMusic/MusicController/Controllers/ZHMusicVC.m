@@ -14,12 +14,13 @@
 #import "ZHMusicCell.h"
 #import "ZYYYTextView.h"
 #import "ZHAllMusicVC.h"
+#import "ZHTableView.h"
 
 
 
 @interface ZHMusicVC ()<UITableViewDelegate, UITableViewDataSource>
 @property (nonatomic, strong) ZHMusicViewModel *viewModel;
-@property (nonatomic, strong) UITableView *tableView;
+@property (nonatomic, strong) ZHTableView *tableView;
 @property (nonatomic, strong) NSMutableArray *library;
 @property (nonatomic, strong) UIView *footer;
 @property (nonatomic, strong) ZYYYTextView *textView;
@@ -104,7 +105,7 @@
 
 - (void)configurationTableView {
     
-    _tableView = [[UITableView alloc] initWithFrame:self.view.frame style:UITableViewStylePlain];
+    _tableView = [[ZHTableView alloc] initWithFrame:self.view.frame style:UITableViewStylePlain];
     
     // 自定义 header
     ZHMusicHeader *header = [[ZHMusicHeader alloc] initWithFrame:CGRectMake(0, -86, self.view.width, 86)];
@@ -144,7 +145,7 @@
     return [_tableView.subviews containsObject:self.footer];
 }
 
-#pragma - mark tableViewDataSource
+#pragma mark - tableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return _library.count;
 }
@@ -165,7 +166,7 @@ static NSString *musicCellID = @"musicCellID";
     return cell;
 }
 
-#pragma - mark tableViewDelegate
+#pragma mark - tableViewDelegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
     NSString *title = _library[indexPath.row];

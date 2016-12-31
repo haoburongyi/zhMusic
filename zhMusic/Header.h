@@ -80,5 +80,8 @@
 // 音乐种类 key
 #define MusicListKey @"MusicListKey"
 
+// 底部音乐栏出现的通知
+#define PlayMusicNoti @"PlayMusicNoti"
+
 #define Header_h
 #endif /* Header_h */

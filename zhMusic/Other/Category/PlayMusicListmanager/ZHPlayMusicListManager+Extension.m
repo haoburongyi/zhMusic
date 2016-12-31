@@ -22,6 +22,7 @@
     RLMResults *infoArr = [ZHMusicInfo allObjects];
     
     infoArr.count == itemsFromGenericQuery.count ? : [self getAllMusic:itemsFromGenericQuery];
+    
 }
 
 + (void)getAllMusic:(NSArray *)itemsFromGenericQuery {
@@ -50,6 +51,7 @@
             
             ZHMusicInfo *info = [[ZHMusicInfo alloc] init];
             info.assetURL = song.assetURL.absoluteString;
+            info.groupName = @"全部音乐";
             info.data = data;
             
             [[RLMRealm defaultRealm] transactionWithBlock:^{

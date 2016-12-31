@@ -36,7 +36,6 @@
 //    4
     for (UIView *views in self.navigationBar.subviews) {
         for (UIView *view in views.subviews) {
-            NSLog(@"%@", [view class]);
             if ([view isKindOfClass:[UIImageView class]]) {
                 view.hidden = YES;
             }

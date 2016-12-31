@@ -10,7 +10,7 @@
 #import <Realm.h>
 
 @interface ZHMusicInfo : RLMObject
-
+@property (nonatomic, copy)     NSString    *groupName;
 @property (nonatomic, copy)     NSString    *assetURL;
 @property (nonatomic, strong)   NSData      *data;
 @end

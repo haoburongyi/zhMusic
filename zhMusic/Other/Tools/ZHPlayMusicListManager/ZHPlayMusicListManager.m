@@ -25,6 +25,7 @@ static ZHPlayMusicListManager *_manager;
     return _manager;
 }
 
+
 - (void)loadAllMusicComplation:(void(^)(NSArray *header, NSDictionary *allMusic))complation {
     
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
