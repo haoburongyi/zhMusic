@@ -18,6 +18,7 @@
 #import "UIImage+Extension.h"
 
 
+
 #define HeaderHeight 25
 #define ShuffleAllHeaderH 40
 
@@ -49,7 +50,7 @@
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"presentVC" style:UIBarButtonItemStylePlain target:self action:@selector(presentVC)];
 }
 - (void)presentVC {
-    
+
 }
 
 
@@ -110,11 +111,15 @@
 #pragma mark - 随机播放
 - (void)shufflePlay:(UITapGestureRecognizer *)tap {
     NSLog(@"%s", __func__);
-    [UIView animateWithDuration:0.1 animations:^{
+    [UIView animateWithDuration:0.25 animations:^{
         tap.view.backgroundColor = ZHRGBColor(217, 217, 217);
     } completion:^(BOOL finished) {
-        tap.view.backgroundColor = ZHNavColor;
+        [UIView animateWithDuration:0.25 animations:^{
+            tap.view.backgroundColor = ZHNavColor;
+        }];
     }];
+    
+    
 }
 
 #pragma mark - tableViewDataSource
@@ -132,6 +137,7 @@ static NSString *ZHAllMusicCellID = @"ZHAllMusicCellID";
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     ZHAllMusicCell *cell = [ZHAllMusicCell allMusicCellWithTableView:tableView identifier:ZHAllMusicCellID indexPath:indexPath rowHeight:tableView.rowHeight];
+    
     
     NSString *key = _headerArr[indexPath.section];
     NSArray *arr = _allMusic[key];
@@ -202,6 +208,16 @@ static NSString *ZHAllMusicCellID = @"ZHAllMusicCellID";
 
 #pragma mark - 播放音乐
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    UIColor *color = cell.backgroundColor;
+    [UIView animateWithDuration:0.25 animations:^{
+        cell.backgroundColor = ZHRGBColor(217, 217, 217);
+    } completion:^(BOOL finished) {
+        [UIView animateWithDuration:0.25 animations:^{
+            cell.backgroundColor = color;
+        }];
+    }];
+    
     NSString *key = _headerArr[indexPath.section];
     NSArray *arr = _allMusic[key];
     MPMediaItem *song = arr[indexPath.row];

@@ -28,7 +28,7 @@
     // Do any additional setup after loading the view.
     
     [self configureTabBar];
-    [self configereMiniPlayView];
+    
     [self configureChildViewControllers];
 }
 
@@ -60,10 +60,6 @@
     
 }
 
-- (void)configereMiniPlayView {
-    ZHMiniPlayView *view = [ZHMiniPlayView defaultView];
-    [self.tabBar addSubview:view];
-}
 
 - (void)configureChildViewControllers {
     // 音乐

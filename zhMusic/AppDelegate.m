@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import <JPFPSStatus.h>
 #import "ZHTabBarVC.h"
+#import "ZHMiniPlayView.h"
 
 @interface AppDelegate ()
 
@@ -25,6 +26,7 @@
     [self.window makeKeyAndVisible];
     
     [self addWallpaper];
+    [self addMiniPlay];
     
 #if defined(DEBUG)||defined(_DEBUG)
     [[JPFPSStatus sharedInstance] open];
@@ -36,6 +38,10 @@
     UIImageView *wallpaper = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"62BC0675B3DBFAE88F630BA0B82F25D8.jpg"]];
     [self.window addSubview:wallpaper];
     [self.window sendSubviewToBack:wallpaper];
+}
+- (void)addMiniPlay {
+    ZHMiniPlayView *view = [ZHMiniPlayView defaultView];
+    [self.window addSubview:view];
 }
 
 

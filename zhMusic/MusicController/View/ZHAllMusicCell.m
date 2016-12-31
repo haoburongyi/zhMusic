@@ -10,6 +10,7 @@
 #import "Header.h"
 #import "UIImage+Extension.h"
 
+
 @interface ZHAllMusicCell ()
 @property (nonatomic, strong) UIImageView *artworkImg;  // 专辑图
 @end
@@ -30,10 +31,14 @@
     if (!cell) {
         cell = [[ZHAllMusicCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
         [cell createUIWithRowHeight:rowHeight];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
     
     return cell;
 }
+
+
+
 - (void)createUIWithRowHeight:(CGFloat)rowHeight {
     
     CGFloat topMargin = 4;

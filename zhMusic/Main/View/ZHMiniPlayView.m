@@ -23,8 +23,8 @@ static ZHMiniPlayView *_defaultView;
 + (instancetype)defaultView {
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-
-        _defaultView = [[self alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 63.5)];
+        UITabBarController *tabBarControler = (id)UIApplication.sharedApplication.delegate.window.rootViewController;
+        _defaultView = [[self alloc] initWithFrame:CGRectMake(0, ZHMainScreenH - tabBarControler.tabBar.height, [UIScreen mainScreen].bounds.size.width, 63.5)];
         [_defaultView createUI];
         _defaultView.clipsToBounds = YES;
         _defaultView.height = 0;
@@ -39,8 +39,9 @@ static ZHMiniPlayView *_defaultView;
         [[NSNotificationCenter defaultCenter] postNotificationName:PlayMusicNoti object:PlayMusicNoti];
 
         CGFloat height = 63.5;
+        UITabBarController *tabBarControler = (id)UIApplication.sharedApplication.delegate.window.rootViewController;
         [UIView animateWithDuration:0.25 animations:^{
-            self.y -= height;
+            self.y = ZHMainScreenH - height - tabBarControler.tabBar.height;
             self.height += height;
         }];
     });
@@ -53,12 +54,21 @@ static ZHMiniPlayView *_defaultView;
     self.artworkImageView.image = img;
 }
 
+- (void)showPlayVC {
+    NSLog(@"showPlayVC");
+}
 
 - (void)createUI {
+    
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showPlayVC)];
+    [self addGestureRecognizer:tap];
 
+    UIView *bgView = [[UIView alloc] initWithFrame:self.bounds];
+    [self addSubview:bgView];
+    
     UIVisualEffectView *effectView = [[UIVisualEffectView alloc] initWithEffect:[UIBlurEffect effectWithStyle:UIBlurEffectStyleLight]];
-    effectView.frame = self.frame;
-    [self addSubview:effectView];
+    effectView.frame = self.bounds;
+    [bgView addSubview:effectView];
     
     [self setBackgroundColor:[[UIColor lightGrayColor] colorWithAlphaComponent:0.2f]];
     
