@@ -56,6 +56,7 @@
 - (void)configureTabBar {
     
     [self.tabBar setTintColor:ZHRGBColor(255, 45, 113)];
+    self.tabBar.barTintColor = [UIColor whiteColor];
 }
 
 - (void)configereMiniPlayView {

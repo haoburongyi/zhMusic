@@ -8,6 +8,7 @@
 
 #import "ZHTableView.h"
 #import "Header.h"
+#import "ZHMiniPlayView.h"
 
 @implementation ZHTableView
 
@@ -34,8 +35,7 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeBottomInset) name:PlayMusicNoti object:PlayMusicNoti];
 }
 - (void)changeBottomInset {
-#warning 49 改为全局的 bottom 的高
-    self.contentInset = UIEdgeInsetsMake(self.contentInset.top, self.contentInset.left, self.contentInset.bottom + 49, self.contentInset.right);
+    self.contentInset = UIEdgeInsetsMake(self.contentInset.top, self.contentInset.left, self.contentInset.bottom + [ZHMiniPlayView defaultView].height, self.contentInset.right);
 }
 - (void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self name:PlayMusicNoti object:PlayMusicNoti];

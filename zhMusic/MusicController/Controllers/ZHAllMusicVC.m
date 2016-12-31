@@ -33,6 +33,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
     self.view.backgroundColor = [UIColor whiteColor];
     self.title = @"歌曲";
     
@@ -48,9 +49,10 @@
 }
 - (void)presentVC {
     [ZHMiniPlayView defaultView].hidden = NO;
+    [ZHMiniPlayView defaultView].height = 0;
     [UIView animateWithDuration:0.25 animations:^{
-        
-        [ZHMiniPlayView defaultView].y = -[ZHMiniPlayView defaultView].height;
+        [ZHMiniPlayView defaultView].height = 63.5;
+        [ZHMiniPlayView defaultView].y = -63.5;
     }];
     
 }
@@ -58,7 +60,9 @@
 
 - (void)configureTableView {
     
-    _tableView = [[ZHTableView alloc] initWithFrame:CGRectMake(0, ShuffleAllHeaderH, self.view.width, self.view.height) style:UITableViewStylePlain];
+    [self prepareHeaderView];
+    
+    _tableView = [[ZHTableView alloc] initWithFrame:CGRectMake(0, ShuffleAllHeaderH, self.view.width, self.view.height - ShuffleAllHeaderH - 64) style:UITableViewStylePlain];
     _tableView.delegate = self;
     _tableView.dataSource = self;
     [_tableView setRowHeight:55.5];
@@ -68,8 +72,8 @@
     _tableView.tableFooterView = [UIView new];
     
     [self.view addSubview:_tableView];
+    [self.view bringSubviewToFront:_headerView];
     
-    [self prepareHeaderView];
 }
 
 - (void)prepareHeaderView {

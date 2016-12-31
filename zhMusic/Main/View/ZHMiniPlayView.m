@@ -29,7 +29,7 @@ static ZHMiniPlayView *_defaultView;
     effectView.frame = self.frame;
     [self addSubview:effectView];
     
-    [self setBackgroundColor:[[UIColor whiteColor] colorWithAlphaComponent:0.4f]];
+    [self setBackgroundColor:[[UIColor lightGrayColor] colorWithAlphaComponent:0.2f]];
     
     
     CGFloat topMargin = 8;
