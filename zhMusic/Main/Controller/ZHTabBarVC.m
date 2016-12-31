@@ -32,27 +32,6 @@
     [self configureChildViewControllers];
 }
 
-- (void)test {
-    [[NSNotificationCenter defaultCenter] postNotificationName:PlayMusicNoti object:PlayMusicNoti];
-    
-    UITabBarController *tabBarControler = (id)UIApplication.sharedApplication.delegate.window.rootViewController;
-    
-    [UIView animateWithDuration:0.25 animations:^{
-        
-        if (tabBarControler.tabBar.y == ZHMainScreenH) {
-            tabBarControler.tabBar.y = ZHMainScreenH - 49;
-        } else {
-            tabBarControler.tabBar.y = ZHMainScreenH;
-        }
-    }];
-    NSLog(@"%@", tabBarControler.tabBar);
-    
-    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, -44, ZHMainScreenW, 44)];
-    view.backgroundColor = [UIColor redColor];
-    [tabBarControler.tabBar addSubview:view];
-
-}
-
 - (void)configureTabBar {
     
     [self.tabBar setTintColor:ZHRGBColor(255, 45, 113)];

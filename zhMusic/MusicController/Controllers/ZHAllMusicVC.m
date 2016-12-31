@@ -137,7 +137,7 @@ static NSString *ZHAllMusicCellID = @"ZHAllMusicCellID";
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     ZHAllMusicCell *cell = [ZHAllMusicCell allMusicCellWithTableView:tableView identifier:ZHAllMusicCellID indexPath:indexPath rowHeight:tableView.rowHeight];
-    
+    [[ZHMiniPlayView defaultView] setPuserBtnSelect];
     
     NSString *key = _headerArr[indexPath.section];
     NSArray *arr = _allMusic[key];

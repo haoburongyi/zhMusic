@@ -58,9 +58,11 @@ static ZHPlayMusicManager *_manager;
         [self.player prepareToPlay];
     }
     
-    
     // 播放
     [self.player play];
+}
+- (void)play {
+    !_songUrl ? : NSLog(@"%d", [self.player play]);
 }
 
 - (void)audioPlayerDidFinishPlaying:(AVAudioPlayer *)player successfully:(BOOL)flag {

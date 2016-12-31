@@ -32,13 +32,13 @@
 }
 
 - (void)addNoti {
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeBottomInset) name:PlayMusicNoti object:PlayMusicNoti];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeBottomInset) name:PlayMusicNoti object:nil];
 }
 - (void)changeBottomInset {
     self.contentInset = UIEdgeInsetsMake(self.contentInset.top, self.contentInset.left, self.contentInset.bottom + [ZHMiniPlayView defaultView].height, self.contentInset.right);
 }
 - (void)dealloc {
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:PlayMusicNoti object:PlayMusicNoti];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:PlayMusicNoti object:nil];
 }
 
 /*

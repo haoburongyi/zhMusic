@@ -37,6 +37,11 @@
 - (void)playMusicWithSongUrl:(NSURL *)songUrl didComplete:(void (^)())complete;
 
 /**
+ 暂停后播放歌曲
+ */
+- (void)play;
+
+/**
  暂停
  */
 - (void)pause;

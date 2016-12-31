@@ -13,4 +13,5 @@
 
 + (instancetype)defaultView;
 - (void)showWithItem:(MPMediaItem *)item;
+- (void)setPuserBtnSelect;
 @end

@@ -8,12 +8,16 @@
 
 #import "ZHMiniPlayView.h"
 #import "Header.h"
+#import "ZHPlayVC.h"
+#import "ZHPlayMusicManager.h"
+#import "ZHButton.h"
+
 
 @interface ZHMiniPlayView ()
 @property (nonatomic, strong) UIImageView *artworkImageView;
 @property (nonatomic, strong) UILabel *title;
-@property (nonatomic, strong) UIButton *pause;
-@property (nonatomic, strong) UIButton *next;
+@property (nonatomic, strong) ZHButton *pause;
+@property (nonatomic, strong) ZHButton *next;
 
 @end
 
@@ -34,17 +38,7 @@ static ZHMiniPlayView *_defaultView;
 
 
 - (void)showWithItem:(MPMediaItem *)item {
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        [[NSNotificationCenter defaultCenter] postNotificationName:PlayMusicNoti object:PlayMusicNoti];
-
-        CGFloat height = 63.5;
-        UITabBarController *tabBarControler = (id)UIApplication.sharedApplication.delegate.window.rootViewController;
-        [UIView animateWithDuration:0.25 animations:^{
-            self.y = ZHMainScreenH - height - tabBarControler.tabBar.height;
-            self.height += height;
-        }];
-    });
+    [self _show];
  
     self.title.text = [item valueForProperty:MPMediaItemPropertyTitle];
     
@@ -54,8 +48,44 @@ static ZHMiniPlayView *_defaultView;
     self.artworkImageView.image = img;
 }
 
+- (void)_show {
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        CGFloat height = 63.5;
+        UITabBarController *tabBarControler = (id)UIApplication.sharedApplication.delegate.window.rootViewController;
+        [UIView animateWithDuration:0.25 animations:^{
+            self.y = ZHMainScreenH - height - tabBarControler.tabBar.height;
+            self.height += height;
+        }];
+        [[NSNotificationCenter defaultCenter] postNotificationName:PlayMusicNoti object:nil];
+    });
+}
+
 - (void)showPlayVC {
-    NSLog(@"showPlayVC");
+    
+    
+    UITabBarController *tabBarControler = (id)UIApplication.sharedApplication.delegate.window.rootViewController;
+    
+    UINavigationController *nav = tabBarControler.selectedViewController;
+    UIViewController *vc = [nav.viewControllers firstObject];
+    
+    ZHPlayVC *playVC = [ZHPlayVC defaultVC];
+    
+    if (playVC.isViewLoaded && !playVC.view.window) {// 是否是正在使用的视图
+        NSLog(@"showPlayVC");
+        [vc presentViewController:playVC animated:YES completion:nil];
+    }
+
+    
+}
+
+- (void)pauseMusic:(UIButton *)sender {
+    sender.selected = !sender.selected;
+    if (sender.selected) {
+        [[ZHPlayMusicManager defaultManager] pause];
+    } else {
+        [[ZHPlayMusicManager defaultManager] play];
+    }
 }
 
 - (void)createUI {
@@ -81,17 +111,26 @@ static ZHMiniPlayView *_defaultView;
     _artworkImageView.layer.masksToBounds = YES;
     [self addSubview:_artworkImageView];
     
-    _next = [[UIButton alloc] init];
+    _next = [[ZHButton alloc] init];
     [_next setImage:[UIImage imageNamed:@"MiniPlayer-Transport-Next_26x16_"] forState:UIControlStateNormal];
-    [_next sizeToFit];
-    _next.origin = CGPointMake(self.width - _next.width - 20, self.height * 0.5 - _next.height * 0.5);
+    _next.tintColor = ZHRGBColor(77, 77, 77);
+//    [_next sizeToFit];
+    _next.height = self.height;
+    _next.width = self.height;
+//    _next.width += 20;
+    _next.origin = CGPointMake(self.width - _next.width, 0);
     [self addSubview:_next];
     
-    _pause = [[UIButton alloc] init];
+    _pause = [[ZHButton alloc] init];
     [_pause setImage:[UIImage imageNamed:@"MiniPlayer-Transport-Pause_19x19_"] forState:UIControlStateNormal];
     [_pause setImage:[UIImage imageNamed:@"MiniPlayer-Transport-Play_19x19_"] forState:UIControlStateSelected];
-    [_pause sizeToFit];
-    _pause.origin = CGPointMake(_next.x - _pause.width - 23, self.height * 0.5 - _pause.height * 0.5);
+    _pause.tintColor = ZHRGBColor(77, 77, 77);
+    _pause.height = self.height;
+    _pause.width = self.height;
+//    _pause.width = _pause.width * 2 + 23;
+    _pause.origin = CGPointMake(_next.x - _pause.width, 0);
+    [_pause addTarget:self action:@selector(pauseMusic:) forControlEvents:UIControlEventTouchUpInside];
+    
     [self addSubview:_pause];
     
     _title = [[UILabel alloc] init];
@@ -105,6 +144,10 @@ static ZHMiniPlayView *_defaultView;
     _title.frame = CGRectMake(imgMaxX + 10, self.height * 0.5 - size.height * 0.5, pauseMinX - 10 - imgMaxX - 10, size.height);
     [self addSubview:_title];
     
+}
+
+- (void)setPuserBtnSelect {
+    _pause.selected = NO;
 }
 
 /*

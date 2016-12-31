@@ -25,6 +25,7 @@
 		612FC33E1E0A9E340006CF5D /* ZHMusicHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 612FC33D1E0A9E340006CF5D /* ZHMusicHeader.m */; };
 		612FC3421E0AA1310006CF5D /* UIView+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 612FC3411E0AA1310006CF5D /* UIView+Extension.m */; };
 		612FC3451E0AAD070006CF5D /* ZHMusicCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 612FC3441E0AAD070006CF5D /* ZHMusicCell.m */; };
+		6137B03F1E181F71008BBAA3 /* ZHButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 6137B03E1E181F71008BBAA3 /* ZHButton.m */; };
 		613914731E0A575B005350A8 /* ZHTabBarVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 613914721E0A575B005350A8 /* ZHTabBarVC.m */; };
 		6139147A1E0A57FF005350A8 /* ZHMusicVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 613914791E0A57FF005350A8 /* ZHMusicVC.m */; };
 		6139147D1E0A5B3D005350A8 /* ZHMusicViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 6139147C1E0A5B3D005350A8 /* ZHMusicViewModel.m */; };
@@ -96,6 +97,8 @@
 		612FC3411E0AA1310006CF5D /* UIView+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Extension.m"; sourceTree = "<group>"; };
 		612FC3431E0AAD070006CF5D /* ZHMusicCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHMusicCell.h; sourceTree = "<group>"; };
 		612FC3441E0AAD070006CF5D /* ZHMusicCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHMusicCell.m; sourceTree = "<group>"; };
+		6137B03D1E181F71008BBAA3 /* ZHButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHButton.h; sourceTree = "<group>"; };
+		6137B03E1E181F71008BBAA3 /* ZHButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHButton.m; sourceTree = "<group>"; };
 		613914711E0A575B005350A8 /* ZHTabBarVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHTabBarVC.h; sourceTree = "<group>"; };
 		613914721E0A575B005350A8 /* ZHTabBarVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHTabBarVC.m; sourceTree = "<group>"; };
 		613914781E0A57FF005350A8 /* ZHMusicVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHMusicVC.h; sourceTree = "<group>"; };
@@ -288,6 +291,15 @@
 			path = UIView;
 			sourceTree = "<group>";
 		};
+		6137B03C1E181F71008BBAA3 /* ZHButton */ = {
+			isa = PBXGroup;
+			children = (
+				6137B03D1E181F71008BBAA3 /* ZHButton.h */,
+				6137B03E1E181F71008BBAA3 /* ZHButton.m */,
+			);
+			path = ZHButton;
+			sourceTree = "<group>";
+		};
 		6139147E1E0A5C34005350A8 /* Other */ = {
 			isa = PBXGroup;
 			children = (
@@ -359,6 +371,7 @@
 		614283851E0E746800B2CAB7 /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				6137B03C1E181F71008BBAA3 /* ZHButton */,
 				61F00FD71E16122A00C6DE1C /* ZHPlayVC */,
 				61D939531E151A2500B2F849 /* ZHPlayMusicListManager */,
 				6114C2C61E13715600F49642 /* ZHPlayMusicManager */,
@@ -549,6 +562,7 @@
 					61242E201E07BF6000D6358F = {
 						CreatedOnToolsVersion = 8.2;
 						DevelopmentTeam = TWTWA4ED9L;
+						LastSwiftMigration = 0820;
 						ProvisioningStyle = Automatic;
 					};
 					61242E391E07BF6000D6358F = {
@@ -779,6 +793,7 @@
 				614182861E179BD600D376BD /* ZHTableView.m in Sources */,
 				614283891E0E75FC00B2CAB7 /* ZYYYTextView.m in Sources */,
 				61242E261E07BF6000D6358F /* main.m in Sources */,
+				6137B03F1E181F71008BBAA3 /* ZHButton.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -918,11 +933,15 @@
 			baseConfigurationReference = 59D3DF30E96F9BC64633EAAE /* Pods-zhMusic.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = TWTWA4ED9L;
 				INFOPLIST_FILE = zhMusic/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.zhanghao.zhMusic;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "zhMusic/Other/Tools/ZHButton/zhMusic-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -931,11 +950,14 @@
 			baseConfigurationReference = DA014780D56862B49943044B /* Pods-zhMusic.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = TWTWA4ED9L;
 				INFOPLIST_FILE = zhMusic/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.zhanghao.zhMusic;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "zhMusic/Other/Tools/ZHButton/zhMusic-Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};

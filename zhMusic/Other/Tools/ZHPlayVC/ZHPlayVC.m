@@ -9,6 +9,8 @@
 #import "ZHPlayVC.h"
 #import "ZHAllMusicCell.h"
 #import "UIImage+Extension.h"
+#import "Header.h"
+#import "ZHMiniPlayView.h"
 
 #define cellH 55.5
 
@@ -24,6 +26,7 @@ static ZHPlayVC *_defaultVC;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         _defaultVC = [[ZHPlayVC alloc] init];
+        _defaultVC.modalPresentationStyle = UIModalPresentationOverCurrentContext;
         [_defaultVC configureTableView];
     });
     return _defaultVC;
@@ -46,9 +49,32 @@ static ZHPlayVC *_defaultVC;
     return _zeroCell;
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    UITabBarController *tabBarControler = (id)UIApplication.sharedApplication.delegate.window.rootViewController;
+
+    [UIView animateWithDuration:0.25 animations:^{
+        
+        tabBarControler.tabBar.y = ZHMainScreenH;
+    }];
+}
+- (void)viewWillDisappear:(BOOL)animated {
+    UITabBarController *tabBarControler = (id)UIApplication.sharedApplication.delegate.window.rootViewController;
+    
+    [UIView animateWithDuration:0.25 animations:^{
+        
+        tabBarControler.tabBar.y = ZHMainScreenH - tabBarControler.tabBar.height;
+    }];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.view.backgroundColor = [UIColor redColor];
+    
     // Do any additional setup after loading the view.
+}
+
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 #pragma mark - tableViewDataSource
