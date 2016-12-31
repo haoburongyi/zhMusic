@@ -50,10 +50,6 @@
 }
 - (void)presentVC {
     
-    [UIView animateWithDuration:0.25 animations:^{
-        [[ZHMiniPlayView defaultView] showWithItem:nil];
-    }];
-    
 }
 
 
@@ -210,6 +206,7 @@ static NSString *ZHAllMusicCellID = @"ZHAllMusicCellID";
     NSArray *arr = _allMusic[key];
     MPMediaItem *song = arr[indexPath.row];
     
+    [[ZHMiniPlayView defaultView] showWithItem:song];
     [[ZHPlayMusicManager defaultManager] playMusicWithSongUrl:[song valueForProperty:MPMediaItemPropertyAssetURL] didComplete:^{
         
     }];

@@ -8,7 +8,6 @@
 
 #import "ZHMiniPlayView.h"
 #import "Header.h"
-#import "UIImage+Extension.h"
 
 @interface ZHMiniPlayView ()
 @property (nonatomic, strong) UIImageView *artworkImageView;
@@ -46,9 +45,12 @@ static ZHMiniPlayView *_defaultView;
         }];
     });
  
-    self.title = [item valueForProperty:MPMediaItemPropertyTitle];
+    self.title.text = [item valueForProperty:MPMediaItemPropertyTitle];
     
-    self.artworkImageView.image = [UIImage defaultImageWithSongItem:item size:self.artworkImageView.bounds.size];
+    MPMediaItemArtwork *artwork = [item valueForProperty:MPMediaItemPropertyArtwork];
+    UIImage *img = [artwork imageWithSize:self.artworkImageView.size];
+    
+    self.artworkImageView.image = img;
 }
 
 
