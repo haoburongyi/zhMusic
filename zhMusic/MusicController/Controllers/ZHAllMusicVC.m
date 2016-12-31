@@ -48,11 +48,9 @@
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"presentVC" style:UIBarButtonItemStylePlain target:self action:@selector(presentVC)];
 }
 - (void)presentVC {
-    [ZHMiniPlayView defaultView].hidden = NO;
-    [ZHMiniPlayView defaultView].height = 0;
+    
     [UIView animateWithDuration:0.25 animations:^{
-        [ZHMiniPlayView defaultView].height = 63.5;
-        [ZHMiniPlayView defaultView].y = -63.5;
+        [[ZHMiniPlayView defaultView] showWith];
     }];
     
 }

@@ -9,18 +9,39 @@
 #import "ZHMiniPlayView.h"
 #import "Header.h"
 
+@interface ZHMiniPlayView ()
+@property (nonatomic, strong) dispatch_source_t timer;
+
+@end
+
 @implementation ZHMiniPlayView
 
 static ZHMiniPlayView *_defaultView;
 + (instancetype)defaultView {
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
+
         _defaultView = [[self alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 63.5)];
         [_defaultView createUI];
+        _defaultView.clipsToBounds = YES;
+        _defaultView.height = 0;
     });
     return _defaultView;
 }
 
+
+- (void)showWith {
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        [[NSNotificationCenter defaultCenter] postNotificationName:PlayMusicNoti object:PlayMusicNoti];
+
+        CGFloat height = 63.5;
+        [UIView animateWithDuration:0.25 animations:^{
+            self.y -= height;
+            self.height += height;
+        }];
+    });
+}
 
 
 - (void)createUI {

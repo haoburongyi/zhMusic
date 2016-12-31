@@ -57,13 +57,12 @@
     
     [self.tabBar setTintColor:ZHRGBColor(255, 45, 113)];
     self.tabBar.barTintColor = [UIColor whiteColor];
+    
 }
 
 - (void)configereMiniPlayView {
     ZHMiniPlayView *view = [ZHMiniPlayView defaultView];
-    view.hidden = YES;
     [self.tabBar addSubview:view];
-    [self.tabBar sendSubviewToBack:view];
 }
 
 - (void)configureChildViewControllers {

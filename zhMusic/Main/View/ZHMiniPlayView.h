@@ -16,4 +16,5 @@
 @property (nonatomic, strong) UIButton *next;
 
 + (instancetype)defaultView;
+- (void)showWith;
 @end
