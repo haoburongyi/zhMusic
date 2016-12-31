@@ -8,9 +8,13 @@
 
 #import "ZHMiniPlayView.h"
 #import "Header.h"
+#import "UIImage+Extension.h"
 
 @interface ZHMiniPlayView ()
-@property (nonatomic, strong) dispatch_source_t timer;
+@property (nonatomic, strong) UIImageView *artworkImageView;
+@property (nonatomic, strong) UILabel *title;
+@property (nonatomic, strong) UIButton *pause;
+@property (nonatomic, strong) UIButton *next;
 
 @end
 
@@ -30,7 +34,7 @@ static ZHMiniPlayView *_defaultView;
 }
 
 
-- (void)showWith {
+- (void)showWithItem:(MPMediaItem *)item {
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         [[NSNotificationCenter defaultCenter] postNotificationName:PlayMusicNoti object:PlayMusicNoti];
@@ -41,6 +45,10 @@ static ZHMiniPlayView *_defaultView;
             self.height += height;
         }];
     });
+ 
+    self.title = [item valueForProperty:MPMediaItemPropertyTitle];
+    
+    self.artworkImageView.image = [UIImage defaultImageWithSongItem:item size:self.artworkImageView.bounds.size];
 }
 
 

@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <MediaPlayer/MediaPlayer.h>
 
 @interface UIImage (Extension)
 
@@ -28,4 +29,6 @@
  @param completion 回调 image
  */
 - (void)zh_cornerImageWithSize:(CGSize)size cornerRadius:(CGFloat)cornerRadius fillColor:(UIColor *)fillColor completion:(void (^)(UIImage *image))completion;
+
++ (UIImage *)defaultImageWithSongItem:(MPMediaItem *)item size:(CGSize)size;
 @end

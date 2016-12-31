@@ -73,4 +73,9 @@
     });
 }
 
+
++ (UIImage *)defaultImageWithSongItem:(MPMediaItem *)item size:(CGSize)size {    MPMediaItemArtwork *artwork = [item valueForProperty:MPMediaItemPropertyArtwork];
+    UIImage *img = [artwork imageWithSize:size];
+    return img ? img : [UIImage imageNamed:@"MissingArtworkMusicNote"];
+}
 @end

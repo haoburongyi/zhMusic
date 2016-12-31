@@ -7,14 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <MediaPlayer/MediaPlayer.h>
 
 @interface ZHMiniPlayView : UIView
 
-@property (nonatomic, strong) UIImageView *artworkImageView;
-@property (nonatomic, strong) UILabel *title;
-@property (nonatomic, strong) UIButton *pause;
-@property (nonatomic, strong) UIButton *next;
-
 + (instancetype)defaultView;
-- (void)showWith;
+- (void)showWithItem:(MPMediaItem *)item;
 @end

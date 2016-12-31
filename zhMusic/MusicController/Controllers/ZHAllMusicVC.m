@@ -15,6 +15,7 @@
 #import "ZHPlayMusicManager.h"
 #import "ZHTableView.h"
 #import "ZHMiniPlayView.h"
+#import "UIImage+Extension.h"
 
 
 #define HeaderHeight 25
@@ -50,7 +51,7 @@
 - (void)presentVC {
     
     [UIView animateWithDuration:0.25 animations:^{
-        [[ZHMiniPlayView defaultView] showWith];
+        [[ZHMiniPlayView defaultView] showWithItem:nil];
     }];
     
 }
@@ -140,9 +141,8 @@ static NSString *ZHAllMusicCellID = @"ZHAllMusicCellID";
     NSArray *arr = _allMusic[key];
     
     MPMediaItem *song = arr[indexPath.row];
-    MPMediaItemArtwork *artwork = [song valueForProperty:MPMediaItemPropertyArtwork];
-    UIImage *img = [artwork imageWithSize:CGSizeMake(48, 48)];
-    cell.image = img ? img : [UIImage imageNamed:@"MissingArtworkMusicNote"];
+    
+    cell.image = [UIImage defaultImageWithSongItem:song size:CGSizeMake(48, 48)];
     cell.songNameLbl.text = [song valueForProperty: MPMediaItemPropertyTitle];
     cell.singerLbl.text = [song valueForProperty:MPMediaItemPropertyArtist];
     

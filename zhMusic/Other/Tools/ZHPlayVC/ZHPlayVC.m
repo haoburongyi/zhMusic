@@ -8,7 +8,7 @@
 
 #import "ZHPlayVC.h"
 #import "ZHAllMusicCell.h"
-
+#import "UIImage+Extension.h"
 
 #define cellH 55.5
 
