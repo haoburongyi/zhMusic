@@ -32,7 +32,7 @@ static ZHPlayMusicManager *_manager;
         });
     return _manager;
 }
-//处理中断事件
+// 处理中断事件
 - (void)handleInterreption:(NSNotification *)sender
 {
     if(self.player.isPlaying) {
