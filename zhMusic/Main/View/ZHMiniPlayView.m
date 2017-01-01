@@ -12,6 +12,20 @@
 #import "ZHPlayMusicManager.h"
 #import "ZHButton.h"
 
+typedef NS_ENUM(NSInteger, CameraMoveDirection) {
+    
+    kCameraMoveDirectionNone,
+    
+    kCameraMoveDirectionUp,
+    
+    kCameraMoveDirectionDown,
+    
+    kCameraMoveDirectionRight,
+    
+    kCameraMoveDirectionLeft
+    
+};
+
 
 @interface ZHMiniPlayView ()
 @property (nonatomic, strong) UIImageView *artworkImageView;
@@ -21,7 +35,9 @@
 
 @end
 
-@implementation ZHMiniPlayView
+@implementation ZHMiniPlayView {
+    CameraMoveDirection direction;
+}
 
 static ZHMiniPlayView *_defaultView;
 + (instancetype)defaultView {
@@ -63,16 +79,14 @@ static ZHMiniPlayView *_defaultView;
     UITabBarController *tabBarControler = (id)UIApplication.sharedApplication.delegate.window.rootViewController;
     
     UINavigationController *nav = tabBarControler.selectedViewController;
-    UIViewController *vc = [nav.viewControllers firstObject];
+    UIViewController *vc = [nav.viewControllers lastObject];
+    
     
     ZHPlayVC *playVC = [ZHPlayVC defaultVC];
     
     if (playVC.isViewLoaded && !playVC.view.window) {// 是否是正在使用的视图
-        NSLog(@"showPlayVC");
         [vc presentViewController:playVC animated:YES completion:nil];
     }
-
-    [[UIApplication sharedApplication].keyWindow sendSubviewToBack:self];
 }
 
 - (void)pauseMusic:(UIButton *)sender {
@@ -84,10 +98,18 @@ static ZHMiniPlayView *_defaultView;
     }
 }
 
+
+- (void)setPuserBtnSelect {
+    _pause.selected = NO;
+}
+
 - (void)createUI {
     
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showPlayVC)];
     [self addGestureRecognizer:tap];
+    
+    UIPanGestureRecognizer *pan = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePan:)];
+    [self addGestureRecognizer:pan];
 
     UIView *bgView = [[UIView alloc] initWithFrame:self.bounds];
     [self addSubview:bgView];
@@ -140,9 +162,103 @@ static ZHMiniPlayView *_defaultView;
     
 }
 
-- (void)setPuserBtnSelect {
-    _pause.selected = NO;
+
+- (void)handlePan:(UIPanGestureRecognizer *)gesture
+{
+    CGPoint translation = [gesture translationInView: self];
+    
+    if (gesture.state == UIGestureRecognizerStateBegan) {
+
+        direction = kCameraMoveDirectionNone;
+    } else if (gesture.state == UIGestureRecognizerStateEnded && direction == kCameraMoveDirectionNone) {
+
+        direction = [self determineCameraDirectionIfNeeded:translation];
+        
+        // ok, now initiate movement in the direction indicated by the user's gesture
+        switch (direction) {
+                
+            case kCameraMoveDirectionUp:
+                NSLog (@ "Start moving up" );
+                [self showPlayVC];
+                
+                break;
+                
+            case kCameraMoveDirectionDown:
+                NSLog (@ "Start moving down" );
+                break;
+            case kCameraMoveDirectionRight:
+                NSLog (@ "Start moving right" );
+                break;
+            case kCameraMoveDirectionLeft:
+                NSLog (@ "Start moving left" );
+                break;
+            default :
+
+                break;
+        }
+    } else if (gesture.state == UIGestureRecognizerStateEnded ) {
+        // now tell the camera to stop
+        NSLog (@ "Stop" );
+    }
 }
+
+
+- (CameraMoveDirection)determineCameraDirectionIfNeeded:(CGPoint)translation {
+    if (direction != kCameraMoveDirectionNone) return direction;
+    
+    CGFloat gestureMinimumTranslation = 40;
+    
+    
+    // determine if horizontal swipe only if you meet some minimum velocity
+    if (fabs(translation.x) > gestureMinimumTranslation) {
+        
+        BOOL gestureHorizontal = NO;
+        
+        if (translation.y == 0.0) {
+            
+            gestureHorizontal = YES;
+        } else {
+            
+            gestureHorizontal = (fabs(translation.x / translation.y) > 5.0 );
+        }
+        
+        if (gestureHorizontal) {
+            
+            if (translation.x > 0.0 ) {
+                
+                return kCameraMoveDirectionRight;
+            } else {
+                
+                return kCameraMoveDirectionLeft;
+            }
+        }
+    } else if (fabs(translation.y) > gestureMinimumTranslation) {// determine if vertical swipe only if you meet some minimum velocity
+        
+        BOOL gestureVertical = NO;
+        
+        if (translation.x == 0.0) {
+            
+            gestureVertical = YES;
+        } else {
+            
+            gestureVertical = (fabs(translation.y / translation.x) > 5.0 );
+        }
+        
+        if (gestureVertical) {
+            
+            if (translation.y > 0.0 ) {
+                
+                return kCameraMoveDirectionDown;
+            } else {
+                
+                return kCameraMoveDirectionUp;
+            }
+        }
+    }
+    
+    return direction;
+}
+
 
 /*
 // Only override drawRect: if you perform custom drawing.

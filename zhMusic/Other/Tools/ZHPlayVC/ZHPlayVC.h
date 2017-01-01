@@ -7,10 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <MediaPlayer/MediaPlayer.h>
 
 @interface ZHPlayVC : UIViewController
 
-@property (nonatomic, strong) NSArray *playList;
+@property (nonatomic, strong) NSArray<MPMediaItem *> *playList;
 
+- (void)setPlayList:(NSArray<MPMediaItem *> *)playList;
 + (instancetype)defaultVC;
 @end

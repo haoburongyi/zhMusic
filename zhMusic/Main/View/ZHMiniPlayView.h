@@ -11,6 +11,7 @@
 
 @interface ZHMiniPlayView : UIView
 
+
 + (instancetype)defaultView;
 - (void)showWithItem:(MPMediaItem *)item;
 - (void)setPuserBtnSelect;

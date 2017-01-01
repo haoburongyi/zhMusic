@@ -11,6 +11,7 @@
 @interface ZHAllMusicCell : UITableViewCell
 
 @property (nonatomic, strong) UIImage *image;
+@property (nonatomic, strong) UIImageView *artworkImg;  // 专辑图
 @property (nonatomic, strong) UILabel *songNameLbl;     // 歌曲名
 @property (nonatomic, strong) UILabel *singerLbl;       // 歌手
 

@@ -11,15 +11,32 @@
 #import "UIImage+Extension.h"
 #import "Header.h"
 #import "ZHMiniPlayView.h"
+#import "UIImage+Extension.h"
+#import <objc/runtime.h>
 
 #define cellH 55.5
 
 @interface ZHPlayVC ()<UITableViewDelegate, UITableViewDataSource>
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) UITableViewCell *zeroCell;
+@property (nonatomic, strong) UIView *cover;
 @end
 
 @implementation ZHPlayVC
+
+- (void)setPlayList:(NSArray<MPMediaItem *> *)playList {
+    _playList = playList;
+    [_tableView reloadData];
+}
+
+- (UIView *)cover {
+    if (_cover == nil) {
+        _cover = [[UIView alloc] initWithFrame:CGRectMake(-ZHMainScreenW, -ZHMainScreenH, ZHMainScreenW * 3, ZHMainScreenH * 3)];
+        _cover.backgroundColor = [UIColor blackColor];
+        _cover.alpha = 0.4;
+    }
+    return _cover;
+}
 
 static ZHPlayVC *_defaultVC;
 + (instancetype)defaultVC {
@@ -34,11 +51,20 @@ static ZHPlayVC *_defaultVC;
 
 
 - (void)configureTableView {
-    _tableView = [[UITableView alloc] init];
+    CGFloat topMargin = 28;
+    _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, topMargin, self.view.bounds.size.width, [UIScreen mainScreen].bounds.size.height - topMargin) style:UITableViewStyleGrouped];
     _tableView.delegate = self;
     _tableView.dataSource = self;
     
+    
     [self.view addSubview:_tableView];
+
+    
+    UIBezierPath *maskPath = [UIBezierPath bezierPathWithRoundedRect:_tableView.bounds byRoundingCorners:UIRectCornerTopLeft | UIRectCornerTopRight cornerRadii:CGSizeMake(6, 6)];
+    CAShapeLayer *maskLayer = [[CAShapeLayer alloc] init];
+    maskLayer.frame = _tableView.bounds;
+    maskLayer.path = maskPath.CGPath;
+    _tableView.layer.mask = maskLayer;
 }
 
 - (UITableViewCell *)zeroCell {
@@ -50,17 +76,31 @@ static ZHPlayVC *_defaultVC;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
-    UITabBarController *tabBarControler = (id)UIApplication.sharedApplication.delegate.window.rootViewController;
+    // 调整自己的 frame
+    dispatch_async(dispatch_get_main_queue(), ^{
+        self.view.frame = CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height);
+    });
+    
+    // 配置 PresentingVC
+    [self configuerPresentingVC];
+    
+    // 移除 miniplay
+    [[UIApplication sharedApplication].keyWindow sendSubviewToBack:[ZHMiniPlayView defaultView]];
 
+    // 隐藏 tabbar
+    UITabBarController *tabBarControler = (id)UIApplication.sharedApplication.delegate.window.rootViewController;
     [UIView animateWithDuration:0.25 animations:^{
         
         tabBarControler.tabBar.y = ZHMainScreenH;
     }];
 }
 - (void)viewWillDisappear:(BOOL)animated {
-    UITabBarController *tabBarControler = (id)UIApplication.sharedApplication.delegate.window.rootViewController;
     
+    // 显示 miniplay
     [[UIApplication sharedApplication].keyWindow bringSubviewToFront:[ZHMiniPlayView defaultView]];
+    
+    // 显示 tabbar
+    UITabBarController *tabBarControler = (id)UIApplication.sharedApplication.delegate.window.rootViewController;
     [UIView animateWithDuration:0.25 animations:^{
         tabBarControler.tabBar.y = ZHMainScreenH - tabBarControler.tabBar.height;
     }];
@@ -68,32 +108,87 @@ static ZHPlayVC *_defaultVC;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.view.backgroundColor = [UIColor redColor];
     
     // Do any additional setup after loading the view.
 }
 
-- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+- (void)configuerPresentingVC {
+    
+    [self.presentingViewController.view addSubview:self.cover];
+    
+    NSLog(@"%@", self.presentingViewController);
+    [UIView animateWithDuration:0.25 animations:^{
+        
+        // 这里改 frame 会导致 view 层显示问题
+//        self.presentingViewController.view.frame = CGRectMake(15, 20, self.presentingViewController.view.bounds.size.width - 30, self.presentingViewController.view.bounds.size.height);
+        // 这里如果没有 navigation, 直接设置 corner 是可以的, 如果有, 需要设置 navigation.navigationbar 的 _UIBarBackground 的 cornerRadius
+//        self.presentingViewController.view.layer.cornerRadius = 6;
+        [self setNavCornerRadius:6];
+        
+        CGFloat x = 1 - 30 / 320.f;
+        CGFloat y = 1 - 40 / 667.f;
+        self.presentingViewController.view.layer.transform = CATransform3DMakeScale(x, y, 1);
+    }];
+}
+- (void)disMiss {
+    [self.cover removeFromSuperview];
+    [UIView animateWithDuration:0.25 animations:^{
+        
+        [self setNavCornerRadius:0];
+        self.presentingViewController.view.layer.transform = CATransform3DIdentity;
+    }];
+
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
+- (void)setNavCornerRadius:(CGFloat)radius {
+    UITabBarController *tabBarControler = (id)UIApplication.sharedApplication.delegate.window.rootViewController;
+    UINavigationController *navigationController = tabBarControler.selectedViewController;
+    
+    // 因为 _UIBarBackground 在最底层
+    UIView *_UIBarBackground = [navigationController.navigationBar.subviews firstObject];
+    NSLog(@"%@", navigationController.navigationBar);
+    
+    UIBezierPath *maskPath = [UIBezierPath bezierPathWithRoundedRect:_UIBarBackground.bounds byRoundingCorners:UIRectCornerTopLeft | UIRectCornerTopRight cornerRadii:CGSizeMake(radius, radius)];
+    CAShapeLayer *maskLayer = [[CAShapeLayer alloc] init];
+    maskLayer.frame = _UIBarBackground.bounds;
+    maskLayer.path = maskPath.CGPath;
+    _UIBarBackground.layer.mask = maskLayer;
+}
+
+
 #pragma mark - tableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 1;
+    return _playList.count + 1;
 }
 
 static NSString *ZHPlayVCCellID = @"ZHPlayVCCellID";
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    ZHAllMusicCell *cell = [ZHAllMusicCell allMusicCellWithTableView:tableView identifier:ZHPlayVCCellID indexPath:indexPath rowHeight:cellH];
-    
-    cell.image = [UIImage imageNamed:@"MissingArtworkMusicNote"];
-    cell.songNameLbl.text = @"q";
-    cell.singerLbl.text = @"a";
-    return indexPath.row == 0 ? self.zeroCell : cell;
+    if (indexPath != 0) {
+        ZHAllMusicCell *cell = [ZHAllMusicCell allMusicCellWithTableView:tableView identifier:ZHPlayVCCellID indexPath:indexPath rowHeight:cellH];
+        
+        MPMediaItem *song = _playList[indexPath.row - 1];
+        
+        cell.image = [UIImage defaultImageWithSongItem:song size:cell.artworkImg.size];
+        cell.songNameLbl.text = [song valueForProperty:MPMediaItemPropertyTitle];
+        cell.singerLbl.text = [song valueForProperty:MPMediaItemPropertyArtist];
+        return cell;
+    } else {
+        return self.zeroCell;
+    }
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return indexPath.row == 0 ? 44 : cellH;
+}
+
+#pragma mark - tableViewDelegate
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    
+    // 下拉距离
+    if (scrollView.contentOffset.y < - 80 && scrollView.dragging) {
+        [self disMiss];
+    }
 }
 
 /*

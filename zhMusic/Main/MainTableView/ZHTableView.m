@@ -34,7 +34,7 @@
 
 - (void)addNoti {
     
-    if ([ZHPlayMusicManager defaultManager].isPlaying) {
+    if ([ZHMiniPlayView defaultView].height) {
         dispatch_async(dispatch_get_main_queue(), ^{
             
             self.contentInset = UIEdgeInsetsMake(self.contentInset.top, self.contentInset.left, self.contentInset.bottom + [ZHMiniPlayView defaultView].height, self.contentInset.right);

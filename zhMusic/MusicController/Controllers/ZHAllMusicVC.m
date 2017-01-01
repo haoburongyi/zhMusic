@@ -49,9 +49,6 @@
     
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"presentVC" style:UIBarButtonItemStylePlain target:self action:@selector(presentVC)];
 }
-- (void)presentVC {
-
-}
 
 
 - (void)configureTableView {

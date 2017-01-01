@@ -12,7 +12,7 @@
 
 
 @interface ZHAllMusicCell ()
-@property (nonatomic, strong) UIImageView *artworkImg;  // 专辑图
+
 @end
 
 @implementation ZHAllMusicCell
