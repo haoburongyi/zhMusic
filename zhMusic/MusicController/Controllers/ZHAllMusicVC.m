@@ -134,7 +134,6 @@ static NSString *ZHAllMusicCellID = @"ZHAllMusicCellID";
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     ZHAllMusicCell *cell = [ZHAllMusicCell allMusicCellWithTableView:tableView identifier:ZHAllMusicCellID indexPath:indexPath rowHeight:tableView.rowHeight];
-    [[ZHMiniPlayView defaultView] setPuserBtnSelect];
     
     NSString *key = _headerArr[indexPath.section];
     NSArray *arr = _allMusic[key];
@@ -205,6 +204,9 @@ static NSString *ZHAllMusicCellID = @"ZHAllMusicCellID";
 
 #pragma mark - 播放音乐
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    [[ZHMiniPlayView defaultView] setPuserBtnSelect];
+    
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
     UIColor *color = cell.backgroundColor;
     [UIView animateWithDuration:0.25 animations:^{
