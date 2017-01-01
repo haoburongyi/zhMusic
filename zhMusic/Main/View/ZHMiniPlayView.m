@@ -110,10 +110,8 @@ static ZHMiniPlayView *_defaultView;
     _next = [[ZHButton alloc] init];
     [_next setImage:[UIImage imageNamed:@"MiniPlayer-Transport-Next_26x16_"] forState:UIControlStateNormal];
     _next.tintColor = ZHRGBColor(77, 77, 77);
-//    [_next sizeToFit];
     _next.height = self.height;
     _next.width = self.height;
-//    _next.width += 20;
     _next.origin = CGPointMake(self.width - _next.width, 0);
     [self addSubview:_next];
     

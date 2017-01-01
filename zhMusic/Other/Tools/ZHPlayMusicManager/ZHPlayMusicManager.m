@@ -42,6 +42,10 @@ static ZHPlayMusicManager *_manager;
     }
 }
 
+- (BOOL)isPlaying {
+    return self.player.isPlaying;
+}
+
 - (void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self name:AVAudioSessionInterruptionNotification object:[AVAudioSession sharedInstance]];
 }

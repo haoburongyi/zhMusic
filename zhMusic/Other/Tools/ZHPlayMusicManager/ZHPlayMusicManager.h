@@ -11,6 +11,8 @@
 
 @interface ZHPlayMusicManager : NSObject
 
+@property (nonatomic, assign, getter=isPlaying, readonly) BOOL playing;
+
 /**
  单例
 

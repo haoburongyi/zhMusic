@@ -9,6 +9,7 @@
 #import "ZHTableView.h"
 #import "Header.h"
 #import "ZHMiniPlayView.h"
+#import "ZHPlayMusicManager.h"
 
 @implementation ZHTableView
 
@@ -32,6 +33,14 @@
 }
 
 - (void)addNoti {
+    
+    if ([ZHPlayMusicManager defaultManager].isPlaying) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            
+            self.contentInset = UIEdgeInsetsMake(self.contentInset.top, self.contentInset.left, self.contentInset.bottom + [ZHMiniPlayView defaultView].height, self.contentInset.right);
+        });
+    }
+    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeBottomInset) name:PlayMusicNoti object:nil];
 }
 - (void)changeBottomInset {
