@@ -15,4 +15,6 @@
 
 - (void)setPlayList:(NSArray<MPMediaItem *> *)playList;
 + (instancetype)defaultVC;
+
+- (void)disMiss;
 @end

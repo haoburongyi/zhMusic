@@ -7,25 +7,31 @@
 //
 
 #import "ZHPlayVC.h"
-#import "ZHAllMusicCell.h"
-#import "UIImage+Extension.h"
 #import "Header.h"
 #import "ZHMiniPlayView.h"
-#import "UIImage+Extension.h"
-#import <objc/runtime.h>
+#import "ZHPlayVCUISercive.h"
 
-#define cellH 55.5
 
-@interface ZHPlayVC ()<UITableViewDelegate, UITableViewDataSource>
+
+
+@interface ZHPlayVC ()
 @property (nonatomic, strong) UITableView *tableView;
-@property (nonatomic, strong) UITableViewCell *zeroCell;
 @property (nonatomic, strong) UIView *cover;
+@property (nonatomic, strong) ZHPlayVCUISercive *sercive;
 @end
 
 @implementation ZHPlayVC
 
+- (ZHPlayVCUISercive *)sercive {
+    if (_sercive == nil) {
+        _sercive = [[ZHPlayVCUISercive alloc] init];
+    }
+    return _sercive;
+}
+
 - (void)setPlayList:(NSArray<MPMediaItem *> *)playList {
     _playList = playList;
+    self.sercive.playList = playList;
     [_tableView reloadData];
 }
 
@@ -52,34 +58,23 @@ static ZHPlayVC *_defaultVC;
 
 - (void)configureTableView {
     
-    CGFloat topMargin = 28;
-    // tableView 底部是 self.view, 而 self.view 是透明的
-    UIView *bgView = [[UIView alloc] initWithFrame:CGRectMake(0, topMargin, self.view.bounds.size.width, [UIScreen mainScreen].bounds.size.height - topMargin)];
-    bgView.backgroundColor = [UIColor whiteColor];
-    [self.view addSubview:bgView];
+    CGFloat topMargin = ZHSCaleH(28);
+    
+    _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, topMargin, self.view.bounds.size.width, [UIScreen mainScreen].bounds.size.height - topMargin) style:UITableViewStyleGrouped];
+    _tableView.backgroundColor = [UIColor whiteColor];
+    _tableView.delegate = self.sercive;
+    _tableView.dataSource = self.sercive;
+    self.sercive.playList = self.playList;
+    [self.view addSubview:_tableView];
     
     // 两个角的圆角
-    UIBezierPath *maskPath = [UIBezierPath bezierPathWithRoundedRect:bgView.bounds byRoundingCorners:UIRectCornerTopLeft | UIRectCornerTopRight cornerRadii:CGSizeMake(6, 6)];
+    UIBezierPath *maskPath = [UIBezierPath bezierPathWithRoundedRect:_tableView.bounds byRoundingCorners:UIRectCornerTopLeft | UIRectCornerTopRight cornerRadii:CGSizeMake(6, 6)];
     CAShapeLayer *maskLayer = [[CAShapeLayer alloc] init];
-    maskLayer.frame = bgView.bounds;
+    maskLayer.frame = _tableView.bounds;
     maskLayer.path = maskPath.CGPath;
-    bgView.layer.mask = maskLayer;
-    
-    _tableView = [[UITableView alloc] initWithFrame:bgView.bounds style:UITableViewStyleGrouped];
-    _tableView.delegate = self;
-    _tableView.dataSource = self;
-    
-    [bgView addSubview:_tableView];
-
+    _tableView.layer.mask = maskLayer;
 }
 
-- (UITableViewCell *)zeroCell {
-    if (!_zeroCell) {
-        _zeroCell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];
-        _zeroCell.textLabel.text = @"接着播放";
-    }
-    return _zeroCell;
-}
 
 - (void)viewWillAppear:(BOOL)animated {
     // 调整自己的 frame
@@ -163,39 +158,6 @@ static ZHPlayVC *_defaultVC;
 }
 
 
-#pragma mark - tableViewDataSource
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return _playList.count + 1;
-}
-
-static NSString *ZHPlayVCCellID = @"ZHPlayVCCellID";
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    if (indexPath != 0) {
-        ZHAllMusicCell *cell = [ZHAllMusicCell allMusicCellWithTableView:tableView identifier:ZHPlayVCCellID indexPath:indexPath rowHeight:cellH];
-        
-        MPMediaItem *song = _playList[indexPath.row - 1];
-        
-        cell.image = [UIImage defaultImageWithSongItem:song size:cell.artworkImg.size];
-        cell.songNameLbl.text = [song valueForProperty:MPMediaItemPropertyTitle];
-        cell.singerLbl.text = [song valueForProperty:MPMediaItemPropertyArtist];
-        return cell;
-    } else {
-        return self.zeroCell;
-    }
-}
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return indexPath.row == 0 ? 44 : cellH;
-}
-
-#pragma mark - tableViewDelegate
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    
-    // 下拉距离
-    if (scrollView.contentOffset.y < - 80 && scrollView.dragging) {
-        [self disMiss];
-    }
-}
 
 /*
 #pragma mark - Navigation

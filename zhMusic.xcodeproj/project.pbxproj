@@ -26,6 +26,9 @@
 		612FC3421E0AA1310006CF5D /* UIView+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 612FC3411E0AA1310006CF5D /* UIView+Extension.m */; };
 		612FC3451E0AAD070006CF5D /* ZHMusicCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 612FC3441E0AAD070006CF5D /* ZHMusicCell.m */; };
 		6137B03F1E181F71008BBAA3 /* ZHButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 6137B03E1E181F71008BBAA3 /* ZHButton.m */; };
+		6137B0491E193312008BBAA3 /* ZHPlayHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 6137B0481E193312008BBAA3 /* ZHPlayHeader.m */; };
+		6137B04B1E193517008BBAA3 /* ZHPlayHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6137B04A1E193517008BBAA3 /* ZHPlayHeader.xib */; };
+		6137B04F1E194DE9008BBAA3 /* ZHPlayVCUISercive.m in Sources */ = {isa = PBXBuildFile; fileRef = 6137B04E1E194DE9008BBAA3 /* ZHPlayVCUISercive.m */; };
 		613914731E0A575B005350A8 /* ZHTabBarVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 613914721E0A575B005350A8 /* ZHTabBarVC.m */; };
 		6139147A1E0A57FF005350A8 /* ZHMusicVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 613914791E0A57FF005350A8 /* ZHMusicVC.m */; };
 		6139147D1E0A5B3D005350A8 /* ZHMusicViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 6139147C1E0A5B3D005350A8 /* ZHMusicViewModel.m */; };
@@ -99,6 +102,11 @@
 		612FC3441E0AAD070006CF5D /* ZHMusicCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHMusicCell.m; sourceTree = "<group>"; };
 		6137B03D1E181F71008BBAA3 /* ZHButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHButton.h; sourceTree = "<group>"; };
 		6137B03E1E181F71008BBAA3 /* ZHButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHButton.m; sourceTree = "<group>"; };
+		6137B0471E193312008BBAA3 /* ZHPlayHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHPlayHeader.h; sourceTree = "<group>"; };
+		6137B0481E193312008BBAA3 /* ZHPlayHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHPlayHeader.m; sourceTree = "<group>"; };
+		6137B04A1E193517008BBAA3 /* ZHPlayHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZHPlayHeader.xib; sourceTree = "<group>"; };
+		6137B04D1E194DE9008BBAA3 /* ZHPlayVCUISercive.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHPlayVCUISercive.h; sourceTree = "<group>"; };
+		6137B04E1E194DE9008BBAA3 /* ZHPlayVCUISercive.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHPlayVCUISercive.m; sourceTree = "<group>"; };
 		613914711E0A575B005350A8 /* ZHTabBarVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHTabBarVC.h; sourceTree = "<group>"; };
 		613914721E0A575B005350A8 /* ZHTabBarVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHTabBarVC.m; sourceTree = "<group>"; };
 		613914781E0A57FF005350A8 /* ZHMusicVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHMusicVC.h; sourceTree = "<group>"; };
@@ -300,11 +308,23 @@
 			path = ZHButton;
 			sourceTree = "<group>";
 		};
-		6137B0461E192F3F008BBAA3 /* New Group */ = {
+		6137B0461E192F3F008BBAA3 /* Header */ = {
 			isa = PBXGroup;
 			children = (
+				6137B0471E193312008BBAA3 /* ZHPlayHeader.h */,
+				6137B0481E193312008BBAA3 /* ZHPlayHeader.m */,
+				6137B04A1E193517008BBAA3 /* ZHPlayHeader.xib */,
 			);
-			name = "New Group";
+			path = Header;
+			sourceTree = "<group>";
+		};
+		6137B04C1E194D93008BBAA3 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				6137B04D1E194DE9008BBAA3 /* ZHPlayVCUISercive.h */,
+				6137B04E1E194DE9008BBAA3 /* ZHPlayVCUISercive.m */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		6139147E1E0A5C34005350A8 /* Other */ = {
@@ -472,7 +492,8 @@
 		61F00FD71E16122A00C6DE1C /* ZHPlayVC */ = {
 			isa = PBXGroup;
 			children = (
-				6137B0461E192F3F008BBAA3 /* New Group */,
+				6137B04C1E194D93008BBAA3 /* ViewModel */,
+				6137B0461E192F3F008BBAA3 /* Header */,
 				61F00FD81E1612EE00C6DE1C /* ZHPlayVC.h */,
 				61F00FD91E1612EE00C6DE1C /* ZHPlayVC.m */,
 			);
@@ -617,6 +638,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6137B04B1E193517008BBAA3 /* ZHPlayHeader.xib in Resources */,
 				61242E341E07BF6000D6358F /* LaunchScreen.storyboard in Resources */,
 				61242E311E07BF6000D6358F /* Assets.xcassets in Resources */,
 			);
@@ -793,7 +815,9 @@
 				613914731E0A575B005350A8 /* ZHTabBarVC.m in Sources */,
 				61D939571E151A5800B2F849 /* ZHMusicInfo.m in Sources */,
 				61D939521E14F97600B2F849 /* pinyin.m in Sources */,
+				6137B0491E193312008BBAA3 /* ZHPlayHeader.m in Sources */,
 				61D939461E13E17E00B2F849 /* ZHAllMusicCell.m in Sources */,
+				6137B04F1E194DE9008BBAA3 /* ZHPlayVCUISercive.m in Sources */,
 				6114C2BB1E12BE5A00F49642 /* ZHAritistVC.m in Sources */,
 				6139147A1E0A57FF005350A8 /* ZHMusicVC.m in Sources */,
 				6114C2BE1E12BE7000F49642 /* ZHPodcastTitle.m in Sources */,

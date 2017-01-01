@@ -47,7 +47,6 @@
         [_tableView reloadData];
     }];
     
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"presentVC" style:UIBarButtonItemStylePlain target:self action:@selector(presentVC)];
 }
 
 
@@ -227,6 +226,8 @@ static NSString *ZHAllMusicCellID = @"ZHAllMusicCellID";
     }];
     
 }
+
+
 
 - (void)dealloc {
     NSLog(@"%s", __func__);

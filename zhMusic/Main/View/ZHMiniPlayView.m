@@ -170,7 +170,7 @@ static ZHMiniPlayView *_defaultView;
     if (gesture.state == UIGestureRecognizerStateBegan) {
 
         direction = kCameraMoveDirectionNone;
-    } else if (gesture.state == UIGestureRecognizerStateEnded && direction == kCameraMoveDirectionNone) {
+    } else if (gesture.state == UIGestureRecognizerStateChanged && direction == kCameraMoveDirectionNone) {
 
         direction = [self determineCameraDirectionIfNeeded:translation];
         
