@@ -62,17 +62,16 @@
 }
 
 + (UIBackgroundTaskIdentifier)backgroundPlayerID:(UIBackgroundTaskIdentifier)backTaskId {
-    //设置并激活音频会话类别
-    AVAudioSession *session=[AVAudioSession sharedInstance];
+    // 设置并激活音频会话类别
+    AVAudioSession *session = [AVAudioSession sharedInstance];
     [session setCategory:AVAudioSessionCategoryPlayback error:nil];
     [session setActive:YES error:nil];
-    //允许应用程序接收远程控制
+    // 允许应用程序接收远程控制
     [[UIApplication sharedApplication] beginReceivingRemoteControlEvents];
-    //设置后台任务ID
+    // 设置后台任务ID
     UIBackgroundTaskIdentifier newTaskId=UIBackgroundTaskInvalid;
-    newTaskId=[[UIApplication sharedApplication] beginBackgroundTaskWithExpirationHandler:nil];
-    if(newTaskId!=UIBackgroundTaskInvalid&&backTaskId!=UIBackgroundTaskInvalid)
-    {
+    newTaskId = [[UIApplication sharedApplication] beginBackgroundTaskWithExpirationHandler:nil];
+    if (newTaskId!=UIBackgroundTaskInvalid&&backTaskId != UIBackgroundTaskInvalid) {
         [[UIApplication sharedApplication] endBackgroundTask:backTaskId];
     }
     return newTaskId;
