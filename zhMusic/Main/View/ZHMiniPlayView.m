@@ -32,23 +32,13 @@ static ZHMiniPlayView *_defaultView;
         [_defaultView createUI];
         _defaultView.clipsToBounds = YES;
         _defaultView.height = 0;
+        
     });
     return _defaultView;
 }
 
 
 - (void)showWithItem:(MPMediaItem *)item {
-    [self _show];
- 
-    self.title.text = [item valueForProperty:MPMediaItemPropertyTitle];
-    
-    MPMediaItemArtwork *artwork = [item valueForProperty:MPMediaItemPropertyArtwork];
-    UIImage *img = [artwork imageWithSize:self.artworkImageView.size];
-    
-    self.artworkImageView.image = img;
-}
-
-- (void)_show {
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         CGFloat height = 63.5;
@@ -59,10 +49,16 @@ static ZHMiniPlayView *_defaultView;
         }];
         [[NSNotificationCenter defaultCenter] postNotificationName:PlayMusicNoti object:nil];
     });
+    
+    self.title.text = [item valueForProperty:MPMediaItemPropertyTitle];
+    
+    MPMediaItemArtwork *artwork = [item valueForProperty:MPMediaItemPropertyArtwork];
+    UIImage *img = [artwork imageWithSize:self.artworkImageView.size];
+    
+    self.artworkImageView.image = img;
 }
 
 - (void)showPlayVC {
-    
     
     UITabBarController *tabBarControler = (id)UIApplication.sharedApplication.delegate.window.rootViewController;
     
@@ -76,7 +72,7 @@ static ZHMiniPlayView *_defaultView;
         [vc presentViewController:playVC animated:YES completion:nil];
     }
 
-    
+    [[UIApplication sharedApplication].keyWindow sendSubviewToBack:self];
 }
 
 - (void)pauseMusic:(UIButton *)sender {

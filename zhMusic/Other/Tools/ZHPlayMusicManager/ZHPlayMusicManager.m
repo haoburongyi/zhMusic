@@ -27,11 +27,24 @@ static ZHPlayMusicManager *_manager;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         _manager = [[ZHPlayMusicManager alloc] init];
-        
-    });
+        // 处理中断事件的通知, 如来电
+        [[NSNotificationCenter defaultCenter] addObserver:_manager selector:@selector(handleInterreption:) name:AVAudioSessionInterruptionNotification object:[AVAudioSession sharedInstance]];
+        });
     return _manager;
 }
+//处理中断事件
+- (void)handleInterreption:(NSNotification *)sender
+{
+    if(self.player.isPlaying) {
+        [self.player pause];
+    } else {
+        [self.player play];
+    }
+}
 
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:AVAudioSessionInterruptionNotification object:[AVAudioSession sharedInstance]];
+}
 
 #pragma mark - 播放歌曲
 // 播放歌曲

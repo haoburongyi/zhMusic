@@ -60,8 +60,8 @@ static ZHPlayVC *_defaultVC;
 - (void)viewWillDisappear:(BOOL)animated {
     UITabBarController *tabBarControler = (id)UIApplication.sharedApplication.delegate.window.rootViewController;
     
+    [[UIApplication sharedApplication].keyWindow bringSubviewToFront:[ZHMiniPlayView defaultView]];
     [UIView animateWithDuration:0.25 animations:^{
-        
         tabBarControler.tabBar.y = ZHMainScreenH - tabBarControler.tabBar.height;
     }];
 }

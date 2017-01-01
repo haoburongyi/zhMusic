@@ -79,6 +79,7 @@
     [self.textView.textView becomeFirstResponder];
     [self.view bringSubviewToFront:self.textView];
 }
+
 - (void)endEdit:(UITapGestureRecognizer *)tap {
     [tap.view removeFromSuperview];
     [self.view endEditing:YES];

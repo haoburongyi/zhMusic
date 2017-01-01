@@ -10,6 +10,7 @@
 #import <JPFPSStatus.h>
 #import "ZHTabBarVC.h"
 #import "ZHMiniPlayView.h"
+#import <AVFoundation/AVFoundation.h>
 
 @interface AppDelegate ()
 
@@ -46,9 +47,21 @@
 
 
 - (void)applicationWillResignActive:(UIApplication *)application {
+    // 开启后台处理多媒体事件
+    [application beginReceivingRemoteControlEvents];
+    AVAudioSession *session = [AVAudioSession sharedInstance];
+    [session setActive:YES error:nil];
+    // 后台播放
+    [session setCategory:AVAudioSessionCategoryPlayback error:nil];
+    // 这样做，可以在按home键进入后台后 ，播放一段时间，几分钟吧。但是不能持续播放网络歌曲，若需要持续播放网络歌曲，还需要申请后台任务id，具体做法是：
+//    _bgTaskId = [AppDelegate backgroundPlayerID:_bgTaskId];
+    //其中的_bgTaskId是后台任务UIBackgroundTaskIdentifier _bgTaskId;
+    
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
     // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.
 }
+
++ (void)
 
 
 - (void)applicationDidEnterBackground:(UIApplication *)application {
