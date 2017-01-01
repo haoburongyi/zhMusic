@@ -51,20 +51,26 @@ static ZHPlayVC *_defaultVC;
 
 
 - (void)configureTableView {
+    
     CGFloat topMargin = 28;
-    _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, topMargin, self.view.bounds.size.width, [UIScreen mainScreen].bounds.size.height - topMargin) style:UITableViewStyleGrouped];
+    // tableView 底部是 self.view, 而 self.view 是透明的
+    UIView *bgView = [[UIView alloc] initWithFrame:CGRectMake(0, topMargin, self.view.bounds.size.width, [UIScreen mainScreen].bounds.size.height - topMargin)];
+    bgView.backgroundColor = [UIColor whiteColor];
+    [self.view addSubview:bgView];
+    
+    // 两个角的圆角
+    UIBezierPath *maskPath = [UIBezierPath bezierPathWithRoundedRect:bgView.bounds byRoundingCorners:UIRectCornerTopLeft | UIRectCornerTopRight cornerRadii:CGSizeMake(6, 6)];
+    CAShapeLayer *maskLayer = [[CAShapeLayer alloc] init];
+    maskLayer.frame = bgView.bounds;
+    maskLayer.path = maskPath.CGPath;
+    bgView.layer.mask = maskLayer;
+    
+    _tableView = [[UITableView alloc] initWithFrame:bgView.bounds style:UITableViewStyleGrouped];
     _tableView.delegate = self;
     _tableView.dataSource = self;
     
-    
-    [self.view addSubview:_tableView];
+    [bgView addSubview:_tableView];
 
-    
-    UIBezierPath *maskPath = [UIBezierPath bezierPathWithRoundedRect:_tableView.bounds byRoundingCorners:UIRectCornerTopLeft | UIRectCornerTopRight cornerRadii:CGSizeMake(6, 6)];
-    CAShapeLayer *maskLayer = [[CAShapeLayer alloc] init];
-    maskLayer.frame = _tableView.bounds;
-    maskLayer.path = maskPath.CGPath;
-    _tableView.layer.mask = maskLayer;
 }
 
 - (UITableViewCell *)zeroCell {

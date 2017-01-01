@@ -300,6 +300,13 @@
 			path = ZHButton;
 			sourceTree = "<group>";
 		};
+		6137B0461E192F3F008BBAA3 /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "New Group";
+			sourceTree = "<group>";
+		};
 		6139147E1E0A5C34005350A8 /* Other */ = {
 			isa = PBXGroup;
 			children = (
@@ -465,6 +472,7 @@
 		61F00FD71E16122A00C6DE1C /* ZHPlayVC */ = {
 			isa = PBXGroup;
 			children = (
+				6137B0461E192F3F008BBAA3 /* New Group */,
 				61F00FD81E1612EE00C6DE1C /* ZHPlayVC.h */,
 				61F00FD91E1612EE00C6DE1C /* ZHPlayVC.m */,
 			);
