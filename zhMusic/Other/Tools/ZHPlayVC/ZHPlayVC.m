@@ -10,7 +10,7 @@
 #import "Header.h"
 #import "ZHMiniPlayView.h"
 #import "ZHPlayVCUISercive.h"
-#import "UIViewController+XWTransition.h"
+
 
 
 
@@ -30,8 +30,7 @@
 
 - (ZHPlayHeader *)header {
     if (_header == nil) {
-        _header = [[[NSBundle mainBundle] loadNibNamed:@"ZHPlayHeader" owner:nil options:nil] lastObject];
-        _header.height = 400;
+        _header = [ZHPlayHeader playHeaderWithFrame:CGRectMake(0, 0, self.view.width, 400)];
     }
     return _header;
 }
@@ -64,14 +63,9 @@ static ZHPlayVC *_defaultVC;
     dispatch_once(&onceToken, ^{
         _defaultVC = [[ZHPlayVC alloc] init];
         _defaultVC.modalPresentationStyle = UIModalPresentationOverCurrentContext;
-        [_defaultVC configureAnimation];
         [_defaultVC configureTableView];
     });
     return _defaultVC;
-}
-
-- (void)configureAnimation {
-    [self xw_addMagicMoveEndViewGroup:@[self.header.artworkImageVIew]];
 }
 
 - (void)configureTableView {

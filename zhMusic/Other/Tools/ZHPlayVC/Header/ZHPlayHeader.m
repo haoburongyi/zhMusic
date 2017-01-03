@@ -22,26 +22,26 @@
     UIImage *img = [artwork imageWithSize:self.artworkImageVIew.bounds.size];
     self.artworkImageVIew.image = img ? img : [UIImage new];
 }
-//+ (instancetype)playHeaderWithFrame:(CGRect)frame {
-//    return [[self alloc] initWithFrame:frame];
-//}
-//
-//- (instancetype)initWithFrame:(CGRect)frame {
-//    self = [super initWithFrame:frame];
-//    if (self) {
-//        [self createUI];
-//    }
-//    return self;
-//}
-//
-//- (void)createUI {
-//    
-//    CGFloat artworkMargin = ZHSCaleW(110);
-//    
-//    _artworkImg = [[UIImageView alloc] initWithFrame:CGRectMake(artworkMargin, artworkMargin, self.width - artworkMargin * 2, self.width - artworkMargin * 2)];
-//    _artworkImg.backgroundColor = ZHRGBColor(177, 177, 177);
-//    [self addSubview:_artworkImg];
-//}
++ (instancetype)playHeaderWithFrame:(CGRect)frame {
+    return [[self alloc] initWithFrame:frame];
+}
+
+- (instancetype)initWithFrame:(CGRect)frame {
+    self = [super initWithFrame:frame];
+    if (self) {
+        [self createUI];
+    }
+    return self;
+}
+
+- (void)createUI {
+    
+    CGFloat artworkMargin = ZHSCaleW(110);
+    
+    _artworkImageVIew = [[UIImageView alloc] initWithFrame:CGRectMake(artworkMargin, artworkMargin, self.width - artworkMargin * 2, self.width - artworkMargin * 2)];
+    _artworkImageVIew.backgroundColor = ZHRGBColor(177, 177, 177);
+    [self addSubview:_artworkImageVIew];
+}
 
 /*
 // Only override drawRect: if you perform custom drawing.

@@ -11,8 +11,7 @@
 #import "ZHPlayVC.h"
 #import "ZHPlayMusicManager.h"
 #import "ZHButton.h"
-#import "XWMagicMoveAnimator.h"
-#import "UIViewController+XWTransition.h"
+
 
 
 typedef NS_ENUM(NSInteger, CameraMoveDirection) {
@@ -99,32 +98,20 @@ static ZHMiniPlayView *_defaultView;
 //        [vc.view addSubview:imageView];
         
         
-        [vc xw_addMagicMoveStartViewGroup:@[self.artworkImageView]];
-        XWMagicMoveAnimator *animator = [XWMagicMoveAnimator new];
-        animator.dampingEnable = NO;
-        animator.imageMode = YES;
-        animator.toDuration = 0.5f;
-        animator.backDuration = 0.5f;
+        [vc presentViewController:playVC animated:NO completion:^{
         
-        [vc presentViewController:playVC animated:YES completion:nil];
-//        [vc xw_presentViewController:playVC withAnimator:animator];
-//        [vc presentViewController:playVC animated:NO completion:^{
-        
-//            CGRect frame = [self.artworkImageView convertRect:self.artworkImageView.bounds toView:nil];
-//            CGRect toFrame = [playVC.header.artworkImageVIew convertRect:playVC.header.artworkImageVIew.bounds toView:nil];
-//            NSLog(@"%@, %@", NSStringFromCGRect(frame), NSStringFromCGRect(toFrame));
-//            UIImageView *imageView = [[UIImageView alloc] initWithFrame:frame];
-//            imageView.image = self.artworkImageView.image;
-//            [[UIApplication sharedApplication].keyWindow addSubview:imageView];
-//            [UIView animateWithDuration:0.5 animations:^{
-//                imageView.frame = toFrame;
-//            }completion:^(BOOL finished) {
-//                [imageView removeFromSuperview];
-//            }];
-//        }];
-        
-        
-        
+            CGRect frame = [self.artworkImageView convertRect:self.artworkImageView.bounds toView:nil];
+            CGRect toFrame = [playVC.header.artworkImageVIew convertRect:playVC.header.artworkImageVIew.bounds toView:nil];
+            NSLog(@"%@, %@", NSStringFromCGRect(frame), NSStringFromCGRect(toFrame));
+            UIImageView *imageView = [[UIImageView alloc] initWithFrame:frame];
+            imageView.image = self.artworkImageView.image;
+            [[UIApplication sharedApplication].keyWindow addSubview:imageView];
+            [UIView animateWithDuration:0.5 animations:^{
+                imageView.frame = toFrame;
+            }completion:^(BOOL finished) {
+                [imageView removeFromSuperview];
+            }];
+        }];
     }
 }
 

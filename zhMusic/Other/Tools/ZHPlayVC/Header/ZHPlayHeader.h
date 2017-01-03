@@ -10,6 +10,8 @@
 #import <MediaPlayer/MediaPlayer.h>
 
 @interface ZHPlayHeader : UIView
-@property (weak, nonatomic) IBOutlet UIImageView *artworkImageVIew;
+@property (nonatomic, strong) UIImageView *artworkImageVIew;
 @property (nonatomic, strong) MPMediaItem *currentSong;
+
++ (instancetype)playHeaderWithFrame:(CGRect)frame;
 @end

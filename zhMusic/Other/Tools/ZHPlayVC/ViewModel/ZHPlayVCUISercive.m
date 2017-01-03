@@ -60,7 +60,7 @@ static NSString *ZHPlayVCCellID = @"ZHPlayVCCellID";
 }
 
 - (BOOL)scrollViewShouldScrollToTop:(UIScrollView *)scrollView {
-    NSLog(@"hehe");
+    
     dispatch_async(dispatch_get_main_queue(), ^{
         [[ZHPlayVC defaultVC] disMiss];
     });
