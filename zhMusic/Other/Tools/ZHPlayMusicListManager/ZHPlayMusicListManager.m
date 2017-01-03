@@ -9,7 +9,7 @@
 #import "ZHPlayMusicListManager.h"
 #import <MediaPlayer/MediaPlayer.h>
 #import <Realm.h>
-#import "ZHPlayMusicListManager+Extension.h"
+#import "ZHMusicDataManager.h"
 #import "ZHMusicInfo.h"
 #import "pinyin.h"
 
@@ -20,7 +20,7 @@ static ZHPlayMusicListManager *_manager;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         _manager = [[self alloc] init];
-        [self checkAllMusic];
+        [ZHMusicDataManager checkAllMusic];
     });
     return _manager;
 }

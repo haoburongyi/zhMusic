@@ -20,7 +20,9 @@
 @property (nonatomic, copy) void (^complete)();
 @end
 
-@implementation ZHPlayMusicManager
+@implementation ZHPlayMusicManager {
+    BOOL _notificationPause;
+}
 
 static ZHPlayMusicManager *_manager;
 + (instancetype)defaultManager {
@@ -36,9 +38,13 @@ static ZHPlayMusicManager *_manager;
 - (void)handleInterreption:(NSNotification *)sender
 {
     if(self.player.isPlaying) {
+        _notificationPause = YES;
         [self.player pause];
     } else {
-        [self.player play];
+        if (_notificationPause) {
+            _notificationPause = NO;
+            [self.player play];
+        }
     }
 }
 

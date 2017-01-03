@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -14,8 +15,28 @@
         <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="ZHPlayHeader">
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Y0M-uA-um4">
+                    <rect key="frame" x="55" y="55" width="265" height="265"/>
+                    <color key="backgroundColor" red="0.69411764705882351" green="0.69411764705882351" blue="0.69411764705882351" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="Y0M-uA-um4" secondAttribute="height" multiplier="1:1" id="Y6x-bu-Fe9"/>
+                    </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="string" keyPath="layer.cornerRadius" value="6"/>
+                    </userDefinedRuntimeAttributes>
+                </imageView>
+            </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="Y0M-uA-um4" secondAttribute="trailing" constant="55" id="RrZ-Z5-hmJ"/>
+                <constraint firstItem="Y0M-uA-um4" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="55" id="hcj-IC-5u9"/>
+                <constraint firstItem="Y0M-uA-um4" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="55" id="sSg-43-EQy"/>
+            </constraints>
             <nil key="simulatedStatusBarMetrics"/>
+            <connections>
+                <outlet property="artworkImageVIew" destination="Y0M-uA-um4" id="Rsy-62-IyI"/>
+            </connections>
         </view>
     </objects>
 </document>

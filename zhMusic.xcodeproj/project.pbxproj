@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		07AB7BC7952EF249492E9A0A /* libPods-zhMusicTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AB9B52DFEF33E097E06536A9 /* libPods-zhMusicTests.a */; };
 		0B94371BF97E3E73E3A0D44D /* libPods-zhMusicUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 349D24E08EEED09C2162F8BD /* libPods-zhMusicUITests.a */; };
-		6104A5C11E15321F0059C1AA /* ZHPlayMusicListManager+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 6104A5C01E15321F0059C1AA /* ZHPlayMusicListManager+Extension.m */; };
 		6114C2B81E12BDF000F49642 /* ZHAllMusicVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 6114C2B71E12BDF000F49642 /* ZHAllMusicVC.m */; };
 		6114C2BB1E12BE5A00F49642 /* ZHAritistVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 6114C2BA1E12BE5A00F49642 /* ZHAritistVC.m */; };
 		6114C2BE1E12BE7000F49642 /* ZHPodcastTitle.m in Sources */ = {isa = PBXBuildFile; fileRef = 6114C2BD1E12BE7000F49642 /* ZHPodcastTitle.m */; };
@@ -27,8 +26,40 @@
 		612FC3451E0AAD070006CF5D /* ZHMusicCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 612FC3441E0AAD070006CF5D /* ZHMusicCell.m */; };
 		6137B03F1E181F71008BBAA3 /* ZHButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 6137B03E1E181F71008BBAA3 /* ZHButton.m */; };
 		6137B0491E193312008BBAA3 /* ZHPlayHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 6137B0481E193312008BBAA3 /* ZHPlayHeader.m */; };
-		6137B04B1E193517008BBAA3 /* ZHPlayHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6137B04A1E193517008BBAA3 /* ZHPlayHeader.xib */; };
 		6137B04F1E194DE9008BBAA3 /* ZHPlayVCUISercive.m in Sources */ = {isa = PBXBuildFile; fileRef = 6137B04E1E194DE9008BBAA3 /* ZHPlayVCUISercive.m */; };
+		6137B0B91E1A86F6008BBAA3 /* ZHPlayHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6137B0B81E1A86F6008BBAA3 /* ZHPlayHeader.xib */; };
+		6137B0BD1E1A9ACF008BBAA3 /* ZHMusicDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6137B0BC1E1A9ACF008BBAA3 /* ZHMusicDataManager.m */; };
+		6137B0FE1E1AA315008BBAA3 /* UINavigationController+XWTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 6137B0C11E1AA315008BBAA3 /* UINavigationController+XWTransition.m */; };
+		6137B0FF1E1AA315008BBAA3 /* UIViewController+XWTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 6137B0C31E1AA315008BBAA3 /* UIViewController+XWTransition.m */; };
+		6137B1001E1AA315008BBAA3 /* XWInteractiveTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 6137B0C61E1AA315008BBAA3 /* XWInteractiveTransition.m */; };
+		6137B1011E1AA315008BBAA3 /* XWTransitionAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = 6137B0C81E1AA315008BBAA3 /* XWTransitionAnimator.m */; };
+		6137B1021E1AA315008BBAA3 /* line.png in Resources */ = {isa = PBXBuildFile; fileRef = 6137B0CA1E1AA315008BBAA3 /* line.png */; };
+		6137B1031E1AA315008BBAA3 /* mask.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6137B0CB1E1AA315008BBAA3 /* mask.jpg */; };
+		6137B1041E1AA315008BBAA3 /* restrictedshine.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 6137B0CC1E1AA315008BBAA3 /* restrictedshine.tiff */; };
+		6137B1051E1AA315008BBAA3 /* XWCircleSpreadAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = 6137B0CF1E1AA315008BBAA3 /* XWCircleSpreadAnimator.m */; };
+		6137B1061E1AA315008BBAA3 /* XWCoolAnimator+XWExplode.m in Sources */ = {isa = PBXBuildFile; fileRef = 6137B0D21E1AA315008BBAA3 /* XWCoolAnimator+XWExplode.m */; };
+		6137B1071E1AA315008BBAA3 /* XWCoolAnimator+XWFold.m in Sources */ = {isa = PBXBuildFile; fileRef = 6137B0D41E1AA315008BBAA3 /* XWCoolAnimator+XWFold.m */; };
+		6137B1081E1AA315008BBAA3 /* XWCoolAnimator+XWLines.m in Sources */ = {isa = PBXBuildFile; fileRef = 6137B0D61E1AA315008BBAA3 /* XWCoolAnimator+XWLines.m */; };
+		6137B1091E1AA315008BBAA3 /* XWCoolAnimator+XWMiddlePageFlip.m in Sources */ = {isa = PBXBuildFile; fileRef = 6137B0D81E1AA315008BBAA3 /* XWCoolAnimator+XWMiddlePageFlip.m */; };
+		6137B10A1E1AA315008BBAA3 /* XWCoolAnimator+XWPageFlip.m in Sources */ = {isa = PBXBuildFile; fileRef = 6137B0DA1E1AA315008BBAA3 /* XWCoolAnimator+XWPageFlip.m */; };
+		6137B10B1E1AA315008BBAA3 /* XWCoolAnimator+XWPortal.m in Sources */ = {isa = PBXBuildFile; fileRef = 6137B0DC1E1AA315008BBAA3 /* XWCoolAnimator+XWPortal.m */; };
+		6137B10C1E1AA315008BBAA3 /* XWCoolAnimator+XWScanning.m in Sources */ = {isa = PBXBuildFile; fileRef = 6137B0DE1E1AA315008BBAA3 /* XWCoolAnimator+XWScanning.m */; };
+		6137B10D1E1AA315008BBAA3 /* XWCoolAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = 6137B0E01E1AA315008BBAA3 /* XWCoolAnimator.m */; };
+		6137B10E1E1AA315008BBAA3 /* XWDrawerAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = 6137B0E31E1AA315008BBAA3 /* XWDrawerAnimator.m */; };
+		6137B10F1E1AA315008BBAA3 /* XWFilterAnimator+XWBarSwipe.m in Sources */ = {isa = PBXBuildFile; fileRef = 6137B0E61E1AA315008BBAA3 /* XWFilterAnimator+XWBarSwipe.m */; };
+		6137B1101E1AA315008BBAA3 /* XWFilterAnimator+XWBoxBlur.m in Sources */ = {isa = PBXBuildFile; fileRef = 6137B0E81E1AA315008BBAA3 /* XWFilterAnimator+XWBoxBlur.m */; };
+		6137B1111E1AA315008BBAA3 /* XWFilterAnimator+XWCopyMachine.m in Sources */ = {isa = PBXBuildFile; fileRef = 6137B0EA1E1AA315008BBAA3 /* XWFilterAnimator+XWCopyMachine.m */; };
+		6137B1121E1AA315008BBAA3 /* XWFilterAnimator+XWFlash.m in Sources */ = {isa = PBXBuildFile; fileRef = 6137B0EC1E1AA315008BBAA3 /* XWFilterAnimator+XWFlash.m */; };
+		6137B1131E1AA315008BBAA3 /* XWFilterAnimator+XWMask.m in Sources */ = {isa = PBXBuildFile; fileRef = 6137B0EE1E1AA315008BBAA3 /* XWFilterAnimator+XWMask.m */; };
+		6137B1141E1AA315008BBAA3 /* XWFilterAnimator+XWMod.m in Sources */ = {isa = PBXBuildFile; fileRef = 6137B0F01E1AA315008BBAA3 /* XWFilterAnimator+XWMod.m */; };
+		6137B1151E1AA315008BBAA3 /* XWFilterAnimator+XWPageCurl.m in Sources */ = {isa = PBXBuildFile; fileRef = 6137B0F21E1AA315008BBAA3 /* XWFilterAnimator+XWPageCurl.m */; };
+		6137B1161E1AA315008BBAA3 /* XWFilterAnimator+XWRipple.m in Sources */ = {isa = PBXBuildFile; fileRef = 6137B0F41E1AA315008BBAA3 /* XWFilterAnimator+XWRipple.m */; };
+		6137B1171E1AA315008BBAA3 /* XWFilterAnimator+XWSwipe.m in Sources */ = {isa = PBXBuildFile; fileRef = 6137B0F61E1AA315008BBAA3 /* XWFilterAnimator+XWSwipe.m */; };
+		6137B1181E1AA315008BBAA3 /* XWFilterAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = 6137B0F81E1AA315008BBAA3 /* XWFilterAnimator.m */; };
+		6137B1191E1AA315008BBAA3 /* XWFilterTransitionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6137B0FA1E1AA315008BBAA3 /* XWFilterTransitionView.m */; };
+		6137B11A1E1AA315008BBAA3 /* XWMagicMoveAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = 6137B0FD1E1AA315008BBAA3 /* XWMagicMoveAnimator.m */; };
+		6137B11E1E1AABD8008BBAA3 /* ZHTransitionAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = 6137B11D1E1AABD8008BBAA3 /* ZHTransitionAnimator.m */; };
+		6137B1211E1AB4AB008BBAA3 /* CustomTransitionAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 6137B1201E1AB4AB008BBAA3 /* CustomTransitionAnimation.m */; };
 		613914731E0A575B005350A8 /* ZHTabBarVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 613914721E0A575B005350A8 /* ZHTabBarVC.m */; };
 		6139147A1E0A57FF005350A8 /* ZHMusicVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 613914791E0A57FF005350A8 /* ZHMusicVC.m */; };
 		6139147D1E0A5B3D005350A8 /* ZHMusicViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 6139147C1E0A5B3D005350A8 /* ZHMusicViewModel.m */; };
@@ -67,8 +98,6 @@
 		349D24E08EEED09C2162F8BD /* libPods-zhMusicUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-zhMusicUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		42CCD573302750075B4805F3 /* Pods-zhMusicUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-zhMusicUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-zhMusicUITests/Pods-zhMusicUITests.release.xcconfig"; sourceTree = "<group>"; };
 		59D3DF30E96F9BC64633EAAE /* Pods-zhMusic.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-zhMusic.debug.xcconfig"; path = "Pods/Target Support Files/Pods-zhMusic/Pods-zhMusic.debug.xcconfig"; sourceTree = "<group>"; };
-		6104A5BF1E15321F0059C1AA /* ZHPlayMusicListManager+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ZHPlayMusicListManager+Extension.h"; sourceTree = "<group>"; };
-		6104A5C01E15321F0059C1AA /* ZHPlayMusicListManager+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ZHPlayMusicListManager+Extension.m"; sourceTree = "<group>"; };
 		6114C2B61E12BDF000F49642 /* ZHAllMusicVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHAllMusicVC.h; sourceTree = "<group>"; };
 		6114C2B71E12BDF000F49642 /* ZHAllMusicVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHAllMusicVC.m; sourceTree = "<group>"; };
 		6114C2B91E12BE5A00F49642 /* ZHAritistVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHAritistVC.h; sourceTree = "<group>"; };
@@ -104,9 +133,70 @@
 		6137B03E1E181F71008BBAA3 /* ZHButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHButton.m; sourceTree = "<group>"; };
 		6137B0471E193312008BBAA3 /* ZHPlayHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHPlayHeader.h; sourceTree = "<group>"; };
 		6137B0481E193312008BBAA3 /* ZHPlayHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHPlayHeader.m; sourceTree = "<group>"; };
-		6137B04A1E193517008BBAA3 /* ZHPlayHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZHPlayHeader.xib; sourceTree = "<group>"; };
 		6137B04D1E194DE9008BBAA3 /* ZHPlayVCUISercive.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHPlayVCUISercive.h; sourceTree = "<group>"; };
 		6137B04E1E194DE9008BBAA3 /* ZHPlayVCUISercive.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHPlayVCUISercive.m; sourceTree = "<group>"; };
+		6137B0B81E1A86F6008BBAA3 /* ZHPlayHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZHPlayHeader.xib; sourceTree = "<group>"; };
+		6137B0BB1E1A9ACF008BBAA3 /* ZHMusicDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHMusicDataManager.h; sourceTree = "<group>"; };
+		6137B0BC1E1A9ACF008BBAA3 /* ZHMusicDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHMusicDataManager.m; sourceTree = "<group>"; };
+		6137B0C01E1AA315008BBAA3 /* UINavigationController+XWTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationController+XWTransition.h"; sourceTree = "<group>"; };
+		6137B0C11E1AA315008BBAA3 /* UINavigationController+XWTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationController+XWTransition.m"; sourceTree = "<group>"; };
+		6137B0C21E1AA315008BBAA3 /* UIViewController+XWTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+XWTransition.h"; sourceTree = "<group>"; };
+		6137B0C31E1AA315008BBAA3 /* UIViewController+XWTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+XWTransition.m"; sourceTree = "<group>"; };
+		6137B0C51E1AA315008BBAA3 /* XWInteractiveTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XWInteractiveTransition.h; sourceTree = "<group>"; };
+		6137B0C61E1AA315008BBAA3 /* XWInteractiveTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XWInteractiveTransition.m; sourceTree = "<group>"; };
+		6137B0C71E1AA315008BBAA3 /* XWTransitionAnimator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XWTransitionAnimator.h; sourceTree = "<group>"; };
+		6137B0C81E1AA315008BBAA3 /* XWTransitionAnimator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XWTransitionAnimator.m; sourceTree = "<group>"; };
+		6137B0CA1E1AA315008BBAA3 /* line.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = line.png; sourceTree = "<group>"; };
+		6137B0CB1E1AA315008BBAA3 /* mask.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = mask.jpg; sourceTree = "<group>"; };
+		6137B0CC1E1AA315008BBAA3 /* restrictedshine.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = restrictedshine.tiff; sourceTree = "<group>"; };
+		6137B0CE1E1AA315008BBAA3 /* XWCircleSpreadAnimator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XWCircleSpreadAnimator.h; sourceTree = "<group>"; };
+		6137B0CF1E1AA315008BBAA3 /* XWCircleSpreadAnimator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XWCircleSpreadAnimator.m; sourceTree = "<group>"; };
+		6137B0D11E1AA315008BBAA3 /* XWCoolAnimator+XWExplode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "XWCoolAnimator+XWExplode.h"; sourceTree = "<group>"; };
+		6137B0D21E1AA315008BBAA3 /* XWCoolAnimator+XWExplode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "XWCoolAnimator+XWExplode.m"; sourceTree = "<group>"; };
+		6137B0D31E1AA315008BBAA3 /* XWCoolAnimator+XWFold.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "XWCoolAnimator+XWFold.h"; sourceTree = "<group>"; };
+		6137B0D41E1AA315008BBAA3 /* XWCoolAnimator+XWFold.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "XWCoolAnimator+XWFold.m"; sourceTree = "<group>"; };
+		6137B0D51E1AA315008BBAA3 /* XWCoolAnimator+XWLines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "XWCoolAnimator+XWLines.h"; sourceTree = "<group>"; };
+		6137B0D61E1AA315008BBAA3 /* XWCoolAnimator+XWLines.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "XWCoolAnimator+XWLines.m"; sourceTree = "<group>"; };
+		6137B0D71E1AA315008BBAA3 /* XWCoolAnimator+XWMiddlePageFlip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "XWCoolAnimator+XWMiddlePageFlip.h"; sourceTree = "<group>"; };
+		6137B0D81E1AA315008BBAA3 /* XWCoolAnimator+XWMiddlePageFlip.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "XWCoolAnimator+XWMiddlePageFlip.m"; sourceTree = "<group>"; };
+		6137B0D91E1AA315008BBAA3 /* XWCoolAnimator+XWPageFlip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "XWCoolAnimator+XWPageFlip.h"; sourceTree = "<group>"; };
+		6137B0DA1E1AA315008BBAA3 /* XWCoolAnimator+XWPageFlip.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "XWCoolAnimator+XWPageFlip.m"; sourceTree = "<group>"; };
+		6137B0DB1E1AA315008BBAA3 /* XWCoolAnimator+XWPortal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "XWCoolAnimator+XWPortal.h"; sourceTree = "<group>"; };
+		6137B0DC1E1AA315008BBAA3 /* XWCoolAnimator+XWPortal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "XWCoolAnimator+XWPortal.m"; sourceTree = "<group>"; };
+		6137B0DD1E1AA315008BBAA3 /* XWCoolAnimator+XWScanning.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "XWCoolAnimator+XWScanning.h"; sourceTree = "<group>"; };
+		6137B0DE1E1AA315008BBAA3 /* XWCoolAnimator+XWScanning.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "XWCoolAnimator+XWScanning.m"; sourceTree = "<group>"; };
+		6137B0DF1E1AA315008BBAA3 /* XWCoolAnimator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XWCoolAnimator.h; sourceTree = "<group>"; };
+		6137B0E01E1AA315008BBAA3 /* XWCoolAnimator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XWCoolAnimator.m; sourceTree = "<group>"; };
+		6137B0E21E1AA315008BBAA3 /* XWDrawerAnimator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XWDrawerAnimator.h; sourceTree = "<group>"; };
+		6137B0E31E1AA315008BBAA3 /* XWDrawerAnimator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XWDrawerAnimator.m; sourceTree = "<group>"; };
+		6137B0E51E1AA315008BBAA3 /* XWFilterAnimator+XWBarSwipe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "XWFilterAnimator+XWBarSwipe.h"; sourceTree = "<group>"; };
+		6137B0E61E1AA315008BBAA3 /* XWFilterAnimator+XWBarSwipe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "XWFilterAnimator+XWBarSwipe.m"; sourceTree = "<group>"; };
+		6137B0E71E1AA315008BBAA3 /* XWFilterAnimator+XWBoxBlur.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "XWFilterAnimator+XWBoxBlur.h"; sourceTree = "<group>"; };
+		6137B0E81E1AA315008BBAA3 /* XWFilterAnimator+XWBoxBlur.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "XWFilterAnimator+XWBoxBlur.m"; sourceTree = "<group>"; };
+		6137B0E91E1AA315008BBAA3 /* XWFilterAnimator+XWCopyMachine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "XWFilterAnimator+XWCopyMachine.h"; sourceTree = "<group>"; };
+		6137B0EA1E1AA315008BBAA3 /* XWFilterAnimator+XWCopyMachine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "XWFilterAnimator+XWCopyMachine.m"; sourceTree = "<group>"; };
+		6137B0EB1E1AA315008BBAA3 /* XWFilterAnimator+XWFlash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "XWFilterAnimator+XWFlash.h"; sourceTree = "<group>"; };
+		6137B0EC1E1AA315008BBAA3 /* XWFilterAnimator+XWFlash.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "XWFilterAnimator+XWFlash.m"; sourceTree = "<group>"; };
+		6137B0ED1E1AA315008BBAA3 /* XWFilterAnimator+XWMask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "XWFilterAnimator+XWMask.h"; sourceTree = "<group>"; };
+		6137B0EE1E1AA315008BBAA3 /* XWFilterAnimator+XWMask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "XWFilterAnimator+XWMask.m"; sourceTree = "<group>"; };
+		6137B0EF1E1AA315008BBAA3 /* XWFilterAnimator+XWMod.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "XWFilterAnimator+XWMod.h"; sourceTree = "<group>"; };
+		6137B0F01E1AA315008BBAA3 /* XWFilterAnimator+XWMod.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "XWFilterAnimator+XWMod.m"; sourceTree = "<group>"; };
+		6137B0F11E1AA315008BBAA3 /* XWFilterAnimator+XWPageCurl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "XWFilterAnimator+XWPageCurl.h"; sourceTree = "<group>"; };
+		6137B0F21E1AA315008BBAA3 /* XWFilterAnimator+XWPageCurl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "XWFilterAnimator+XWPageCurl.m"; sourceTree = "<group>"; };
+		6137B0F31E1AA315008BBAA3 /* XWFilterAnimator+XWRipple.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "XWFilterAnimator+XWRipple.h"; sourceTree = "<group>"; };
+		6137B0F41E1AA315008BBAA3 /* XWFilterAnimator+XWRipple.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "XWFilterAnimator+XWRipple.m"; sourceTree = "<group>"; };
+		6137B0F51E1AA315008BBAA3 /* XWFilterAnimator+XWSwipe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "XWFilterAnimator+XWSwipe.h"; sourceTree = "<group>"; };
+		6137B0F61E1AA315008BBAA3 /* XWFilterAnimator+XWSwipe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "XWFilterAnimator+XWSwipe.m"; sourceTree = "<group>"; };
+		6137B0F71E1AA315008BBAA3 /* XWFilterAnimator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XWFilterAnimator.h; sourceTree = "<group>"; };
+		6137B0F81E1AA315008BBAA3 /* XWFilterAnimator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XWFilterAnimator.m; sourceTree = "<group>"; };
+		6137B0F91E1AA315008BBAA3 /* XWFilterTransitionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XWFilterTransitionView.h; sourceTree = "<group>"; };
+		6137B0FA1E1AA315008BBAA3 /* XWFilterTransitionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XWFilterTransitionView.m; sourceTree = "<group>"; };
+		6137B0FC1E1AA315008BBAA3 /* XWMagicMoveAnimator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XWMagicMoveAnimator.h; sourceTree = "<group>"; };
+		6137B0FD1E1AA315008BBAA3 /* XWMagicMoveAnimator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XWMagicMoveAnimator.m; sourceTree = "<group>"; };
+		6137B11C1E1AABD8008BBAA3 /* ZHTransitionAnimator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHTransitionAnimator.h; sourceTree = "<group>"; };
+		6137B11D1E1AABD8008BBAA3 /* ZHTransitionAnimator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHTransitionAnimator.m; sourceTree = "<group>"; };
+		6137B11F1E1AB4AB008BBAA3 /* CustomTransitionAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomTransitionAnimation.h; sourceTree = "<group>"; };
+		6137B1201E1AB4AB008BBAA3 /* CustomTransitionAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomTransitionAnimation.m; sourceTree = "<group>"; };
 		613914711E0A575B005350A8 /* ZHTabBarVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHTabBarVC.h; sourceTree = "<group>"; };
 		613914721E0A575B005350A8 /* ZHTabBarVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHTabBarVC.m; sourceTree = "<group>"; };
 		613914781E0A57FF005350A8 /* ZHMusicVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHMusicVC.h; sourceTree = "<group>"; };
@@ -176,15 +266,6 @@
 				349D24E08EEED09C2162F8BD /* libPods-zhMusicUITests.a */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		6104A5BE1E1531F30059C1AA /* PlayMusicListmanager */ = {
-			isa = PBXGroup;
-			children = (
-				6104A5BF1E15321F0059C1AA /* ZHPlayMusicListManager+Extension.h */,
-				6104A5C01E15321F0059C1AA /* ZHPlayMusicListManager+Extension.m */,
-			);
-			path = PlayMusicListmanager;
 			sourceTree = "<group>";
 		};
 		6114C2C61E13715600F49642 /* ZHPlayMusicManager */ = {
@@ -313,7 +394,7 @@
 			children = (
 				6137B0471E193312008BBAA3 /* ZHPlayHeader.h */,
 				6137B0481E193312008BBAA3 /* ZHPlayHeader.m */,
-				6137B04A1E193517008BBAA3 /* ZHPlayHeader.xib */,
+				6137B0B81E1A86F6008BBAA3 /* ZHPlayHeader.xib */,
 			);
 			path = Header;
 			sourceTree = "<group>";
@@ -325,6 +406,152 @@
 				6137B04E1E194DE9008BBAA3 /* ZHPlayVCUISercive.m */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		6137B0BA1E1A9A76008BBAA3 /* ZHMusicDataManager */ = {
+			isa = PBXGroup;
+			children = (
+				6137B0BB1E1A9ACF008BBAA3 /* ZHMusicDataManager.h */,
+				6137B0BC1E1A9ACF008BBAA3 /* ZHMusicDataManager.m */,
+			);
+			path = ZHMusicDataManager;
+			sourceTree = "<group>";
+		};
+		6137B0BE1E1AA315008BBAA3 /* XWTransition */ = {
+			isa = PBXGroup;
+			children = (
+				6137B0BF1E1AA315008BBAA3 /* Category */,
+				6137B0C41E1AA315008BBAA3 /* Main */,
+				6137B0C91E1AA315008BBAA3 /* Resoures */,
+				6137B0CD1E1AA315008BBAA3 /* XWCircleSpreadAnimator */,
+				6137B0D01E1AA315008BBAA3 /* XWCoolAnimator */,
+				6137B0E11E1AA315008BBAA3 /* XWDrawerAnimator */,
+				6137B0E41E1AA315008BBAA3 /* XWFilterAnimator */,
+				6137B0FB1E1AA315008BBAA3 /* XWMagicMoveAnimator */,
+			);
+			path = XWTransition;
+			sourceTree = "<group>";
+		};
+		6137B0BF1E1AA315008BBAA3 /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				6137B0C01E1AA315008BBAA3 /* UINavigationController+XWTransition.h */,
+				6137B0C11E1AA315008BBAA3 /* UINavigationController+XWTransition.m */,
+				6137B0C21E1AA315008BBAA3 /* UIViewController+XWTransition.h */,
+				6137B0C31E1AA315008BBAA3 /* UIViewController+XWTransition.m */,
+			);
+			path = Category;
+			sourceTree = "<group>";
+		};
+		6137B0C41E1AA315008BBAA3 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				6137B0C51E1AA315008BBAA3 /* XWInteractiveTransition.h */,
+				6137B0C61E1AA315008BBAA3 /* XWInteractiveTransition.m */,
+				6137B0C71E1AA315008BBAA3 /* XWTransitionAnimator.h */,
+				6137B0C81E1AA315008BBAA3 /* XWTransitionAnimator.m */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		6137B0C91E1AA315008BBAA3 /* Resoures */ = {
+			isa = PBXGroup;
+			children = (
+				6137B0CA1E1AA315008BBAA3 /* line.png */,
+				6137B0CB1E1AA315008BBAA3 /* mask.jpg */,
+				6137B0CC1E1AA315008BBAA3 /* restrictedshine.tiff */,
+			);
+			path = Resoures;
+			sourceTree = "<group>";
+		};
+		6137B0CD1E1AA315008BBAA3 /* XWCircleSpreadAnimator */ = {
+			isa = PBXGroup;
+			children = (
+				6137B0CE1E1AA315008BBAA3 /* XWCircleSpreadAnimator.h */,
+				6137B0CF1E1AA315008BBAA3 /* XWCircleSpreadAnimator.m */,
+			);
+			path = XWCircleSpreadAnimator;
+			sourceTree = "<group>";
+		};
+		6137B0D01E1AA315008BBAA3 /* XWCoolAnimator */ = {
+			isa = PBXGroup;
+			children = (
+				6137B0D11E1AA315008BBAA3 /* XWCoolAnimator+XWExplode.h */,
+				6137B0D21E1AA315008BBAA3 /* XWCoolAnimator+XWExplode.m */,
+				6137B0D31E1AA315008BBAA3 /* XWCoolAnimator+XWFold.h */,
+				6137B0D41E1AA315008BBAA3 /* XWCoolAnimator+XWFold.m */,
+				6137B0D51E1AA315008BBAA3 /* XWCoolAnimator+XWLines.h */,
+				6137B0D61E1AA315008BBAA3 /* XWCoolAnimator+XWLines.m */,
+				6137B0D71E1AA315008BBAA3 /* XWCoolAnimator+XWMiddlePageFlip.h */,
+				6137B0D81E1AA315008BBAA3 /* XWCoolAnimator+XWMiddlePageFlip.m */,
+				6137B0D91E1AA315008BBAA3 /* XWCoolAnimator+XWPageFlip.h */,
+				6137B0DA1E1AA315008BBAA3 /* XWCoolAnimator+XWPageFlip.m */,
+				6137B0DB1E1AA315008BBAA3 /* XWCoolAnimator+XWPortal.h */,
+				6137B0DC1E1AA315008BBAA3 /* XWCoolAnimator+XWPortal.m */,
+				6137B0DD1E1AA315008BBAA3 /* XWCoolAnimator+XWScanning.h */,
+				6137B0DE1E1AA315008BBAA3 /* XWCoolAnimator+XWScanning.m */,
+				6137B0DF1E1AA315008BBAA3 /* XWCoolAnimator.h */,
+				6137B0E01E1AA315008BBAA3 /* XWCoolAnimator.m */,
+			);
+			path = XWCoolAnimator;
+			sourceTree = "<group>";
+		};
+		6137B0E11E1AA315008BBAA3 /* XWDrawerAnimator */ = {
+			isa = PBXGroup;
+			children = (
+				6137B0E21E1AA315008BBAA3 /* XWDrawerAnimator.h */,
+				6137B0E31E1AA315008BBAA3 /* XWDrawerAnimator.m */,
+			);
+			path = XWDrawerAnimator;
+			sourceTree = "<group>";
+		};
+		6137B0E41E1AA315008BBAA3 /* XWFilterAnimator */ = {
+			isa = PBXGroup;
+			children = (
+				6137B0E51E1AA315008BBAA3 /* XWFilterAnimator+XWBarSwipe.h */,
+				6137B0E61E1AA315008BBAA3 /* XWFilterAnimator+XWBarSwipe.m */,
+				6137B0E71E1AA315008BBAA3 /* XWFilterAnimator+XWBoxBlur.h */,
+				6137B0E81E1AA315008BBAA3 /* XWFilterAnimator+XWBoxBlur.m */,
+				6137B0E91E1AA315008BBAA3 /* XWFilterAnimator+XWCopyMachine.h */,
+				6137B0EA1E1AA315008BBAA3 /* XWFilterAnimator+XWCopyMachine.m */,
+				6137B0EB1E1AA315008BBAA3 /* XWFilterAnimator+XWFlash.h */,
+				6137B0EC1E1AA315008BBAA3 /* XWFilterAnimator+XWFlash.m */,
+				6137B0ED1E1AA315008BBAA3 /* XWFilterAnimator+XWMask.h */,
+				6137B0EE1E1AA315008BBAA3 /* XWFilterAnimator+XWMask.m */,
+				6137B0EF1E1AA315008BBAA3 /* XWFilterAnimator+XWMod.h */,
+				6137B0F01E1AA315008BBAA3 /* XWFilterAnimator+XWMod.m */,
+				6137B0F11E1AA315008BBAA3 /* XWFilterAnimator+XWPageCurl.h */,
+				6137B0F21E1AA315008BBAA3 /* XWFilterAnimator+XWPageCurl.m */,
+				6137B0F31E1AA315008BBAA3 /* XWFilterAnimator+XWRipple.h */,
+				6137B0F41E1AA315008BBAA3 /* XWFilterAnimator+XWRipple.m */,
+				6137B0F51E1AA315008BBAA3 /* XWFilterAnimator+XWSwipe.h */,
+				6137B0F61E1AA315008BBAA3 /* XWFilterAnimator+XWSwipe.m */,
+				6137B0F71E1AA315008BBAA3 /* XWFilterAnimator.h */,
+				6137B0F81E1AA315008BBAA3 /* XWFilterAnimator.m */,
+				6137B0F91E1AA315008BBAA3 /* XWFilterTransitionView.h */,
+				6137B0FA1E1AA315008BBAA3 /* XWFilterTransitionView.m */,
+			);
+			path = XWFilterAnimator;
+			sourceTree = "<group>";
+		};
+		6137B0FB1E1AA315008BBAA3 /* XWMagicMoveAnimator */ = {
+			isa = PBXGroup;
+			children = (
+				6137B0FC1E1AA315008BBAA3 /* XWMagicMoveAnimator.h */,
+				6137B0FD1E1AA315008BBAA3 /* XWMagicMoveAnimator.m */,
+			);
+			path = XWMagicMoveAnimator;
+			sourceTree = "<group>";
+		};
+		6137B11B1E1AABA9008BBAA3 /* ZHTransitionAnimator */ = {
+			isa = PBXGroup;
+			children = (
+				6137B11F1E1AB4AB008BBAA3 /* CustomTransitionAnimation.h */,
+				6137B1201E1AB4AB008BBAA3 /* CustomTransitionAnimation.m */,
+				6137B11C1E1AABD8008BBAA3 /* ZHTransitionAnimator.h */,
+				6137B11D1E1AABD8008BBAA3 /* ZHTransitionAnimator.m */,
+			);
+			path = ZHTransitionAnimator;
 			sourceTree = "<group>";
 		};
 		6139147E1E0A5C34005350A8 /* Other */ = {
@@ -359,7 +586,6 @@
 		613914831E0A6BCE005350A8 /* Category */ = {
 			isa = PBXGroup;
 			children = (
-				6104A5BE1E1531F30059C1AA /* PlayMusicListmanager */,
 				61D939471E13FDB600B2F849 /* UIImage */,
 				612FC33F1E0AA1190006CF5D /* UIView */,
 				612FC3341E0A968D0006CF5D /* log */,
@@ -398,6 +624,9 @@
 		614283851E0E746800B2CAB7 /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				6137B11B1E1AABA9008BBAA3 /* ZHTransitionAnimator */,
+				6137B0BE1E1AA315008BBAA3 /* XWTransition */,
+				6137B0BA1E1A9A76008BBAA3 /* ZHMusicDataManager */,
 				6137B03C1E181F71008BBAA3 /* ZHButton */,
 				61F00FD71E16122A00C6DE1C /* ZHPlayVC */,
 				61D939531E151A2500B2F849 /* ZHPlayMusicListManager */,
@@ -638,9 +867,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6137B04B1E193517008BBAA3 /* ZHPlayHeader.xib in Resources */,
+				6137B0B91E1A86F6008BBAA3 /* ZHPlayHeader.xib in Resources */,
+				6137B1041E1AA315008BBAA3 /* restrictedshine.tiff in Resources */,
+				6137B1031E1AA315008BBAA3 /* mask.jpg in Resources */,
 				61242E341E07BF6000D6358F /* LaunchScreen.storyboard in Resources */,
 				61242E311E07BF6000D6358F /* Assets.xcassets in Resources */,
+				6137B1021E1AA315008BBAA3 /* line.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -803,34 +1035,62 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6104A5C11E15321F0059C1AA /* ZHPlayMusicListManager+Extension.m in Sources */,
 				612FC3421E0AA1310006CF5D /* UIView+Extension.m in Sources */,
+				6137B1181E1AA315008BBAA3 /* XWFilterAnimator.m in Sources */,
+				6137B10F1E1AA315008BBAA3 /* XWFilterAnimator+XWBarSwipe.m in Sources */,
+				6137B1061E1AA315008BBAA3 /* XWCoolAnimator+XWExplode.m in Sources */,
+				6137B11A1E1AA315008BBAA3 /* XWMagicMoveAnimator.m in Sources */,
 				612FC3451E0AAD070006CF5D /* ZHMusicCell.m in Sources */,
 				6114C2B81E12BDF000F49642 /* ZHAllMusicVC.m in Sources */,
 				61F00FDA1E1612EE00C6DE1C /* ZHPlayVC.m in Sources */,
 				6114C2C91E13718900F49642 /* ZHPlayMusicManager.m in Sources */,
 				61242E291E07BF6000D6358F /* AppDelegate.m in Sources */,
+				6137B1011E1AA315008BBAA3 /* XWTransitionAnimator.m in Sources */,
+				6137B10C1E1AA315008BBAA3 /* XWCoolAnimator+XWScanning.m in Sources */,
+				6137B1211E1AB4AB008BBAA3 /* CustomTransitionAnimation.m in Sources */,
+				6137B10B1E1AA315008BBAA3 /* XWCoolAnimator+XWPortal.m in Sources */,
+				6137B1111E1AA315008BBAA3 /* XWFilterAnimator+XWCopyMachine.m in Sources */,
+				6137B1051E1AA315008BBAA3 /* XWCircleSpreadAnimator.m in Sources */,
 				612FC3371E0A97AB0006CF5D /* Foundation+Log.m in Sources */,
 				6139148B1E0A6F1D005350A8 /* ZHTabBarVC+ZH_AddChildVC.m in Sources */,
+				6137B0FE1E1AA315008BBAA3 /* UINavigationController+XWTransition.m in Sources */,
+				6137B10E1E1AA315008BBAA3 /* XWDrawerAnimator.m in Sources */,
 				613914731E0A575B005350A8 /* ZHTabBarVC.m in Sources */,
 				61D939571E151A5800B2F849 /* ZHMusicInfo.m in Sources */,
 				61D939521E14F97600B2F849 /* pinyin.m in Sources */,
 				6137B0491E193312008BBAA3 /* ZHPlayHeader.m in Sources */,
 				61D939461E13E17E00B2F849 /* ZHAllMusicCell.m in Sources */,
+				6137B10A1E1AA315008BBAA3 /* XWCoolAnimator+XWPageFlip.m in Sources */,
 				6137B04F1E194DE9008BBAA3 /* ZHPlayVCUISercive.m in Sources */,
+				6137B1091E1AA315008BBAA3 /* XWCoolAnimator+XWMiddlePageFlip.m in Sources */,
+				6137B1171E1AA315008BBAA3 /* XWFilterAnimator+XWSwipe.m in Sources */,
 				6114C2BB1E12BE5A00F49642 /* ZHAritistVC.m in Sources */,
+				6137B1081E1AA315008BBAA3 /* XWCoolAnimator+XWLines.m in Sources */,
 				6139147A1E0A57FF005350A8 /* ZHMusicVC.m in Sources */,
 				6114C2BE1E12BE7000F49642 /* ZHPodcastTitle.m in Sources */,
+				6137B1141E1AA315008BBAA3 /* XWFilterAnimator+XWMod.m in Sources */,
 				6139147D1E0A5B3D005350A8 /* ZHMusicViewModel.m in Sources */,
 				61D9395A1E151A8800B2F849 /* ZHPlayMusicListManager.m in Sources */,
+				6137B1131E1AA315008BBAA3 /* XWFilterAnimator+XWMask.m in Sources */,
+				6137B1121E1AA315008BBAA3 /* XWFilterAnimator+XWFlash.m in Sources */,
+				6137B0FF1E1AA315008BBAA3 /* UIViewController+XWTransition.m in Sources */,
 				614182901E17C4A700D376BD /* ZHMiniPlayView.m in Sources */,
 				612FC33E1E0A9E340006CF5D /* ZHMusicHeader.m in Sources */,
+				6137B11E1E1AABD8008BBAA3 /* ZHTransitionAnimator.m in Sources */,
 				61D9394A1E13FDCD00B2F849 /* UIImage+Extension.m in Sources */,
+				6137B1071E1AA315008BBAA3 /* XWCoolAnimator+XWFold.m in Sources */,
+				6137B10D1E1AA315008BBAA3 /* XWCoolAnimator.m in Sources */,
 				6114C2C41E12C56F00F49642 /* ZHNavigationVC.m in Sources */,
 				614182861E179BD600D376BD /* ZHTableView.m in Sources */,
+				6137B1161E1AA315008BBAA3 /* XWFilterAnimator+XWRipple.m in Sources */,
+				6137B0BD1E1A9ACF008BBAA3 /* ZHMusicDataManager.m in Sources */,
+				6137B1151E1AA315008BBAA3 /* XWFilterAnimator+XWPageCurl.m in Sources */,
+				6137B1191E1AA315008BBAA3 /* XWFilterTransitionView.m in Sources */,
 				614283891E0E75FC00B2CAB7 /* ZYYYTextView.m in Sources */,
+				6137B1001E1AA315008BBAA3 /* XWInteractiveTransition.m in Sources */,
 				61242E261E07BF6000D6358F /* main.m in Sources */,
 				6137B03F1E181F71008BBAA3 /* ZHButton.m in Sources */,
+				6137B1101E1AA315008BBAA3 /* XWFilterAnimator+XWBoxBlur.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

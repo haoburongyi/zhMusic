@@ -8,13 +8,15 @@
 
 #import <UIKit/UIKit.h>
 #import <MediaPlayer/MediaPlayer.h>
+#import "ZHPlayHeader.h"
 
 @interface ZHPlayVC : UIViewController
 
 @property (nonatomic, strong) NSArray<MPMediaItem *> *playList;
+@property (nonatomic, strong) ZHPlayHeader *header;
+@property (nonatomic, strong) MPMediaItem *currentSong;
 
 - (void)setPlayList:(NSArray<MPMediaItem *> *)playList;
-+ (instancetype)defaultVC;
-
 - (void)disMiss;
++ (instancetype)defaultVC;
 @end

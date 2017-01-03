@@ -11,6 +11,9 @@
 #import "ZHPlayVC.h"
 #import "ZHPlayMusicManager.h"
 #import "ZHButton.h"
+#import "XWMagicMoveAnimator.h"
+#import "UIViewController+XWTransition.h"
+
 
 typedef NS_ENUM(NSInteger, CameraMoveDirection) {
     
@@ -37,6 +40,7 @@ typedef NS_ENUM(NSInteger, CameraMoveDirection) {
 
 @implementation ZHMiniPlayView {
     CameraMoveDirection direction;
+    MPMediaItem *_song;
 }
 
 static ZHMiniPlayView *_defaultView;
@@ -72,20 +76,55 @@ static ZHMiniPlayView *_defaultView;
     UIImage *img = [artwork imageWithSize:self.artworkImageView.size];
     
     self.artworkImageView.image = img;
+    
+    _song = item;
 }
 
 - (void)showPlayVC {
     
-    UITabBarController *tabBarControler = (id)UIApplication.sharedApplication.delegate.window.rootViewController;
-    
-    UINavigationController *nav = tabBarControler.selectedViewController;
-    UIViewController *vc = [nav.viewControllers lastObject];
-    
-    
     ZHPlayVC *playVC = [ZHPlayVC defaultVC];
     
     if (playVC.isViewLoaded && !playVC.view.window) {// 是否是正在使用的视图
+        
+        
+        UITabBarController *tabBarControler = (id)UIApplication.sharedApplication.delegate.window.rootViewController;
+        UINavigationController *nav = tabBarControler.selectedViewController;
+        UIViewController *vc = [nav.viewControllers lastObject];
+
+        playVC.currentSong = _song;
+        
+//        CGRect frame = [self.artworkImageView convertRect:self.artworkImageView.bounds toView:nil];
+//        UIImageView *imageView = [[UIImageView alloc] initWithImage:self.artworkImageView.image];
+//        imageView.frame = frame;
+//        [vc.view addSubview:imageView];
+        
+        
+        [vc xw_addMagicMoveStartViewGroup:@[self.artworkImageView]];
+        XWMagicMoveAnimator *animator = [XWMagicMoveAnimator new];
+        animator.dampingEnable = NO;
+        animator.imageMode = YES;
+        animator.toDuration = 0.5f;
+        animator.backDuration = 0.5f;
+        
         [vc presentViewController:playVC animated:YES completion:nil];
+//        [vc xw_presentViewController:playVC withAnimator:animator];
+//        [vc presentViewController:playVC animated:NO completion:^{
+        
+//            CGRect frame = [self.artworkImageView convertRect:self.artworkImageView.bounds toView:nil];
+//            CGRect toFrame = [playVC.header.artworkImageVIew convertRect:playVC.header.artworkImageVIew.bounds toView:nil];
+//            NSLog(@"%@, %@", NSStringFromCGRect(frame), NSStringFromCGRect(toFrame));
+//            UIImageView *imageView = [[UIImageView alloc] initWithFrame:frame];
+//            imageView.image = self.artworkImageView.image;
+//            [[UIApplication sharedApplication].keyWindow addSubview:imageView];
+//            [UIView animateWithDuration:0.5 animations:^{
+//                imageView.frame = toFrame;
+//            }completion:^(BOOL finished) {
+//                [imageView removeFromSuperview];
+//            }];
+//        }];
+        
+        
+        
     }
 }
 

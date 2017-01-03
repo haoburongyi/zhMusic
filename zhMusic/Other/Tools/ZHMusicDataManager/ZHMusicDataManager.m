@@ -1,17 +1,18 @@
 //
-//  ZHPlayMusicListManager+Extension.m
+//  ZHMusicDataManager.m
 //  zhMusic
 //
-//  Created by 张淏 on 16/12/29.
-//  Copyright © 2016年 张淏. All rights reserved.
+//  Created by 张淏 on 17/1/2.
+//  Copyright © 2017年 张淏. All rights reserved.
 //
 
-#import "ZHPlayMusicListManager+Extension.h"
+#import "ZHMusicDataManager.h"
 #import <MediaPlayer/MediaPlayer.h>
 #import <Realm.h>
 #import "ZHMusicInfo.h"
 
-@implementation ZHPlayMusicListManager (Extension)
+
+@implementation ZHMusicDataManager
 + (void)checkAllMusic {
     //    MPMediaQuery *everything = [[MPMediaQuery alloc] init];
     MPMediaQuery *everything = [MPMediaQuery songsQuery];

@@ -19,7 +19,7 @@
 
 - (void)setImage:(UIImage *)image {
     _image = image;
-    
+
     [image zh_cornerImageWithSize:_artworkImg.size cornerRadius:4 fillColor:[UIColor whiteColor] completion:^(UIImage *image) {
         _artworkImg.image = image;
     }];

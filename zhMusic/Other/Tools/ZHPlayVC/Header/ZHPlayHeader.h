@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <MediaPlayer/MediaPlayer.h>
 
 @interface ZHPlayHeader : UIView
-
+@property (weak, nonatomic) IBOutlet UIImageView *artworkImageVIew;
+@property (nonatomic, strong) MPMediaItem *currentSong;
 @end

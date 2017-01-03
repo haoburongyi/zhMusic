@@ -10,7 +10,7 @@
 #import "Header.h"
 #import "ZHMiniPlayView.h"
 #import "ZHPlayVCUISercive.h"
-
+#import "UIViewController+XWTransition.h"
 
 
 
@@ -18,9 +18,23 @@
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) UIView *cover;
 @property (nonatomic, strong) ZHPlayVCUISercive *sercive;
+@property (nonatomic, strong) UIViewController *presentingVC;
 @end
 
 @implementation ZHPlayVC
+
+- (void)setCurrentSong:(MPMediaItem *)currentSong {
+    _currentSong = currentSong;
+    _header.currentSong = currentSong;
+}
+
+- (ZHPlayHeader *)header {
+    if (_header == nil) {
+        _header = [[[NSBundle mainBundle] loadNibNamed:@"ZHPlayHeader" owner:nil options:nil] lastObject];
+        _header.height = 400;
+    }
+    return _header;
+}
 
 - (ZHPlayVCUISercive *)sercive {
     if (_sercive == nil) {
@@ -50,11 +64,15 @@ static ZHPlayVC *_defaultVC;
     dispatch_once(&onceToken, ^{
         _defaultVC = [[ZHPlayVC alloc] init];
         _defaultVC.modalPresentationStyle = UIModalPresentationOverCurrentContext;
+        [_defaultVC configureAnimation];
         [_defaultVC configureTableView];
     });
     return _defaultVC;
 }
 
+- (void)configureAnimation {
+    [self xw_addMagicMoveEndViewGroup:@[self.header.artworkImageVIew]];
+}
 
 - (void)configureTableView {
     
@@ -73,8 +91,9 @@ static ZHPlayVC *_defaultVC;
     maskLayer.frame = _tableView.bounds;
     maskLayer.path = maskPath.CGPath;
     _tableView.layer.mask = maskLayer;
+    
+    _tableView.tableHeaderView = self.header;
 }
-
 
 - (void)viewWillAppear:(BOOL)animated {
     // 调整自己的 frame
@@ -96,9 +115,6 @@ static ZHPlayVC *_defaultVC;
     }];
 }
 - (void)viewWillDisappear:(BOOL)animated {
-    
-    // 显示 miniplay
-    [[UIApplication sharedApplication].keyWindow bringSubviewToFront:[ZHMiniPlayView defaultView]];
     
     // 显示 tabbar
     UITabBarController *tabBarControler = (id)UIApplication.sharedApplication.delegate.window.rootViewController;
@@ -132,14 +148,21 @@ static ZHPlayVC *_defaultVC;
     }];
 }
 - (void)disMiss {
+    
+    
+    
     [self.cover removeFromSuperview];
     [UIView animateWithDuration:0.25 animations:^{
         
-        [self setNavCornerRadius:0];
         self.presentingViewController.view.layer.transform = CATransform3DIdentity;
     }];
-
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [self setNavCornerRadius:0];
+    self.presentingVC = self.presentingViewController;
+    [[UIApplication sharedApplication].keyWindow bringSubviewToFront:[ZHMiniPlayView defaultView]];
+    [self dismissViewControllerAnimated:YES completion:^{
+        // 显示 miniplay
+        
+    }];
 }
 
 - (void)setNavCornerRadius:(CGFloat)radius {
