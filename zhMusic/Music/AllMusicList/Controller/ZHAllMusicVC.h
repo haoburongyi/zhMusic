@@ -1,5 +1,5 @@
 //
-//  ZHAritistVC.h
+//  ZHAllMusicVC.h
 //  zhMusic
 //
 //  Created by 张淏 on 16/12/27.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ZHAritistVC : UIViewController
+@interface ZHAllMusicVC : UIViewController
 
 @end
