@@ -90,11 +90,9 @@ static ZHMiniPlayView *_defaultView;
         UINavigationController *nav = tabBarControler.selectedViewController;
         UIViewController *vc = [nav.viewControllers lastObject];
         
-//        CGRect frame = [self.artworkImageView convertRect:self.artworkImageView.bounds toView:nil];
-//        UIImageView *imageView = [[UIImageView alloc] initWithImage:self.artworkImageView.image];
-//        imageView.frame = frame;
-//        [vc.view addSubview:imageView];
-        
+        for (UIViewController *vc in nav.viewControllers) {
+            NSLog(@"%@", [vc class]);
+        }
         
         [vc presentViewController:playVC animated:YES completion:nil];
     }

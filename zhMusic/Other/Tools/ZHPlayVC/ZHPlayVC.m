@@ -10,7 +10,8 @@
 #import "Header.h"
 #import "ZHMiniPlayView.h"
 #import "ZHPlayVCUISercive.h"
-
+#import "ZHNavigationVC.h"
+#import <UINavigationController+FDFullscreenPopGesture.h>
 
 
 
@@ -21,7 +22,9 @@
 @property (nonatomic, strong) UIViewController *presentingVC;
 @end
 
-@implementation ZHPlayVC
+@implementation ZHPlayVC {
+    CGRect _presentingFrame;
+}
 
 - (void)setCurrentSong:(MPMediaItem *)currentSong {
     _currentSong = currentSong;
@@ -52,7 +55,7 @@
     if (_cover == nil) {
         _cover = [[UIView alloc] initWithFrame:CGRectMake(-ZHMainScreenW, -ZHMainScreenH, ZHMainScreenW * 3, ZHMainScreenH * 3)];
         _cover.backgroundColor = [UIColor blackColor];
-        _cover.alpha = 0.4;
+        _cover.alpha = 0.2;
     }
     return _cover;
 }
@@ -64,8 +67,31 @@ static ZHPlayVC *_defaultVC;
         _defaultVC = [[ZHPlayVC alloc] init];
         _defaultVC.modalPresentationStyle = UIModalPresentationOverCurrentContext;
         [_defaultVC configureTableView];
+        [[NSNotificationCenter defaultCenter] addObserver:_defaultVC selector:@selector(applicationDidBecomeActive) name:UIApplicationDidBecomeActiveNotification object:nil];
     });
     return _defaultVC;
+}
+
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIApplicationDidBecomeActiveNotification object:nil];
+}
+
+- (void)applicationDidBecomeActive {
+    // 进入前台, origin 会归为 {0, 0}
+    NSLog(@"%d, %@", self.isViewLoaded, self.view.window);
+    NSLog(@"%@", NSStringFromCGPoint(self.presentingViewController.view.origin));
+    if (self.isViewLoaded) {// 是否是正在使用的视图
+    
+//        dispatch_async(dispatch_get_main_queue(), ^{
+            self.presentingViewController.view.layer.transform = CATransform3DIdentity;
+        self.presentingViewController.view.origin = CGPointZero;
+        
+        CGFloat x = 1 - 30 / 320.f;
+        CGFloat y = 1 - 40 / 667.f;
+        self.presentingViewController.view.layer.transform = CATransform3DMakeScale(x, y, 1);
+//        });
+
+    }
 }
 
 - (void)configureTableView {
@@ -134,11 +160,18 @@ static ZHPlayVC *_defaultVC;
     NSLog(@"%@", self.presentingViewController);
     [UIView animateWithDuration:0.25 animations:^{
         
-        // 这里改 frame 会导致 view 层显示问题
-//        self.presentingViewController.view.frame = CGRectMake(15, 20, self.presentingViewController.view.bounds.size.width - 30, self.presentingViewController.view.bounds.size.height);
         // 这里如果没有 navigation, 直接设置 corner 是可以的, 如果有, 需要设置 navigation.navigationbar 的 _UIBarBackground 的 cornerRadius
-//        self.presentingViewController.view.layer.cornerRadius = 6;
-        [self setNavCornerRadius:6];
+        if ([self.presentingViewController isKindOfClass:[ZHNavigationVC class]]) {
+            ZHNavigationVC *nav = (ZHNavigationVC *)self.presentingViewController;
+            UIViewController *vc = nav.viewControllers.lastObject;
+            if (vc.fd_prefersNavigationBarHidden) {
+                [self setPresentingViewCornerRadius:6];
+            } else {
+                [self setNavCornerRadius:6];
+            }
+        } else {
+            [self setNavCornerRadius:6];
+        }
         
         CGFloat x = 1 - 30 / 320.f;
         CGFloat y = 1 - 40 / 667.f;
@@ -151,10 +184,19 @@ static ZHPlayVC *_defaultVC;
     
     [self.cover removeFromSuperview];
     [UIView animateWithDuration:0.25 animations:^{
-        
         self.presentingViewController.view.layer.transform = CATransform3DIdentity;
     }];
-    [self setNavCornerRadius:0];
+    if ([self.presentingViewController isKindOfClass:[ZHNavigationVC class]]) {
+        ZHNavigationVC *nav = (ZHNavigationVC *)self.presentingViewController;
+        UIViewController *vc = nav.viewControllers.lastObject;
+        if (vc.fd_prefersNavigationBarHidden) {
+            [self setPresentingViewCornerRadius:0];
+        } else {
+            [self setNavCornerRadius:0];
+        }
+    } else {
+        [self setNavCornerRadius:0];
+    }
     self.presentingVC = self.presentingViewController;
     [UIView animateWithDuration:0.25 animations:^{
         [ZHMiniPlayView defaultView].height = 63.5;
@@ -165,6 +207,17 @@ static ZHPlayVC *_defaultVC;
         
         
     }];
+}
+
+- (void)setPresentingViewCornerRadius:(CGFloat)radius {
+    
+    UIView *tempView = self.presentingViewController.view;
+    
+    UIBezierPath *maskPath = [UIBezierPath bezierPathWithRoundedRect:tempView.bounds byRoundingCorners:UIRectCornerTopLeft | UIRectCornerTopRight cornerRadii:CGSizeMake(radius, radius)];
+    CAShapeLayer *maskLayer = [[CAShapeLayer alloc] init];
+    maskLayer.frame = tempView.bounds;
+    maskLayer.path = maskPath.CGPath;
+    tempView.layer.mask = maskLayer;
 }
 
 - (void)setNavCornerRadius:(CGFloat)radius {

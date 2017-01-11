@@ -9,6 +9,7 @@
 #import "ZHMusicDataManager.h"
 #import <MediaPlayer/MediaPlayer.h>
 #import <Realm.h>
+#import <MBProgressHUD.h>
 #import "ZHMusicInfo.h"
 
 
@@ -31,6 +32,8 @@
     NSLog(@"加载了数据");
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         
+        [MBProgressHUD showHUDAddedTo:[UIApplication sharedApplication].keyWindow animated:YES];
+        
         for (MPMediaItem *song in itemsFromGenericQuery) {
             
             RLMResults *tempInfo = [ZHMusicInfo objectsWhere:[NSString stringWithFormat:@"assetURL = '%@'", song.assetURL.absoluteString]];
@@ -52,6 +55,7 @@
         }
         dispatch_async(dispatch_get_main_queue(), ^{
             NSLog(@"加载数据完成");
+            [MBProgressHUD hideHUDForView:[UIApplication sharedApplication].keyWindow animated:YES];
         });
     });
 }
