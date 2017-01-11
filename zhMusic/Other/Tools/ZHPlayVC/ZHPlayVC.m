@@ -99,7 +99,11 @@ static ZHPlayVC *_defaultVC;
     [self configuerPresentingVC];
     
     // 移除 miniplay
-    [[UIApplication sharedApplication].keyWindow sendSubviewToBack:[ZHMiniPlayView defaultView]];
+//    [[UIApplication sharedApplication].keyWindow sendSubviewToBack:[ZHMiniPlayView defaultView]];
+    [UIView animateWithDuration:0.25 animations:^{
+        
+        [ZHMiniPlayView defaultView].height = 0;
+    }];
 
     // 隐藏 tabbar
     UITabBarController *tabBarControler = (id)UIApplication.sharedApplication.delegate.window.rootViewController;
@@ -152,9 +156,13 @@ static ZHPlayVC *_defaultVC;
     }];
     [self setNavCornerRadius:0];
     self.presentingVC = self.presentingViewController;
-    [[UIApplication sharedApplication].keyWindow bringSubviewToFront:[ZHMiniPlayView defaultView]];
+    [UIView animateWithDuration:0.25 animations:^{
+        [ZHMiniPlayView defaultView].height = 63.5;
+    }];
     [self dismissViewControllerAnimated:YES completion:^{
         // 显示 miniplay
+//        [[UIApplication sharedApplication].keyWindow bringSubviewToFront:[ZHMiniPlayView defaultView]];
+        
         
     }];
 }

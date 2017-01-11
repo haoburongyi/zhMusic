@@ -89,8 +89,6 @@ static ZHMiniPlayView *_defaultView;
         UITabBarController *tabBarControler = (id)UIApplication.sharedApplication.delegate.window.rootViewController;
         UINavigationController *nav = tabBarControler.selectedViewController;
         UIViewController *vc = [nav.viewControllers lastObject];
-
-        playVC.currentSong = _song;
         
 //        CGRect frame = [self.artworkImageView convertRect:self.artworkImageView.bounds toView:nil];
 //        UIImageView *imageView = [[UIImageView alloc] initWithImage:self.artworkImageView.image];
@@ -98,20 +96,7 @@ static ZHMiniPlayView *_defaultView;
 //        [vc.view addSubview:imageView];
         
         
-        [vc presentViewController:playVC animated:NO completion:^{
-        
-            CGRect frame = [self.artworkImageView convertRect:self.artworkImageView.bounds toView:nil];
-            CGRect toFrame = [playVC.header.artworkImageVIew convertRect:playVC.header.artworkImageVIew.bounds toView:nil];
-            NSLog(@"%@, %@", NSStringFromCGRect(frame), NSStringFromCGRect(toFrame));
-            UIImageView *imageView = [[UIImageView alloc] initWithFrame:frame];
-            imageView.image = self.artworkImageView.image;
-            [[UIApplication sharedApplication].keyWindow addSubview:imageView];
-            [UIView animateWithDuration:0.5 animations:^{
-                imageView.frame = toFrame;
-            }completion:^(BOOL finished) {
-                [imageView removeFromSuperview];
-            }];
-        }];
+        [vc presentViewController:playVC animated:YES completion:nil];
     }
 }
 

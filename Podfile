@@ -12,6 +12,7 @@ target 'zhMusic' do
   pod 'FDFullscreenPopGesture', '1.1'
   pod 'JPFPSStatus'
   pod 'Masonry'
+  pod 'MBProgressHUD'
 #  pod 'HTChineseLetter`
 end
   target 'zhMusicTests' do

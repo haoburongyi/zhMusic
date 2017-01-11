@@ -2,6 +2,7 @@ PODS:
   - FDFullscreenPopGesture (1.1)
   - JPFPSStatus (0.1)
   - Masonry (1.0.2)
+  - MBProgressHUD (1.0.0)
   - Realm (2.1.2):
     - Realm/Headers (= 2.1.2)
   - Realm/Headers (2.1.2)
@@ -11,6 +12,7 @@ DEPENDENCIES:
   - FDFullscreenPopGesture (= 1.1)
   - JPFPSStatus
   - Masonry
+  - MBProgressHUD
   - Realm
   - YYText
 
@@ -18,9 +20,10 @@ SPEC CHECKSUMS:
   FDFullscreenPopGesture: a8a620179e3d9c40e8e00256dcee1c1a27c6d0f0
   JPFPSStatus: 4467a17488382e4c1700bd9d18c92ae581fd6305
   Masonry: 7c429b56da9d4ee0bbb3ed77a5ea710d6a5df39e
+  MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
   Realm: efe855f4d977c8ce5a82d3116d9f1ff155a6550c
   YYText: 5c461d709e24d55a182d1441c41dc639a18a4849
 
-PODFILE CHECKSUM: 096057150c8520915c4f93a2e7b3c9ef2c6e27a1
+PODFILE CHECKSUM: e5b43210bb65e464b9c4718fcbd0638f5e2a4589
 
 COCOAPODS: 1.2.0.beta.1
